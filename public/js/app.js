@@ -1184,7 +1184,7 @@ module.exports = Component.exports
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(15);
-module.exports = __webpack_require__(63);
+module.exports = __webpack_require__(66);
 
 
 /***/ }),
@@ -1239,7 +1239,7 @@ __WEBPACK_IMPORTED_MODULE_1_vue___default.a.component("image-component", __webpa
 //star
 __WEBPACK_IMPORTED_MODULE_1_vue___default.a.component("star-rating", __WEBPACK_IMPORTED_MODULE_2_vue_star_rating___default.a);
 //admin
-__WEBPACK_IMPORTED_MODULE_1_vue___default.a.component("admin-component", __webpack_require__(68));
+__WEBPACK_IMPORTED_MODULE_1_vue___default.a.component("admin-component", __webpack_require__(63));
 var bus = new __WEBPACK_IMPORTED_MODULE_1_vue___default.a();
 
 var app = new __WEBPACK_IMPORTED_MODULE_1_vue___default.a({
@@ -50760,6 +50760,10 @@ function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, a
 //
 //
 //
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
@@ -50837,12 +50841,22 @@ var render = function() {
         _vm._v(" "),
         _c("div", { staticClass: "show-info flex-1" }, [
           _c("h2", { staticClass: "show-title txt-s txt-bold" }, [
-            _vm._v("電話番号")
+            _vm._v("社員番号")
           ]),
           _vm._v(" "),
           _c("h3", { staticClass: "show-content w-inherit txt-center" }, [
             _vm._v(_vm._s(_vm.info.username))
           ])
+        ])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "show-info" }, [
+        _c("h2", { staticClass: "show-title txt-s txt-bold" }, [
+          _vm._v("メール")
+        ]),
+        _vm._v(" "),
+        _c("h3", { staticClass: "show-content w-inherit txt-center" }, [
+          _vm._v(_vm._s(_vm.info.email))
         ])
       ])
     ])
@@ -50860,24 +50874,14 @@ if (false) {
 
 /***/ }),
 /* 63 */
-/***/ (function(module, exports) {
-
-// removed by extract-text-webpack-plugin
-
-/***/ }),
-/* 64 */,
-/* 65 */,
-/* 66 */,
-/* 67 */,
-/* 68 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var normalizeComponent = __webpack_require__(1)
 /* script */
-var __vue_script__ = __webpack_require__(69)
+var __vue_script__ = __webpack_require__(64)
 /* template */
-var __vue_template__ = __webpack_require__(70)
+var __vue_template__ = __webpack_require__(65)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -50916,7 +50920,7 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 69 */
+/* 64 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -51188,7 +51192,7 @@ function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, a
 });
 
 /***/ }),
-/* 70 */
+/* 65 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -51389,6 +51393,12 @@ if (false) {
     require("vue-hot-reload-api")      .rerender("data-v-551eeef0", module.exports)
   }
 }
+
+/***/ }),
+/* 66 */
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
 
 /***/ })
 /******/ ]);

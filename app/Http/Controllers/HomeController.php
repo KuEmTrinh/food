@@ -50,7 +50,7 @@ class HomeController extends Controller
             'email' => request()->email,
             'username' => request()->number,
             'password' => Hash::make(request()->password),
-            'sex' => 2,
+            'sex' => request()->sex,
         ]);
     }
 }

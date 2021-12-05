@@ -83,6 +83,13 @@
   border: 1px solid #333333;
 }
 
+.message__error {
+  padding: 1rem 2rem;
+  color: #ffffff;
+  background-color: #db5555;
+  border-radius: 0.5rem;
+}
+
 .register {
   display: -webkit-box;
   display: -ms-flexbox;

@@ -7,9 +7,13 @@
           <h3 class="show-content w-inherit txt-center">{{ info.name }}</h3>
         </div>
         <div class="show-info flex-1">
-          <h2 class="show-title txt-s txt-bold">電話番号</h2>
+          <h2 class="show-title txt-s txt-bold">社員番号</h2>
           <h3 class="show-content w-inherit txt-center">{{ info.username }}</h3>
         </div>
+      </div>
+      <div class="show-info">
+        <h2 class="show-title txt-s txt-bold">メール</h2>
+        <h3 class="show-content w-inherit txt-center">{{ info.email }}</h3>
       </div>
     </div>
   </div>

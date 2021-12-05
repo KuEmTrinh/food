@@ -8,8 +8,18 @@
 
             <input type="text" class="input txt-center w-100" v-model="name" placeholder="会員番号" id="username"
                 name="username" />
+            @if ($errors->has('username'))
+                <div class="message__error invalid-feedback" role="alert">
+                    <strong>{{ $errors->first('username') }}</strong>
+                </div>
+            @endif
             <input type="password" class="input txt-center w-100" v-model="name" placeholder="パスワード" id="password"
                 name="password" />
+            @if ($errors->has('password'))
+                <div class="message__error" role="alert">
+                    <strong>{{ $errors->first('password') }}</strong>
+                </div>
+            @endif
             {{-- <input id="username" type="text"
                 class="input txt-center form-control{{ $errors->has('username') ? ' is-invalid' : '' }}" name="username"
                 value="{{ old('username') }}" required autofocus>
