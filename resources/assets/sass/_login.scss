@@ -1,0 +1,15 @@
+@import "variables";
+
+.login {
+    display: flex;
+    flex-direction: column;
+    width: 20rem;
+    & input {
+        margin-bottom: 0.7rem;
+        border: 1px solid $grey;
+    }
+    & input:focus {
+        margin-bottom: 0.7rem;
+        border: 1px solid $black;
+    }
+}

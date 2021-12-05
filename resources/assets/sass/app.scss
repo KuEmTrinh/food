@@ -1,0 +1,21 @@
+* {
+    font-family: "Roboto", sans-serif;
+}
+// Variables
+@import "variables";
+
+//ui
+@import "ui";
+
+//element
+@import "nav";
+@import "toggle";
+@import "login";
+@import "register";
+@import "property";
+@import "home";
+@import "info";
+@import "show";
+
+// Bootstrap
+// @import '~bootstrap/scss/bootstrap';

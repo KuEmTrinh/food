@@ -1,0 +1,39 @@
+.nav {
+    position: fixed;
+    width: 20%;
+    height: 100vh;
+    justify-content: center;
+    background-color: $black;
+    color: $white;
+    &-content {
+        width: 100%;
+    }
+    &__icon {
+        position: absolute;
+        top: 2rem;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+    &-logout {
+        position: absolute;
+        bottom: 2rem;
+        left: 50%;
+        transform: translateX(-50%);
+        font-size: 2rem;
+        font-weight: bold;
+    }
+    &_active {
+        a {
+            padding: 1rem 2rem;
+            border-radius: 0.5rem;
+            color: $black;
+            background-color: $white;
+        }
+    }
+    &-name{
+        position: absolute;
+        top: 3rem;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+}
