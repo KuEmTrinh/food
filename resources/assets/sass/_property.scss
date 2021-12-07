@@ -44,6 +44,9 @@
 }
 
 //spacing
+.m-2 {
+    margin: 2rem;
+}
 .mt-05 {
     margin-top: 0.5rem;
 }
@@ -110,6 +113,10 @@
     width: 20%;
 }
 
+.h-50 {
+    height: 50%;
+}
+
 w-inherit {
     width: inherit;
 }
@@ -164,7 +171,6 @@ w-inherit {
 .btn {
     border: none;
 }
-
 .btn-black {
     background-color: $black;
     color: $white;
@@ -239,4 +245,9 @@ w-inherit {
     height: 10rem;
     object-fit: cover;
 }
-//message
+
+//border
+
+.border {
+    border: 1px sold $black;
+}

@@ -47730,34 +47730,6 @@ function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, a
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 
 // import { bus } from "../app";
@@ -47784,10 +47756,10 @@ function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, a
       min_money: "",
       max_money: "",
       url: "",
-      pic: "",
-      resize_img: "",
-      image: "",
-      img_name: "",
+      // pic: "",
+      // resize_img: "",
+      // image: "",
+      // img_name: "",
       message: []
     };
   },
@@ -47926,200 +47898,11 @@ function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, a
       }
 
       return saveInfo;
-    }(),
-    changeInfo: function () {
-      var _ref6 = _asyncToGenerator( /*#__PURE__*/__WEBPACK_IMPORTED_MODULE_0_babel_runtime_regenerator___default.a.mark(function _callee6() {
-        var _this4 = this;
-
-        return __WEBPACK_IMPORTED_MODULE_0_babel_runtime_regenerator___default.a.wrap(function _callee6$(_context6) {
-          while (1) {
-            switch (_context6.prev = _context6.next) {
-              case 0:
-                axios.post("change_info", {
-                  id: this.id,
-                  name: this.name,
-                  delivery: this.delivery,
-                  address: this.address,
-                  number: this.number,
-                  genre: this.genre,
-                  open: this.open,
-                  close: this.close,
-                  min_money: this.min_money,
-                  max_money: this.max_money,
-                  url: this.url
-                }).then(function (response) {
-                  _this4.message.push(response.data.message);
-                  _this4.clear();
-                }).catch(function (error) {
-                  return console.log(error);
-                });
-
-              case 1:
-              case "end":
-                return _context6.stop();
-            }
-          }
-        }, _callee6, this);
-      }));
-
-      function changeInfo() {
-        return _ref6.apply(this, arguments);
-      }
-
-      return changeInfo;
-    }(),
-    getInfo: function () {
-      var _ref7 = _asyncToGenerator( /*#__PURE__*/__WEBPACK_IMPORTED_MODULE_0_babel_runtime_regenerator___default.a.mark(function _callee7() {
-        var _this5 = this;
-
-        return __WEBPACK_IMPORTED_MODULE_0_babel_runtime_regenerator___default.a.wrap(function _callee7$(_context7) {
-          while (1) {
-            switch (_context7.prev = _context7.next) {
-              case 0:
-                axios.get("get_info").then(function (response) {
-                  _this5.info = response.data;
-                  _this5.id = _this5.info[0].id;
-                  _this5.name = _this5.info[0].name;
-                  _this5.delivery = _this5.info[0].delivery;
-                  _this5.address = _this5.info[0].address;
-                  _this5.number = _this5.info[0].number;
-                  _this5.open = _this5.info[0].open;
-                  _this5.close = _this5.info[0].close;
-                  _this5.pushGenre(JSON.parse(_this5.info[0].genre));
-                  _this5.min_money = _this5.info[0].min_money;
-                  _this5.max_money = _this5.info[0].max_money;
-                  _this5.url = _this5.info[0].url;
-                  _this5.edit = 2;
-                });
-
-              case 1:
-              case "end":
-                return _context7.stop();
-            }
-          }
-        }, _callee7, this);
-      }));
-
-      function getInfo() {
-        return _ref7.apply(this, arguments);
-      }
-
-      return getInfo;
-    }(),
-    imageLoad: function () {
-      var _ref8 = _asyncToGenerator( /*#__PURE__*/__WEBPACK_IMPORTED_MODULE_0_babel_runtime_regenerator___default.a.mark(function _callee8(e) {
-        var _this6 = this;
-
-        var file, dataURItoBlob, resizeImage;
-        return __WEBPACK_IMPORTED_MODULE_0_babel_runtime_regenerator___default.a.wrap(function _callee8$(_context8) {
-          while (1) {
-            switch (_context8.prev = _context8.next) {
-              case 0:
-                this.image = e.target.files[0];
-                file = e.target.files[0];
-                // this.pic = URL.createObjectURL(file);
-
-                dataURItoBlob = function dataURItoBlob(dataURI) {
-                  var bytes = dataURI.split(",")[0].indexOf("base64") >= 0 ? atob(dataURI.split(",")[1]) : unescape(dataURI.split(",")[1]);
-                  var mime = dataURI.split(",")[0].split(":")[1].split(";")[0];
-                  var max = bytes.length;
-                  var ia = new Uint8Array(max);
-                  for (var i = 0; i < max; i += 1) {
-                    ia[i] = bytes.charCodeAt(i);
-                  }return new Blob([ia], { type: mime });
-                };
-
-                resizeImage = function resizeImage(_ref9) {
-                  var file = _ref9.file,
-                      maxSize = _ref9.maxSize;
-
-                  var reader = new FileReader();
-                  var image = new Image();
-                  var canvas = document.createElement("canvas");
-
-                  var resize = function resize() {
-                    var width = image.width,
-                        height = image.height;
-
-
-                    if (width > height) {
-                      if (width > maxSize) {
-                        height *= maxSize / width;
-                        width = maxSize;
-                      }
-                    } else if (height > maxSize) {
-                      width *= maxSize / height;
-                      height = maxSize;
-                    }
-
-                    canvas.width = width;
-                    canvas.height = height;
-                    canvas.getContext("2d").drawImage(image, 0, 0, width, height);
-                    var dataUrl = canvas.toDataURL("image/jpeg");
-
-                    return dataURItoBlob(dataUrl);
-                  };
-
-                  return new Promise(function (ok, no) {
-                    if (!file.type.match(/image.*/)) {
-                      no(new Error("Not an image"));
-                      return;
-                    }
-
-                    reader.onload = function (readerEvent) {
-                      image.onload = function () {
-                        return ok(resize());
-                      };
-                      image.src = readerEvent.target.result;
-                    };
-                    reader.readAsDataURL(file);
-                  });
-                };
-
-                resizeImage({ file: file, maxSize: 900 }).then(function (resizedImage) {
-                  console.log(resizedImage);
-                  _this6.pic = URL.createObjectURL(resizedImage);
-                  _this6.resize_img = resizedImage;
-                }).catch(function (err) {
-                  console.error(err);
-                });
-
-              case 5:
-              case "end":
-                return _context8.stop();
-            }
-          }
-        }, _callee8, this);
-      }));
-
-      function imageLoad(_x3) {
-        return _ref8.apply(this, arguments);
-      }
-
-      return imageLoad;
-    }(),
-    saveImage: function saveImage() {
-      var _this7 = this;
-
-      var formData = new FormData();
-      formData.append("image", this.resize_img);
-      formData.append("info_id", this.info_id);
-      formData.append("img_name", this.img_name);
-      axios.post("save_image", formData).then(function (response) {
-        _this7.getInfo();
-      });
-
-      this.image = "";
-      this.resize_img = "";
-      this.pic = "";
-      this.img_name = "";
-
-      location.reload();
-    }
+    }()
   },
   mounted: function mounted() {},
   created: function created() {
-    this.getInfo();
+    // this.getInfo();
   }
 });
 
@@ -48626,68 +48409,6 @@ var render = function() {
       ])
     ]),
     _vm._v(" "),
-    _c(
-      "div",
-      { staticClass: "info-input flex al-ct mt-1" },
-      [
-        _c("h2", { staticClass: "info-title mid-title mr-1" }, [
-          _vm._v("写真追加リスト")
-        ]),
-        _vm._v(" "),
-        _c("image-component", { attrs: { info_id: _vm.info_id } })
-      ],
-      1
-    ),
-    _vm._v(" "),
-    _c("div", { staticClass: "info-input flex al-ct mt-1" }, [
-      _c("h2", { staticClass: "info-title mid-title mr-1" }, [_vm._v("写真")]),
-      _vm._v(" "),
-      _c("input", {
-        staticClass: "info-image",
-        attrs: { type: "file" },
-        on: { change: _vm.imageLoad }
-      }),
-      _vm._v(" "),
-      _c(
-        "div",
-        { staticClass: "wrap flex flx-d-c al-ct ml-2" },
-        [
-          _c("input", {
-            directives: [
-              {
-                name: "model",
-                rawName: "v-model",
-                value: _vm.img_name,
-                expression: "img_name"
-              }
-            ],
-            staticClass: "home-money__input",
-            attrs: { type: "text", placeholder: "写真名" },
-            domProps: { value: _vm.img_name },
-            on: {
-              input: function($event) {
-                if ($event.target.composing) {
-                  return
-                }
-                _vm.img_name = $event.target.value
-              }
-            }
-          }),
-          _vm._v(" "),
-          _c("box-icon", {
-            attrs: { name: "upload" },
-            on: {
-              click: function($event) {
-                $event.preventDefault()
-                return _vm.saveImage()
-              }
-            }
-          })
-        ],
-        1
-      )
-    ]),
-    _vm._v(" "),
     _c("div", { staticClass: "info-input flex al-ct mt-1" }, [
       _c("h2", { staticClass: "info-title mid-title mr-1" }, [
         _vm._v("デリバリー")
@@ -48755,37 +48476,19 @@ var render = function() {
         _vm._v("リセット")
       ]),
       _vm._v(" "),
-      _vm.edit == 1
-        ? _c(
-            "div",
-            {
-              staticClass: "btn btn-m btn__black mr-1 w-48",
-              on: {
-                click: function($event) {
-                  $event.preventDefault()
-                  return _vm.saveInfo()
-                }
-              }
-            },
-            [_vm._v("\n      登録\n    ")]
-          )
-        : _vm._e(),
-      _vm._v(" "),
-      _vm.edit == 2
-        ? _c(
-            "div",
-            {
-              staticClass: "btn btn-m btn__black mr-1 w-48",
-              on: {
-                click: function($event) {
-                  $event.preventDefault()
-                  return _vm.changeInfo()
-                }
-              }
-            },
-            [_vm._v("\n      編集\n    ")]
-          )
-        : _vm._e()
+      _c(
+        "div",
+        {
+          staticClass: "btn btn-m btn__black mr-1 w-48",
+          on: {
+            click: function($event) {
+              $event.preventDefault()
+              return _vm.saveInfo()
+            }
+          }
+        },
+        [_vm._v("\n      登録\n    ")]
+      )
     ])
   ])
 }
@@ -49176,8 +48879,255 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_babel_runtime_regenerator___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_babel_runtime_regenerator__);
 
 
+var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
+
 function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, arguments); return new Promise(function (resolve, reject) { function step(key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { return Promise.resolve(value).then(function (value) { step("next", value); }, function (err) { step("throw", err); }); } } return step("next"); }); }; }
 
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -49480,12 +49430,15 @@ function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, a
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
+      filter_delivery: [],
+      user_id: "",
       rating: "",
       message: [],
       comments: [],
       list: [],
       genre: [],
       show_info: false,
+      show_edit: false,
       info: [],
       desc: "",
       find: 1,
@@ -49494,7 +49447,11 @@ function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, a
       sort_item: "",
       role: "",
       toggle: false,
-      delete_id: ""
+      delete_id: "",
+      pic: "",
+      resize_img: "",
+      image: "",
+      img_name: ""
     };
   },
 
@@ -49579,6 +49536,7 @@ function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, a
               case 0:
                 axios.get("get_user_info").then(function (response) {
                   _this2.role = response.data.role;
+                  _this2.user_id = response.data.id;
                 });
 
               case 1:
@@ -50034,6 +49992,242 @@ function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, a
       }
 
       return deleteThisUser;
+    }(),
+
+
+    //show edit
+    showEdit: function () {
+      var _ref20 = _asyncToGenerator( /*#__PURE__*/__WEBPACK_IMPORTED_MODULE_0_babel_runtime_regenerator___default.a.mark(function _callee20(index) {
+        return __WEBPACK_IMPORTED_MODULE_0_babel_runtime_regenerator___default.a.wrap(function _callee20$(_context20) {
+          while (1) {
+            switch (_context20.prev = _context20.next) {
+              case 0:
+                this.show_edit = true;
+                this.info = this.list[index];
+                console.log(index);
+
+              case 3:
+              case "end":
+                return _context20.stop();
+            }
+          }
+        }, _callee20, this);
+      }));
+
+      function showEdit(_x11) {
+        return _ref20.apply(this, arguments);
+      }
+
+      return showEdit;
+    }(),
+    hideEdit: function () {
+      var _ref21 = _asyncToGenerator( /*#__PURE__*/__WEBPACK_IMPORTED_MODULE_0_babel_runtime_regenerator___default.a.mark(function _callee21() {
+        return __WEBPACK_IMPORTED_MODULE_0_babel_runtime_regenerator___default.a.wrap(function _callee21$(_context21) {
+          while (1) {
+            switch (_context21.prev = _context21.next) {
+              case 0:
+                this.show_edit = false;
+
+              case 1:
+              case "end":
+                return _context21.stop();
+            }
+          }
+        }, _callee21, this);
+      }));
+
+      function hideEdit() {
+        return _ref21.apply(this, arguments);
+      }
+
+      return hideEdit;
+    }(),
+    imageLoad: function () {
+      var _ref22 = _asyncToGenerator( /*#__PURE__*/__WEBPACK_IMPORTED_MODULE_0_babel_runtime_regenerator___default.a.mark(function _callee22(e) {
+        var _this10 = this;
+
+        var file, dataURItoBlob, resizeImage;
+        return __WEBPACK_IMPORTED_MODULE_0_babel_runtime_regenerator___default.a.wrap(function _callee22$(_context22) {
+          while (1) {
+            switch (_context22.prev = _context22.next) {
+              case 0:
+                this.image = e.target.files[0];
+                file = e.target.files[0];
+                // this.pic = URL.createObjectURL(file);
+
+                dataURItoBlob = function dataURItoBlob(dataURI) {
+                  var bytes = dataURI.split(",")[0].indexOf("base64") >= 0 ? atob(dataURI.split(",")[1]) : unescape(dataURI.split(",")[1]);
+                  var mime = dataURI.split(",")[0].split(":")[1].split(";")[0];
+                  var max = bytes.length;
+                  var ia = new Uint8Array(max);
+                  for (var i = 0; i < max; i += 1) {
+                    ia[i] = bytes.charCodeAt(i);
+                  }return new Blob([ia], { type: mime });
+                };
+
+                resizeImage = function resizeImage(_ref23) {
+                  var file = _ref23.file,
+                      maxSize = _ref23.maxSize;
+
+                  var reader = new FileReader();
+                  var image = new Image();
+                  var canvas = document.createElement("canvas");
+
+                  var resize = function resize() {
+                    var width = image.width,
+                        height = image.height;
+
+
+                    if (width > height) {
+                      if (width > maxSize) {
+                        height *= maxSize / width;
+                        width = maxSize;
+                      }
+                    } else if (height > maxSize) {
+                      width *= maxSize / height;
+                      height = maxSize;
+                    }
+
+                    canvas.width = width;
+                    canvas.height = height;
+                    canvas.getContext("2d").drawImage(image, 0, 0, width, height);
+                    var dataUrl = canvas.toDataURL("image/jpeg");
+
+                    return dataURItoBlob(dataUrl);
+                  };
+
+                  return new Promise(function (ok, no) {
+                    if (!file.type.match(/image.*/)) {
+                      no(new Error("Not an image"));
+                      return;
+                    }
+
+                    reader.onload = function (readerEvent) {
+                      image.onload = function () {
+                        return ok(resize());
+                      };
+                      image.src = readerEvent.target.result;
+                    };
+                    reader.readAsDataURL(file);
+                  });
+                };
+
+                resizeImage({ file: file, maxSize: 900 }).then(function (resizedImage) {
+                  console.log(resizedImage);
+                  _this10.pic = URL.createObjectURL(resizedImage);
+                  _this10.resize_img = resizedImage;
+                }).catch(function (err) {
+                  console.error(err);
+                });
+
+              case 5:
+              case "end":
+                return _context22.stop();
+            }
+          }
+        }, _callee22, this);
+      }));
+
+      function imageLoad(_x12) {
+        return _ref22.apply(this, arguments);
+      }
+
+      return imageLoad;
+    }(),
+    saveImage: function saveImage() {
+      var formData = new FormData();
+      formData.append("image", this.resize_img);
+      formData.append("info_id", this.info.id);
+      formData.append("img_name", this.img_name);
+      axios.post("save_image", formData).then(function (response) {
+        // this.getInfo();
+      });
+
+      this.image = "";
+      this.resize_img = "";
+      this.pic = "";
+      this.img_name = "";
+
+      location.reload();
+    },
+    changeInfo: function () {
+      var _ref24 = _asyncToGenerator( /*#__PURE__*/__WEBPACK_IMPORTED_MODULE_0_babel_runtime_regenerator___default.a.mark(function _callee23() {
+        var _this11 = this;
+
+        return __WEBPACK_IMPORTED_MODULE_0_babel_runtime_regenerator___default.a.wrap(function _callee23$(_context23) {
+          while (1) {
+            switch (_context23.prev = _context23.next) {
+              case 0:
+                axios.post("change_info", {
+                  id: this.info.id,
+                  name: this.info.name,
+                  delivery: this.info.delivery,
+                  address: this.info.address,
+                  number: this.info.number,
+                  genre: this.info.genre,
+                  open: this.info.open,
+                  close: this.info.close,
+                  min_money: this.info.min_money,
+                  max_money: this.info.max_money,
+                  url: this.info.url
+                }).then(function (response) {
+                  _this11.message.push(response.data.message);
+                  _this11.clear();
+                  _this11.hideEdit();
+                  _this11.getAll();
+                }).catch(function (error) {
+                  return console.log(error);
+                });
+
+              case 1:
+              case "end":
+                return _context23.stop();
+            }
+          }
+        }, _callee23, this);
+      }));
+
+      function changeInfo() {
+        return _ref24.apply(this, arguments);
+      }
+
+      return changeInfo;
+    }(),
+    filterDelivery: function () {
+      var _ref25 = _asyncToGenerator( /*#__PURE__*/__WEBPACK_IMPORTED_MODULE_0_babel_runtime_regenerator___default.a.mark(function _callee24() {
+        var _this12 = this;
+
+        var array;
+        return __WEBPACK_IMPORTED_MODULE_0_babel_runtime_regenerator___default.a.wrap(function _callee24$(_context24) {
+          while (1) {
+            switch (_context24.prev = _context24.next) {
+              case 0:
+                console.log(_typeof(this.list));
+                array = {};
+
+                console.log(typeof array === "undefined" ? "undefined" : _typeof(array));
+
+                this.filter_delivery.forEach(function (el) {
+                  var filter_list = _this12.list.filter(function (item) {
+                    return item.delivery == el;
+                  });
+                  Object.assign(array, filter_list);
+                  console.log(array);
+                });
+
+              case 4:
+              case "end":
+                return _context24.stop();
+            }
+          }
+        }, _callee24, this);
+      }));
+
+      function filterDelivery() {
+        return _ref25.apply(this, arguments);
+      }
+
+      return filterDelivery;
     }()
   },
   mounted: function mounted() {},
@@ -50073,6 +50267,599 @@ var render = function() {
         0
       )
     ]),
+    _vm._v(" "),
+    _vm.show_edit == true
+      ? _c("div", { staticClass: "edit show mbt-2" }, [
+          _c(
+            "div",
+            {
+              staticClass: "show-close",
+              on: {
+                click: function($event) {
+                  $event.preventDefault()
+                  return _vm.hideEdit()
+                }
+              }
+            },
+            [_c("box-icon", { attrs: { name: "x-circle", size: "md" } })],
+            1
+          ),
+          _vm._v(" "),
+          _c("div", { staticClass: "m-2" }, [
+            _c("div", { staticClass: "info" }, [
+              _c("h1", { staticClass: "title" }, [_vm._v("店舗情報編集")]),
+              _vm._v(" "),
+              _c(
+                "div",
+                { staticClass: "message txt-center mt-1 mbt-1 flex jc-c" },
+                [
+                  _c(
+                    "div",
+                    { staticClass: "wrap flex flx-d-c" },
+                    _vm._l(_vm.message, function(mess) {
+                      return _c("div", { key: mess.id, staticClass: "mt-1" }, [
+                        _c(
+                          "h3",
+                          _vm._b(
+                            { staticClass: "message-notice message__content" },
+                            "h3",
+                            { message_error: mess.type == 1 },
+                            false
+                          ),
+                          [
+                            _vm._v(
+                              "\n                " +
+                                _vm._s(mess) +
+                                "\n              "
+                            )
+                          ]
+                        )
+                      ])
+                    }),
+                    0
+                  )
+                ]
+              ),
+              _vm._v(" "),
+              _c("div", { staticClass: "info-input flex al-ct mt-1" }, [
+                _c("h2", { staticClass: "info-title mid-title mr-1" }, [
+                  _vm._v("店舗名")
+                ]),
+                _vm._v(" "),
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.info.name,
+                      expression: "info.name"
+                    }
+                  ],
+                  staticClass: "input info-input__input",
+                  attrs: { type: "text", placeholder: "店舗名" },
+                  domProps: { value: _vm.info.name },
+                  on: {
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.$set(_vm.info, "name", $event.target.value)
+                    }
+                  }
+                })
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "info-input flex al-ct mt-1" }, [
+                _c("h2", { staticClass: "info-title mid-title mr-1" }, [
+                  _vm._v("住所")
+                ]),
+                _vm._v(" "),
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.info.address,
+                      expression: "info.address"
+                    }
+                  ],
+                  staticClass: "input info-input__input",
+                  attrs: { type: "text", placeholder: "住所" },
+                  domProps: { value: _vm.info.address },
+                  on: {
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.$set(_vm.info, "address", $event.target.value)
+                    }
+                  }
+                })
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "info-input flex al-ct mt-1" }, [
+                _c("h2", { staticClass: "info-title mid-title mr-1" }, [
+                  _vm._v("電話番号")
+                ]),
+                _vm._v(" "),
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.info.number,
+                      expression: "info.number"
+                    }
+                  ],
+                  staticClass: "input info-input__input",
+                  attrs: { type: "text", placeholder: "電話番号" },
+                  domProps: { value: _vm.info.number },
+                  on: {
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.$set(_vm.info, "number", $event.target.value)
+                    }
+                  }
+                })
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "info-input flex al-ct mt-1" }, [
+                _c("h2", { staticClass: "info-title mid-title mr-1" }, [
+                  _vm._v("目安金額")
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "mt-06 flex jc-sb al-ct" }, [
+                  _c("div", { staticClass: "info-wrap" }, [
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.info.min_money,
+                          expression: "info.min_money"
+                        }
+                      ],
+                      staticClass: "home-money__input",
+                      attrs: { type: "text", placeholder: "から" },
+                      domProps: { value: _vm.info.min_money },
+                      on: {
+                        input: function($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.$set(_vm.info, "min_money", $event.target.value)
+                        }
+                      }
+                    }),
+                    _vm._v(" "),
+                    _c("span", [_vm._v("~")]),
+                    _vm._v(" "),
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.info.max_money,
+                          expression: "info.max_money"
+                        }
+                      ],
+                      staticClass: "home-money__input",
+                      attrs: { type: "text", placeholder: "まで" },
+                      domProps: { value: _vm.info.max_money },
+                      on: {
+                        input: function($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.$set(_vm.info, "max_money", $event.target.value)
+                        }
+                      }
+                    })
+                  ])
+                ])
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "info-input flex al-ct mt-1" }, [
+                _c("h2", { staticClass: "info-title mid-title mr-1" }, [
+                  _vm._v("ジャンル")
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "info-genre flex al-ct" }, [
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.info.genre,
+                        expression: "info.genre"
+                      }
+                    ],
+                    staticClass: "mr-1",
+                    attrs: { type: "checkbox", id: "teisyoku", value: "定食" },
+                    domProps: {
+                      checked: Array.isArray(_vm.info.genre)
+                        ? _vm._i(_vm.info.genre, "定食") > -1
+                        : _vm.info.genre
+                    },
+                    on: {
+                      change: function($event) {
+                        var $$a = _vm.info.genre,
+                          $$el = $event.target,
+                          $$c = $$el.checked ? true : false
+                        if (Array.isArray($$a)) {
+                          var $$v = "定食",
+                            $$i = _vm._i($$a, $$v)
+                          if ($$el.checked) {
+                            $$i < 0 &&
+                              _vm.$set(_vm.info, "genre", $$a.concat([$$v]))
+                          } else {
+                            $$i > -1 &&
+                              _vm.$set(
+                                _vm.info,
+                                "genre",
+                                $$a.slice(0, $$i).concat($$a.slice($$i + 1))
+                              )
+                          }
+                        } else {
+                          _vm.$set(_vm.info, "genre", $$c)
+                        }
+                      }
+                    }
+                  }),
+                  _vm._v(" "),
+                  _c(
+                    "h2",
+                    {
+                      staticClass: "info-genre__content txt-s txt-bold mr-2",
+                      attrs: { for: "teisyoku" }
+                    },
+                    [_vm._v("\n              定食\n            ")]
+                  )
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "info-genre flex al-ct" }, [
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.info.genre,
+                        expression: "info.genre"
+                      }
+                    ],
+                    staticClass: "mr-1",
+                    attrs: { type: "checkbox", id: "menrui", value: "麺類" },
+                    domProps: {
+                      checked: Array.isArray(_vm.info.genre)
+                        ? _vm._i(_vm.info.genre, "麺類") > -1
+                        : _vm.info.genre
+                    },
+                    on: {
+                      change: function($event) {
+                        var $$a = _vm.info.genre,
+                          $$el = $event.target,
+                          $$c = $$el.checked ? true : false
+                        if (Array.isArray($$a)) {
+                          var $$v = "麺類",
+                            $$i = _vm._i($$a, $$v)
+                          if ($$el.checked) {
+                            $$i < 0 &&
+                              _vm.$set(_vm.info, "genre", $$a.concat([$$v]))
+                          } else {
+                            $$i > -1 &&
+                              _vm.$set(
+                                _vm.info,
+                                "genre",
+                                $$a.slice(0, $$i).concat($$a.slice($$i + 1))
+                              )
+                          }
+                        } else {
+                          _vm.$set(_vm.info, "genre", $$c)
+                        }
+                      }
+                    }
+                  }),
+                  _vm._v(" "),
+                  _c(
+                    "h2",
+                    {
+                      staticClass: "info-genre__content txt-s txt-bold mr-2",
+                      attrs: { for: "menrui" }
+                    },
+                    [_vm._v("\n              麺類\n            ")]
+                  )
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "info-genre flex al-ct" }, [
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.info.genre,
+                        expression: "info.genre"
+                      }
+                    ],
+                    staticClass: "mr-1",
+                    attrs: { type: "checkbox", id: "kare", value: "カレー" },
+                    domProps: {
+                      checked: Array.isArray(_vm.info.genre)
+                        ? _vm._i(_vm.info.genre, "カレー") > -1
+                        : _vm.info.genre
+                    },
+                    on: {
+                      change: function($event) {
+                        var $$a = _vm.info.genre,
+                          $$el = $event.target,
+                          $$c = $$el.checked ? true : false
+                        if (Array.isArray($$a)) {
+                          var $$v = "カレー",
+                            $$i = _vm._i($$a, $$v)
+                          if ($$el.checked) {
+                            $$i < 0 &&
+                              _vm.$set(_vm.info, "genre", $$a.concat([$$v]))
+                          } else {
+                            $$i > -1 &&
+                              _vm.$set(
+                                _vm.info,
+                                "genre",
+                                $$a.slice(0, $$i).concat($$a.slice($$i + 1))
+                              )
+                          }
+                        } else {
+                          _vm.$set(_vm.info, "genre", $$c)
+                        }
+                      }
+                    }
+                  }),
+                  _vm._v(" "),
+                  _c(
+                    "h2",
+                    {
+                      staticClass: "info-genre__content txt-s txt-bold mr-2",
+                      attrs: { for: "kare" }
+                    },
+                    [_vm._v("\n              カレー\n            ")]
+                  )
+                ])
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "info-input flex al-ct mt-1" }, [
+                _c("h2", { staticClass: "info-title mid-title mr-1" }, [
+                  _vm._v("営業時間")
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "info-time mt-06 flex jc-sb al-ct" }, [
+                  _c("div", { staticClass: "wrap flex al-ct" }, [
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.info.open,
+                          expression: "info.open"
+                        }
+                      ],
+                      staticClass: "info-time__input",
+                      attrs: { type: "text", placeholder: "9" },
+                      domProps: { value: _vm.info.open },
+                      on: {
+                        input: function($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.$set(_vm.info, "open", $event.target.value)
+                        }
+                      }
+                    }),
+                    _vm._v(" "),
+                    _c("span", { staticClass: "ml-1 mr-1" }, [_vm._v(":")]),
+                    _vm._v(" "),
+                    _c("input", {
+                      staticClass: "info-time__input",
+                      attrs: { type: "text", placeholder: "00" }
+                    })
+                  ]),
+                  _vm._v(" "),
+                  _c("span", { staticClass: "ml-1 mr-1" }, [_vm._v("~")]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "wrap flex al-ct" }, [
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.info.close,
+                          expression: "info.close"
+                        }
+                      ],
+                      staticClass: "info-time__input",
+                      attrs: { type: "text", placeholder: "10" },
+                      domProps: { value: _vm.info.close },
+                      on: {
+                        input: function($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.$set(_vm.info, "close", $event.target.value)
+                        }
+                      }
+                    }),
+                    _vm._v(" "),
+                    _c("span", { staticClass: "ml-1 mr-1" }, [_vm._v(":")]),
+                    _vm._v(" "),
+                    _c("input", {
+                      staticClass: "info-time__input",
+                      attrs: { type: "text", placeholder: "00" }
+                    })
+                  ])
+                ])
+              ]),
+              _vm._v(" "),
+              _c(
+                "div",
+                { staticClass: "info-input flex al-ct mt-1" },
+                [
+                  _c("h2", { staticClass: "info-title mid-title mr-1" }, [
+                    _vm._v("写真追加リスト")
+                  ]),
+                  _vm._v(" "),
+                  _vm._l(_vm.info.images, function(image) {
+                    return _c(
+                      "div",
+                      { key: image.id, staticClass: "show-img mr-1" },
+                      [
+                        _c("img", {
+                          staticClass: "show-image",
+                          attrs: { src: "uploads/" + image.url, alt: "" }
+                        })
+                      ]
+                    )
+                  })
+                ],
+                2
+              ),
+              _vm._v(" "),
+              _c("div", { staticClass: "info-input flex al-ct mt-1" }, [
+                _c("h2", { staticClass: "info-title mid-title mr-1" }, [
+                  _vm._v("写真")
+                ]),
+                _vm._v(" "),
+                _c("input", {
+                  staticClass: "info-image",
+                  attrs: { type: "file" },
+                  on: { change: _vm.imageLoad }
+                }),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  { staticClass: "wrap flex flx-d-c al-ct ml-2" },
+                  [
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.img_name,
+                          expression: "img_name"
+                        }
+                      ],
+                      staticClass: "home-money__input",
+                      attrs: { type: "text", placeholder: "写真名" },
+                      domProps: { value: _vm.img_name },
+                      on: {
+                        input: function($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.img_name = $event.target.value
+                        }
+                      }
+                    }),
+                    _vm._v(" "),
+                    _c("box-icon", {
+                      attrs: { name: "upload" },
+                      on: {
+                        click: function($event) {
+                          $event.preventDefault()
+                          return _vm.saveImage()
+                        }
+                      }
+                    })
+                  ],
+                  1
+                )
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "info-input flex al-ct mt-1" }, [
+                _c("h2", { staticClass: "info-title mid-title mr-1" }, [
+                  _vm._v("デリバリー")
+                ]),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  {
+                    staticClass: "btn btn-m btn-nav mr-1",
+                    class: { btn__black: _vm.info.delivery == 1 },
+                    on: {
+                      click: function($event) {
+                        $event.preventDefault()
+                        return _vm.changeDelivery(1)
+                      }
+                    }
+                  },
+                  [_vm._v("\n            あり\n          ")]
+                ),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  {
+                    staticClass: "btn btn-m btn-nav mr-1",
+                    class: { btn__black: _vm.info.delivery == 2 },
+                    on: {
+                      click: function($event) {
+                        $event.preventDefault()
+                        return _vm.changeDelivery(2)
+                      }
+                    }
+                  },
+                  [_vm._v("\n            なし\n          ")]
+                )
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "info-input flex al-ct mt-1" }, [
+                _c("h2", { staticClass: "info-title mid-title mr-1" }, [
+                  _vm._v("URL")
+                ]),
+                _vm._v(" "),
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.info.url,
+                      expression: "info.url"
+                    }
+                  ],
+                  staticClass: "input info-input__input",
+                  attrs: { type: "text", placeholder: "URL" },
+                  domProps: { value: _vm.info.url },
+                  on: {
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.$set(_vm.info, "url", $event.target.value)
+                    }
+                  }
+                })
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "wrap flex jc-sb mt-2 txt-center" }, [
+                _c("div", { staticClass: "btn btn-m btn-nav mr-1 w-48" }, [
+                  _vm._v("リセット")
+                ]),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  {
+                    staticClass: "btn btn-m btn__black mr-1 w-48",
+                    on: {
+                      click: function($event) {
+                        $event.preventDefault()
+                        return _vm.changeInfo()
+                      }
+                    }
+                  },
+                  [_vm._v("\n            編集\n          ")]
+                )
+              ])
+            ])
+          ])
+        ])
+      : _vm._e(),
     _vm._v(" "),
     _vm.toggle == true
       ? _c("div", { staticClass: "toggle" }, [
@@ -50270,73 +51057,75 @@ var render = function() {
             ])
           ]),
           _vm._v(" "),
-          _c("div", { staticClass: "wrap flex jc-sb" }, [
-            _c("div", { staticClass: "show-info flex-1" }, [
-              _c("h2", { staticClass: "show-title txt-s txt-bold" }, [
-                _vm._v("評価店")
-              ]),
-              _vm._v(" "),
-              _c(
-                "div",
-                { staticClass: "star flex al-ct" },
-                [
-                  _c("star-rating", {
-                    attrs: { "star-size": 25, "show-rating": false },
-                    on: { "rating-selected": _vm.setRating }
-                  }),
+          _vm.info.user_id != _vm.user_id
+            ? _c("div", { staticClass: "wrap flex jc-sb" }, [
+                _c("div", { staticClass: "show-info flex-1" }, [
+                  _c("h2", { staticClass: "show-title txt-s txt-bold" }, [
+                    _vm._v("評価店")
+                  ]),
                   _vm._v(" "),
-                  _c("h2", { staticClass: "show-title txt-bold ml-1" }, [
-                    _vm._v(_vm._s(_vm.rating) + "点")
-                  ])
-                ],
-                1
-              )
-            ]),
-            _vm._v(" "),
-            _c(
-              "div",
-              { staticClass: "show-info show-relative flex-3" },
-              [
-                _c("h2", { staticClass: "show-title txt-s txt-bold" }, [
-                  _vm._v("コメント入力")
+                  _c(
+                    "div",
+                    { staticClass: "star flex al-ct" },
+                    [
+                      _c("star-rating", {
+                        attrs: { "star-size": 25, "show-rating": false },
+                        on: { "rating-selected": _vm.setRating }
+                      }),
+                      _vm._v(" "),
+                      _c("h2", { staticClass: "show-title txt-bold ml-1" }, [
+                        _vm._v(_vm._s(_vm.rating) + "点")
+                      ])
+                    ],
+                    1
+                  )
                 ]),
                 _vm._v(" "),
-                _c("box-icon", {
-                  staticClass: "show-comment",
-                  attrs: { name: "comment-add", size: "md" },
-                  on: {
-                    click: function($event) {
-                      $event.preventDefault()
-                      _vm.comment(_vm.info.id), _vm.saveStar(_vm.info.id)
-                    }
-                  }
-                }),
-                _vm._v(" "),
-                _c("input", {
-                  directives: [
-                    {
-                      name: "model",
-                      rawName: "v-model",
-                      value: _vm.desc,
-                      expression: "desc"
-                    }
-                  ],
-                  staticClass: "input info-input__input",
-                  attrs: { type: "text", placeholder: "店舗名" },
-                  domProps: { value: _vm.desc },
-                  on: {
-                    input: function($event) {
-                      if ($event.target.composing) {
-                        return
+                _c(
+                  "div",
+                  { staticClass: "show-info show-relative flex-3" },
+                  [
+                    _c("h2", { staticClass: "show-title txt-s txt-bold" }, [
+                      _vm._v("コメント入力")
+                    ]),
+                    _vm._v(" "),
+                    _c("box-icon", {
+                      staticClass: "show-comment",
+                      attrs: { name: "comment-add", size: "md" },
+                      on: {
+                        click: function($event) {
+                          $event.preventDefault()
+                          _vm.comment(_vm.info.id), _vm.saveStar(_vm.info.id)
+                        }
                       }
-                      _vm.desc = $event.target.value
-                    }
-                  }
-                })
-              ],
-              1
-            )
-          ]),
+                    }),
+                    _vm._v(" "),
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.desc,
+                          expression: "desc"
+                        }
+                      ],
+                      staticClass: "input info-input__input",
+                      attrs: { type: "text", placeholder: "店舗名" },
+                      domProps: { value: _vm.desc },
+                      on: {
+                        input: function($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.desc = $event.target.value
+                        }
+                      }
+                    })
+                  ],
+                  1
+                )
+              ])
+            : _vm._e(),
           _vm._v(" "),
           _c(
             "div",
@@ -50372,17 +51161,111 @@ var render = function() {
     _c("div", { staticClass: "home-box" }, [
       _c("h2", { staticClass: "mid-title" }, [_vm._v("デリバリー")]),
       _vm._v(" "),
-      _vm._m(0),
+      _c("div", { staticClass: "home-box__delivery" }, [
+        _c("div", { staticClass: "home-box__item" }, [
+          _c("input", {
+            directives: [
+              {
+                name: "model",
+                rawName: "v-model",
+                value: _vm.filter_delivery,
+                expression: "filter_delivery"
+              }
+            ],
+            attrs: { type: "checkbox", value: "1" },
+            domProps: {
+              checked: Array.isArray(_vm.filter_delivery)
+                ? _vm._i(_vm.filter_delivery, "1") > -1
+                : _vm.filter_delivery
+            },
+            on: {
+              change: [
+                function($event) {
+                  var $$a = _vm.filter_delivery,
+                    $$el = $event.target,
+                    $$c = $$el.checked ? true : false
+                  if (Array.isArray($$a)) {
+                    var $$v = "1",
+                      $$i = _vm._i($$a, $$v)
+                    if ($$el.checked) {
+                      $$i < 0 && (_vm.filter_delivery = $$a.concat([$$v]))
+                    } else {
+                      $$i > -1 &&
+                        (_vm.filter_delivery = $$a
+                          .slice(0, $$i)
+                          .concat($$a.slice($$i + 1)))
+                    }
+                  } else {
+                    _vm.filter_delivery = $$c
+                  }
+                },
+                function($event) {
+                  return _vm.filterDelivery()
+                }
+              ]
+            }
+          }),
+          _vm._v(" "),
+          _c("h2", [_vm._v("あり")])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "home-box__item" }, [
+          _c("input", {
+            directives: [
+              {
+                name: "model",
+                rawName: "v-model",
+                value: _vm.filter_delivery,
+                expression: "filter_delivery"
+              }
+            ],
+            attrs: { type: "checkbox", value: "2" },
+            domProps: {
+              checked: Array.isArray(_vm.filter_delivery)
+                ? _vm._i(_vm.filter_delivery, "2") > -1
+                : _vm.filter_delivery
+            },
+            on: {
+              change: [
+                function($event) {
+                  var $$a = _vm.filter_delivery,
+                    $$el = $event.target,
+                    $$c = $$el.checked ? true : false
+                  if (Array.isArray($$a)) {
+                    var $$v = "2",
+                      $$i = _vm._i($$a, $$v)
+                    if ($$el.checked) {
+                      $$i < 0 && (_vm.filter_delivery = $$a.concat([$$v]))
+                    } else {
+                      $$i > -1 &&
+                        (_vm.filter_delivery = $$a
+                          .slice(0, $$i)
+                          .concat($$a.slice($$i + 1)))
+                    }
+                  } else {
+                    _vm.filter_delivery = $$c
+                  }
+                },
+                function($event) {
+                  return _vm.filterDelivery()
+                }
+              ]
+            }
+          }),
+          _vm._v(" "),
+          _c("h2", [_vm._v("なし")])
+        ])
+      ]),
       _vm._v(" "),
       _c("h2", { staticClass: "mid-title mt-1" }, [_vm._v("評価順")]),
       _vm._v(" "),
-      _vm._m(1),
+      _vm._m(0),
       _vm._v(" "),
       _c("h2", { staticClass: "mid-title mt-1" }, [_vm._v("目安金額")]),
       _vm._v(" "),
       _c("div", { staticClass: "home-box__money" }, [
         _c("div", { staticClass: "mt-06 flex jc-sb al-ct" }, [
-          _vm._m(2),
+          _vm._m(1),
           _vm._v(" "),
           _c(
             "div",
@@ -50491,10 +51374,12 @@ var render = function() {
               "div",
               { staticClass: "home-list-infomation__image flex flex-1" },
               [
-                _c("img", {
-                  staticClass: "info-image",
-                  attrs: { src: "uploads/" + item.images[0].url, alt: "" }
-                })
+                item.images[0] != null
+                  ? _c("img", {
+                      staticClass: "info-image",
+                      attrs: { src: "uploads/" + item.images[0].url, alt: "" }
+                    })
+                  : _vm._e()
               ]
             ),
             _vm._v(" "),
@@ -50580,6 +51465,42 @@ var render = function() {
               ]
             ),
             _vm._v(" "),
+            _c("div", { staticClass: "wrap flex flx-d-c" }, [
+              item.user_id == _vm.user_id
+                ? _c(
+                    "div",
+                    {
+                      staticClass:
+                        "\n            home-list-infomation__button\n            btn-m btn-nav\n            flex\n            al-ct\n            txt-bold txt-s\n            mr-1\n            h-50\n          ",
+                      on: {
+                        click: function($event) {
+                          $event.preventDefault()
+                          return _vm.showEdit(index)
+                        }
+                      }
+                    },
+                    [_c("h3", [_vm._v("編集")])]
+                  )
+                : _vm._e(),
+              _vm._v(" "),
+              item.user_id == _vm.user_id
+                ? _c(
+                    "div",
+                    {
+                      staticClass:
+                        "\n            home-list-infomation__button2\n            btn-m btn-nav\n            flex\n            al-ct\n            txt-bold txt-s\n            mr-1\n            h-50\n          ",
+                      on: {
+                        click: function($event) {
+                          $event.preventDefault()
+                          return _vm.openToggle(index)
+                        }
+                      }
+                    },
+                    [_c("h3", [_vm._v("削除")])]
+                  )
+                : _vm._e()
+            ]),
+            _vm._v(" "),
             _c(
               "div",
               {
@@ -50602,24 +51523,6 @@ var render = function() {
   ])
 }
 var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "home-box__delivery" }, [
-      _c("div", { staticClass: "home-box__item" }, [
-        _c("input", { attrs: { type: "checkbox" } }),
-        _vm._v(" "),
-        _c("h2", [_vm._v("あり")])
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "home-box__item" }, [
-        _c("input", { attrs: { type: "checkbox" } }),
-        _vm._v(" "),
-        _c("h2", [_vm._v("なし")])
-      ])
-    ])
-  },
   function() {
     var _vm = this
     var _h = _vm.$createElement
@@ -50764,6 +51667,57 @@ function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, a
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
@@ -50774,21 +51728,73 @@ function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, a
       password: "",
       number: "",
       sex: "",
-      role: ""
+      role: "",
+      current_password: "",
+      new_password: "",
+      new_repassword: "",
+      message: []
     };
   },
 
   methods: {
-    getUserInfo: function () {
+    popMess: function () {
       var _ref = _asyncToGenerator( /*#__PURE__*/__WEBPACK_IMPORTED_MODULE_0_babel_runtime_regenerator___default.a.mark(function _callee() {
-        var _this = this;
-
         return __WEBPACK_IMPORTED_MODULE_0_babel_runtime_regenerator___default.a.wrap(function _callee$(_context) {
           while (1) {
             switch (_context.prev = _context.next) {
               case 0:
+                this.message.pop();
+
+              case 1:
+              case "end":
+                return _context.stop();
+            }
+          }
+        }, _callee, this);
+      }));
+
+      function popMess() {
+        return _ref.apply(this, arguments);
+      }
+
+      return popMess;
+    }(),
+    clear: function () {
+      var _ref2 = _asyncToGenerator( /*#__PURE__*/__WEBPACK_IMPORTED_MODULE_0_babel_runtime_regenerator___default.a.mark(function _callee2() {
+        var _this = this;
+
+        return __WEBPACK_IMPORTED_MODULE_0_babel_runtime_regenerator___default.a.wrap(function _callee2$(_context2) {
+          while (1) {
+            switch (_context2.prev = _context2.next) {
+              case 0:
+                setTimeout(function () {
+                  return _this.popMess();
+                }, 2000);
+
+              case 1:
+              case "end":
+                return _context2.stop();
+            }
+          }
+        }, _callee2, this);
+      }));
+
+      function clear() {
+        return _ref2.apply(this, arguments);
+      }
+
+      return clear;
+    }(),
+    getUserInfo: function () {
+      var _ref3 = _asyncToGenerator( /*#__PURE__*/__WEBPACK_IMPORTED_MODULE_0_babel_runtime_regenerator___default.a.mark(function _callee3() {
+        var _this2 = this;
+
+        return __WEBPACK_IMPORTED_MODULE_0_babel_runtime_regenerator___default.a.wrap(function _callee3$(_context3) {
+          while (1) {
+            switch (_context3.prev = _context3.next) {
+              case 0:
                 axios.get("get_user_info").then(function (response) {
-                  _this.info = response.data;
+                  _this2.info = response.data;
                   // this.name = response.data.name;
                   // this.email = response.data.email;
                   // this.number = response.data.username;
@@ -50799,17 +51805,51 @@ function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, a
 
               case 1:
               case "end":
-                return _context.stop();
+                return _context3.stop();
             }
           }
-        }, _callee, this);
+        }, _callee3, this);
       }));
 
       function getUserInfo() {
-        return _ref.apply(this, arguments);
+        return _ref3.apply(this, arguments);
       }
 
       return getUserInfo;
+    }(),
+    resetPassword: function () {
+      var _ref4 = _asyncToGenerator( /*#__PURE__*/__WEBPACK_IMPORTED_MODULE_0_babel_runtime_regenerator___default.a.mark(function _callee4() {
+        var _this3 = this;
+
+        return __WEBPACK_IMPORTED_MODULE_0_babel_runtime_regenerator___default.a.wrap(function _callee4$(_context4) {
+          while (1) {
+            switch (_context4.prev = _context4.next) {
+              case 0:
+                // alert("check");
+                axios.post("reset_password", {
+                  current_password: this.current_password,
+                  new_password: this.new_password,
+                  email: this.info.email,
+                  name: this.info.name
+                }).then(function (response) {
+                  _this3.message.push(response.data.message);
+                  _this3.clear();
+                  console.log(response.data);
+                });
+
+              case 1:
+              case "end":
+                return _context4.stop();
+            }
+          }
+        }, _callee4, this);
+      }));
+
+      function resetPassword() {
+        return _ref4.apply(this, arguments);
+      }
+
+      return resetPassword;
     }()
   },
   mounted: function mounted() {},
@@ -50828,36 +51868,188 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "home-list" }, [
     _c("div", { staticClass: "show mbt-2" }, [
-      _c("div", { staticClass: "wrap flex jc-sb" }, [
-        _c("div", { staticClass: "show-info flex-1" }, [
-          _c("h2", { staticClass: "show-title txt-s txt-bold" }, [
-            _vm._v("店名")
-          ]),
-          _vm._v(" "),
-          _c("h3", { staticClass: "show-content w-inherit txt-center" }, [
-            _vm._v(_vm._s(_vm.info.name))
-          ])
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "show-info flex-1" }, [
-          _c("h2", { staticClass: "show-title txt-s txt-bold" }, [
-            _vm._v("社員番号")
-          ]),
-          _vm._v(" "),
-          _c("h3", { staticClass: "show-content w-inherit txt-center" }, [
-            _vm._v(_vm._s(_vm.info.username))
-          ])
-        ])
+      _c("div", { staticClass: "message txt-center mt-1 mbt-1 flex jc-c" }, [
+        _c(
+          "div",
+          { staticClass: "wrap flex flx-d-c" },
+          _vm._l(_vm.message, function(mess) {
+            return _c("div", { key: mess.id, staticClass: "mt-1" }, [
+              _c(
+                "h3",
+                _vm._b(
+                  { staticClass: "message-notice message__content" },
+                  "h3",
+                  { message_error: mess.type == 1 },
+                  false
+                ),
+                [_vm._v("\n            " + _vm._s(mess) + "\n          ")]
+              )
+            ])
+          }),
+          0
+        )
       ]),
       _vm._v(" "),
       _c("div", { staticClass: "show-info" }, [
+        _c("div", { staticClass: "wrap flex jc-sb" }, [
+          _c("div", { staticClass: "show-info flex-1" }, [
+            _c("h2", { staticClass: "show-title txt-s txt-bold" }, [
+              _vm._v("ニックネーム")
+            ]),
+            _vm._v(" "),
+            _c("input", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.info.name,
+                  expression: "info.name"
+                }
+              ],
+              staticClass: "input info-input__input w-50",
+              attrs: { type: "text", placeholder: "新パスワード" },
+              domProps: { value: _vm.info.name },
+              on: {
+                input: function($event) {
+                  if ($event.target.composing) {
+                    return
+                  }
+                  _vm.$set(_vm.info, "name", $event.target.value)
+                }
+              }
+            })
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "show-info flex-1" }, [
+            _c("h2", { staticClass: "show-title txt-s txt-bold" }, [
+              _vm._v("社員番号")
+            ]),
+            _vm._v(" "),
+            _c("h3", { staticClass: "show-content w-inherit txt-center" }, [
+              _vm._v(
+                "\n            " + _vm._s(_vm.info.username) + "\n          "
+              )
+            ])
+          ])
+        ]),
+        _vm._v(" "),
         _c("h2", { staticClass: "show-title txt-s txt-bold" }, [
           _vm._v("メール")
         ]),
         _vm._v(" "),
-        _c("h3", { staticClass: "show-content w-inherit txt-center" }, [
-          _vm._v(_vm._s(_vm.info.email))
-        ])
+        _c("input", {
+          directives: [
+            {
+              name: "model",
+              rawName: "v-model",
+              value: _vm.info.email,
+              expression: "info.email"
+            }
+          ],
+          staticClass: "input info-input__input w-50",
+          attrs: { type: "text", placeholder: "新パスワード" },
+          domProps: { value: _vm.info.email },
+          on: {
+            input: function($event) {
+              if ($event.target.composing) {
+                return
+              }
+              _vm.$set(_vm.info, "email", $event.target.value)
+            }
+          }
+        }),
+        _vm._v(" "),
+        _c("h2", { staticClass: "show-title txt-s txt-bold" }, [
+          _vm._v("現在パスワード")
+        ]),
+        _vm._v(" "),
+        _c("input", {
+          directives: [
+            {
+              name: "model",
+              rawName: "v-model",
+              value: _vm.current_password,
+              expression: "current_password"
+            }
+          ],
+          staticClass: "input info-input__input w-50",
+          attrs: { type: "password", placeholder: "現在パスワード" },
+          domProps: { value: _vm.current_password },
+          on: {
+            input: function($event) {
+              if ($event.target.composing) {
+                return
+              }
+              _vm.current_password = $event.target.value
+            }
+          }
+        }),
+        _vm._v(" "),
+        _c("h2", { staticClass: "show-title txt-s txt-bold" }, [
+          _vm._v("新パスワード")
+        ]),
+        _vm._v(" "),
+        _c("input", {
+          directives: [
+            {
+              name: "model",
+              rawName: "v-model",
+              value: _vm.new_password,
+              expression: "new_password"
+            }
+          ],
+          staticClass: "input info-input__input w-50",
+          attrs: { type: "password", placeholder: "新パスワード" },
+          domProps: { value: _vm.new_password },
+          on: {
+            input: function($event) {
+              if ($event.target.composing) {
+                return
+              }
+              _vm.new_password = $event.target.value
+            }
+          }
+        }),
+        _vm._v(" "),
+        _c("h2", { staticClass: "show-title txt-s txt-bold" }, [
+          _vm._v("新パスワード再入力")
+        ]),
+        _vm._v(" "),
+        _c("input", {
+          directives: [
+            {
+              name: "model",
+              rawName: "v-model",
+              value: _vm.new_repassword,
+              expression: "new_repassword"
+            }
+          ],
+          staticClass: "input info-input__input w-50",
+          attrs: { type: "password", placeholder: "新パスワード" },
+          domProps: { value: _vm.new_repassword },
+          on: {
+            input: function($event) {
+              if ($event.target.composing) {
+                return
+              }
+              _vm.new_repassword = $event.target.value
+            }
+          }
+        }),
+        _vm._v(" "),
+        _c(
+          "div",
+          {
+            staticClass: "btn btn-m btn__black txt-center",
+            on: {
+              click: function($event) {
+                $event.preventDefault()
+                return _vm.resetPassword()
+              }
+            }
+          },
+          [_vm._v("\n        リセット\n      ")]
+        )
       ])
     ])
   ])
@@ -51052,7 +52244,7 @@ function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, a
               case 0:
                 setTimeout(function () {
                   return _this.popMess();
-                }, 2000);
+                }, 3000);
 
               case 1:
               case "end":
@@ -51223,7 +52415,7 @@ var render = function() {
     ]),
     _vm._v(" "),
     _c("div", { staticClass: "register" }, [
-      _c("h1", { staticClass: "title txt-center mbt-1" }, [_vm._v("新店舗")]),
+      _c("h1", { staticClass: "title txt-center mbt-1" }, [_vm._v("社員登録")]),
       _vm._v(" "),
       _c("input", {
         directives: [

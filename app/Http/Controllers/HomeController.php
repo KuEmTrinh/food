@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use App\Http\Controllers\Controller;
-
+use Illuminate\Support\Facades\Auth;
 
 class HomeController extends Controller
 {
@@ -52,5 +52,24 @@ class HomeController extends Controller
             'password' => Hash::make(request()->password),
             'sex' => request()->sex,
         ]);
+    }
+
+    public function resetPassword(Request $request)
+    {
+        $user_id = Auth::user()->id;
+        $user = User::find($user_id);
+        if (Hash::check(request()->current_password, $user->password)) {
+            $user->password = Hash::make(request()->new_password);
+            $user->email = request()->email;
+            $user->name = request()->name;
+            $message = "登録できました！";
+        } else {
+            $message = "現在パスワード正しくない!";
+            $user->message = $message;
+            return $user;
+        }
+        $user->save();
+        $user->message = $message;
+        return $user;
     }
 }

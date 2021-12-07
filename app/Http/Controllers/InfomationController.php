@@ -99,6 +99,8 @@ class InfomationController extends Controller
         $image->info_id = $request->info_id;
         $pathTofile = $request->file('image')->store('food', 'public');
         $image->url = $pathTofile;
+        // return $image;
+
         $image->save();
         return $image;
     }

@@ -12,6 +12,208 @@
         </div>
       </div>
     </div>
+    <div class="edit show mbt-2" v-if="show_edit == true">
+      <div class="show-close" @click.prevent="hideEdit()">
+        <box-icon name="x-circle" size="md"></box-icon>
+      </div>
+      <div class="m-2">
+        <div class="info">
+          <h1 class="title">店舗情報編集</h1>
+          <div class="message txt-center mt-1 mbt-1 flex jc-c">
+            <div class="wrap flex flx-d-c">
+              <div class="mt-1" v-for="mess in message" :key="mess.id">
+                <h3
+                  class="message-notice message__content"
+                  v-bind="{ message_error: mess.type == 1 }"
+                >
+                  {{ mess }}
+                </h3>
+              </div>
+            </div>
+          </div>
+          <div class="info-input flex al-ct mt-1">
+            <h2 class="info-title mid-title mr-1">店舗名</h2>
+            <input
+              type="text"
+              class="input info-input__input"
+              placeholder="店舗名"
+              v-model="info.name"
+            />
+          </div>
+          <div class="info-input flex al-ct mt-1">
+            <h2 class="info-title mid-title mr-1">住所</h2>
+            <input
+              type="text"
+              class="input info-input__input"
+              placeholder="住所"
+              v-model="info.address"
+            />
+          </div>
+          <div class="info-input flex al-ct mt-1">
+            <h2 class="info-title mid-title mr-1">電話番号</h2>
+            <input
+              type="text"
+              class="input info-input__input"
+              placeholder="電話番号"
+              v-model="info.number"
+            />
+          </div>
+          <div class="info-input flex al-ct mt-1">
+            <h2 class="info-title mid-title mr-1">目安金額</h2>
+            <div class="mt-06 flex jc-sb al-ct">
+              <div class="info-wrap">
+                <input
+                  type="text"
+                  class="home-money__input"
+                  placeholder="から"
+                  v-model="info.min_money"
+                />
+                <span>~</span>
+                <input
+                  type="text"
+                  class="home-money__input"
+                  placeholder="まで"
+                  v-model="info.max_money"
+                />
+              </div>
+            </div>
+          </div>
+          <div class="info-input flex al-ct mt-1">
+            <h2 class="info-title mid-title mr-1">ジャンル</h2>
+            <div class="info-genre flex al-ct">
+              <!-- <input type="checkbox" class="mr-1" v-on:click="pushGenre('定食')" /> -->
+              <input
+                type="checkbox"
+                class="mr-1"
+                id="teisyoku"
+                value="定食"
+                v-model="info.genre"
+              />
+              <h2
+                for="teisyoku"
+                class="info-genre__content txt-s txt-bold mr-2"
+              >
+                定食
+              </h2>
+            </div>
+            <div class="info-genre flex al-ct">
+              <!-- <input type="checkbox" class="mr-1" v-on:click="pushGenre('麺類')" /> -->
+              <input
+                type="checkbox"
+                class="mr-1"
+                id="menrui"
+                value="麺類"
+                v-model="info.genre"
+              />
+
+              <h2 for="menrui" class="info-genre__content txt-s txt-bold mr-2">
+                麺類
+              </h2>
+            </div>
+            <div class="info-genre flex al-ct">
+              <!-- <input type="checkbox" class="mr-1" v-on:click="pushGenre('カレー')" /> -->
+              <input
+                type="checkbox"
+                class="mr-1"
+                id="kare"
+                value="カレー"
+                v-model="info.genre"
+              />
+
+              <h2 for="kare" class="info-genre__content txt-s txt-bold mr-2">
+                カレー
+              </h2>
+            </div>
+          </div>
+          <div class="info-input flex al-ct mt-1">
+            <h2 class="info-title mid-title mr-1">営業時間</h2>
+            <div class="info-time mt-06 flex jc-sb al-ct">
+              <div class="wrap flex al-ct">
+                <input
+                  type="text"
+                  class="info-time__input"
+                  placeholder="9"
+                  v-model="info.open"
+                />
+                <span class="ml-1 mr-1">:</span>
+                <input type="text" class="info-time__input" placeholder="00" />
+              </div>
+              <span class="ml-1 mr-1">~</span>
+              <div class="wrap flex al-ct">
+                <input
+                  type="text"
+                  class="info-time__input"
+                  placeholder="10"
+                  v-model="info.close"
+                />
+                <span class="ml-1 mr-1">:</span>
+                <input type="text" class="info-time__input" placeholder="00" />
+              </div>
+            </div>
+          </div>
+          <div class="info-input flex al-ct mt-1">
+            <h2 class="info-title mid-title mr-1">写真追加リスト</h2>
+            <div
+              class="show-img mr-1"
+              v-for="image in info.images"
+              :key="image.id"
+            >
+              <img class="show-image" :src="'uploads/' + image.url" alt="" />
+            </div>
+          </div>
+          <div class="info-input flex al-ct mt-1">
+            <h2 class="info-title mid-title mr-1">写真</h2>
+            <input type="file" class="info-image" @change="imageLoad" />
+            <div class="wrap flex flx-d-c al-ct ml-2">
+              <input
+                type="text"
+                class="home-money__input"
+                placeholder="写真名"
+                v-model="img_name"
+              />
+              <box-icon name="upload" @click.prevent="saveImage()"></box-icon>
+            </div>
+          </div>
+          <div class="info-input flex al-ct mt-1">
+            <h2 class="info-title mid-title mr-1">デリバリー</h2>
+            <div
+              class="btn btn-m btn-nav mr-1"
+              @click.prevent="changeDelivery(1)"
+              v-bind:class="{ btn__black: info.delivery == 1 }"
+            >
+              あり
+            </div>
+            <div
+              class="btn btn-m btn-nav mr-1"
+              @click.prevent="changeDelivery(2)"
+              v-bind:class="{ btn__black: info.delivery == 2 }"
+            >
+              なし
+            </div>
+          </div>
+
+          <div class="info-input flex al-ct mt-1">
+            <h2 class="info-title mid-title mr-1">URL</h2>
+            <input
+              type="text"
+              class="input info-input__input"
+              placeholder="URL"
+              v-model="info.url"
+            />
+          </div>
+
+          <div class="wrap flex jc-sb mt-2 txt-center">
+            <div class="btn btn-m btn-nav mr-1 w-48">リセット</div>
+            <div
+              class="btn btn-m btn__black mr-1 w-48"
+              @click.prevent="changeInfo()"
+            >
+              編集
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
     <div class="toggle" v-if="toggle == true">
       <div class="wrap flex jc-sb center w-80">
         <div class="btn btn-m btn-nav flx-1" @click.prevent="hideToggle()">
@@ -98,7 +300,7 @@
         <h2 class="show-title txt-s txt-bold">URL</h2>
         <h3 class="show-content w-100 txt-center">{{ info.url }}</h3>
       </div>
-      <div class="wrap flex jc-sb">
+      <div class="wrap flex jc-sb" v-if="info.user_id != user_id">
         <div class="show-info flex-1">
           <h2 class="show-title txt-s txt-bold">評価店</h2>
           <div class="star flex al-ct">
@@ -147,11 +349,21 @@
       <h2 class="mid-title">デリバリー</h2>
       <div class="home-box__delivery">
         <div class="home-box__item">
-          <input type="checkbox" />
+          <input
+            type="checkbox"
+            value="1"
+            v-model="filter_delivery"
+            @change="filterDelivery()"
+          />
           <h2>あり</h2>
         </div>
         <div class="home-box__item">
-          <input type="checkbox" />
+          <input
+            type="checkbox"
+            value="2"
+            v-model="filter_delivery"
+            @change="filterDelivery()"
+          />
           <h2>なし</h2>
         </div>
       </div>
@@ -243,6 +455,7 @@
           <!-- <img class="info-image" src="#" alt="" /> -->
           <img
             class="info-image"
+            v-if="item.images[0] != null"
             :src="'uploads/' + item.images[0].url"
             alt=""
           />
@@ -279,6 +492,38 @@
             </h1>
           </div>
         </div>
+        <div class="wrap flex flx-d-c">
+          <div
+            class="
+              home-list-infomation__button
+              btn-m btn-nav
+              flex
+              al-ct
+              txt-bold txt-s
+              mr-1
+              h-50
+            "
+            v-if="item.user_id == user_id"
+            @click.prevent="showEdit(index)"
+          >
+            <h3>編集</h3>
+          </div>
+          <div
+            class="
+              home-list-infomation__button2
+              btn-m btn-nav
+              flex
+              al-ct
+              txt-bold txt-s
+              mr-1
+              h-50
+            "
+            v-if="item.user_id == user_id"
+            @click.prevent="openToggle(index)"
+          >
+            <h3>削除</h3>
+          </div>
+        </div>
         <div
           class="
             home-list-infomation__button
@@ -300,12 +545,15 @@
 export default {
   data() {
     return {
+      filter_delivery: [],
+      user_id: "",
       rating: "",
       message: [],
       comments: [],
       list: [],
       genre: [],
       show_info: false,
+      show_edit: false,
       info: [],
       desc: "",
       find: 1,
@@ -315,6 +563,10 @@ export default {
       role: "",
       toggle: false,
       delete_id: "",
+      pic: "",
+      resize_img: "",
+      image: "",
+      img_name: "",
     };
   },
   methods: {
@@ -331,6 +583,7 @@ export default {
     async getUserInfo() {
       axios.get("get_user_info").then((response) => {
         this.role = response.data.role;
+        this.user_id = response.data.id;
       });
     },
     async getAll() {
@@ -483,6 +736,134 @@ export default {
       });
       this.hideToggle();
       this.getAll();
+    },
+
+    //show edit
+    async showEdit(index) {
+      this.show_edit = true;
+      this.info = this.list[index];
+      console.log(index);
+    },
+    async hideEdit() {
+      this.show_edit = false;
+    },
+    async imageLoad(e) {
+      this.image = e.target.files[0];
+      const file = e.target.files[0];
+      // this.pic = URL.createObjectURL(file);
+
+      const dataURItoBlob = (dataURI) => {
+        const bytes =
+          dataURI.split(",")[0].indexOf("base64") >= 0
+            ? atob(dataURI.split(",")[1])
+            : unescape(dataURI.split(",")[1]);
+        const mime = dataURI.split(",")[0].split(":")[1].split(";")[0];
+        const max = bytes.length;
+        const ia = new Uint8Array(max);
+        for (let i = 0; i < max; i += 1) ia[i] = bytes.charCodeAt(i);
+        return new Blob([ia], { type: mime });
+      };
+
+      const resizeImage = ({ file, maxSize }) => {
+        const reader = new FileReader();
+        const image = new Image();
+        const canvas = document.createElement("canvas");
+
+        const resize = () => {
+          let { width, height } = image;
+
+          if (width > height) {
+            if (width > maxSize) {
+              height *= maxSize / width;
+              width = maxSize;
+            }
+          } else if (height > maxSize) {
+            width *= maxSize / height;
+            height = maxSize;
+          }
+
+          canvas.width = width;
+          canvas.height = height;
+          canvas.getContext("2d").drawImage(image, 0, 0, width, height);
+          const dataUrl = canvas.toDataURL("image/jpeg");
+
+          return dataURItoBlob(dataUrl);
+        };
+
+        return new Promise((ok, no) => {
+          if (!file.type.match(/image.*/)) {
+            no(new Error("Not an image"));
+            return;
+          }
+
+          reader.onload = (readerEvent) => {
+            image.onload = () => ok(resize());
+            image.src = readerEvent.target.result;
+          };
+          reader.readAsDataURL(file);
+        });
+      };
+
+      resizeImage({ file: file, maxSize: 900 })
+        .then((resizedImage) => {
+          console.log(resizedImage);
+          this.pic = URL.createObjectURL(resizedImage);
+          this.resize_img = resizedImage;
+        })
+        .catch((err) => {
+          console.error(err);
+        });
+    },
+    saveImage() {
+      const formData = new FormData();
+      formData.append("image", this.resize_img);
+      formData.append("info_id", this.info.id);
+      formData.append("img_name", this.img_name);
+      axios.post("save_image", formData).then((response) => {
+        // this.getInfo();
+      });
+
+      this.image = "";
+      this.resize_img = "";
+      this.pic = "";
+      this.img_name = "";
+
+      location.reload();
+    },
+    async changeInfo() {
+      axios
+        .post("change_info", {
+          id: this.info.id,
+          name: this.info.name,
+          delivery: this.info.delivery,
+          address: this.info.address,
+          number: this.info.number,
+          genre: this.info.genre,
+          open: this.info.open,
+          close: this.info.close,
+          min_money: this.info.min_money,
+          max_money: this.info.max_money,
+          url: this.info.url,
+        })
+        .then((response) => {
+          this.message.push(response.data.message);
+          this.clear();
+          this.hideEdit();
+          this.getAll();
+        })
+        .catch((error) => console.log(error));
+    },
+
+    async filterDelivery() {
+      console.log(typeof this.list);
+      const array = {};
+      console.log(typeof array);
+
+      this.filter_delivery.forEach((el) => {
+        const filter_list = this.list.filter((item) => item.delivery == el);
+        Object.assign(array, filter_list);
+        console.log(array);
+      });
     },
   },
   mounted() {},

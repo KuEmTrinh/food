@@ -131,23 +131,6 @@
       </div>
     </div>
     <div class="info-input flex al-ct mt-1">
-      <h2 class="info-title mid-title mr-1">写真追加リスト</h2>
-      <image-component :info_id="info_id" />
-    </div>
-    <div class="info-input flex al-ct mt-1">
-      <h2 class="info-title mid-title mr-1">写真</h2>
-      <input type="file" class="info-image" @change="imageLoad" />
-      <div class="wrap flex flx-d-c al-ct ml-2">
-        <input
-          type="text"
-          class="home-money__input"
-          placeholder="写真名"
-          v-model="img_name"
-        />
-        <box-icon name="upload" @click.prevent="saveImage()"></box-icon>
-      </div>
-    </div>
-    <div class="info-input flex al-ct mt-1">
       <h2 class="info-title mid-title mr-1">デリバリー</h2>
       <div
         class="btn btn-m btn-nav mr-1"
@@ -177,19 +160,8 @@
 
     <div class="wrap flex jc-sb mt-2 txt-center">
       <div class="btn btn-m btn-nav mr-1 w-48">リセット</div>
-      <div
-        class="btn btn-m btn__black mr-1 w-48"
-        @click.prevent="saveInfo()"
-        v-if="edit == 1"
-      >
+      <div class="btn btn-m btn__black mr-1 w-48" @click.prevent="saveInfo()">
         登録
-      </div>
-      <div
-        class="btn btn-m btn__black mr-1 w-48"
-        @click.prevent="changeInfo()"
-        v-if="edit == 2"
-      >
-        編集
       </div>
     </div>
   </div>
@@ -221,10 +193,10 @@ export default {
       min_money: "",
       max_money: "",
       url: "",
-      pic: "",
-      resize_img: "",
-      image: "",
-      img_name: "",
+      // pic: "",
+      // resize_img: "",
+      // image: "",
+      // img_name: "",
       message: [],
     };
   },
@@ -262,131 +234,93 @@ export default {
           this.clear();
         });
     },
-    async changeInfo() {
-      axios
-        .post("change_info", {
-          id: this.id,
-          name: this.name,
-          delivery: this.delivery,
-          address: this.address,
-          number: this.number,
-          genre: this.genre,
-          open: this.open,
-          close: this.close,
-          min_money: this.min_money,
-          max_money: this.max_money,
-          url: this.url,
-        })
-        .then((response) => {
-          this.message.push(response.data.message);
-          this.clear();
-        })
-        .catch((error) => console.log(error));
-    },
-    async getInfo() {
-      axios.get("get_info").then((response) => {
-        this.info = response.data;
-        this.id = this.info[0].id;
-        this.name = this.info[0].name;
-        this.delivery = this.info[0].delivery;
-        this.address = this.info[0].address;
-        this.number = this.info[0].number;
-        this.open = this.info[0].open;
-        this.close = this.info[0].close;
-        this.pushGenre(JSON.parse(this.info[0].genre));
-        this.min_money = this.info[0].min_money;
-        this.max_money = this.info[0].max_money;
-        this.url = this.info[0].url;
-        this.edit = 2;
-      });
-    },
-    async imageLoad(e) {
-      this.image = e.target.files[0];
-      const file = e.target.files[0];
-      // this.pic = URL.createObjectURL(file);
+    // async imageLoad(e) {
+    //   this.image = e.target.files[0];
+    //   const file = e.target.files[0];
+    //   // this.pic = URL.createObjectURL(file);
 
-      const dataURItoBlob = (dataURI) => {
-        const bytes =
-          dataURI.split(",")[0].indexOf("base64") >= 0
-            ? atob(dataURI.split(",")[1])
-            : unescape(dataURI.split(",")[1]);
-        const mime = dataURI.split(",")[0].split(":")[1].split(";")[0];
-        const max = bytes.length;
-        const ia = new Uint8Array(max);
-        for (let i = 0; i < max; i += 1) ia[i] = bytes.charCodeAt(i);
-        return new Blob([ia], { type: mime });
-      };
+    //   const dataURItoBlob = (dataURI) => {
+    //     const bytes =
+    //       dataURI.split(",")[0].indexOf("base64") >= 0
+    //         ? atob(dataURI.split(",")[1])
+    //         : unescape(dataURI.split(",")[1]);
+    //     const mime = dataURI.split(",")[0].split(":")[1].split(";")[0];
+    //     const max = bytes.length;
+    //     const ia = new Uint8Array(max);
+    //     for (let i = 0; i < max; i += 1) ia[i] = bytes.charCodeAt(i);
+    //     return new Blob([ia], { type: mime });
+    //   };
 
-      const resizeImage = ({ file, maxSize }) => {
-        const reader = new FileReader();
-        const image = new Image();
-        const canvas = document.createElement("canvas");
+    //   const resizeImage = ({ file, maxSize }) => {
+    //     const reader = new FileReader();
+    //     const image = new Image();
+    //     const canvas = document.createElement("canvas");
 
-        const resize = () => {
-          let { width, height } = image;
+    //     const resize = () => {
+    //       let { width, height } = image;
 
-          if (width > height) {
-            if (width > maxSize) {
-              height *= maxSize / width;
-              width = maxSize;
-            }
-          } else if (height > maxSize) {
-            width *= maxSize / height;
-            height = maxSize;
-          }
+    //       if (width > height) {
+    //         if (width > maxSize) {
+    //           height *= maxSize / width;
+    //           width = maxSize;
+    //         }
+    //       } else if (height > maxSize) {
+    //         width *= maxSize / height;
+    //         height = maxSize;
+    //       }
 
-          canvas.width = width;
-          canvas.height = height;
-          canvas.getContext("2d").drawImage(image, 0, 0, width, height);
-          const dataUrl = canvas.toDataURL("image/jpeg");
+    //       canvas.width = width;
+    //       canvas.height = height;
+    //       canvas.getContext("2d").drawImage(image, 0, 0, width, height);
+    //       const dataUrl = canvas.toDataURL("image/jpeg");
 
-          return dataURItoBlob(dataUrl);
-        };
+    //       return dataURItoBlob(dataUrl);
+    //     };
 
-        return new Promise((ok, no) => {
-          if (!file.type.match(/image.*/)) {
-            no(new Error("Not an image"));
-            return;
-          }
+    //     return new Promise((ok, no) => {
+    //       if (!file.type.match(/image.*/)) {
+    //         no(new Error("Not an image"));
+    //         return;
+    //       }
 
-          reader.onload = (readerEvent) => {
-            image.onload = () => ok(resize());
-            image.src = readerEvent.target.result;
-          };
-          reader.readAsDataURL(file);
-        });
-      };
+    //       reader.onload = (readerEvent) => {
+    //         image.onload = () => ok(resize());
+    //         image.src = readerEvent.target.result;
+    //       };
+    //       reader.readAsDataURL(file);
+    //     });
+    //   };
 
-      resizeImage({ file: file, maxSize: 900 })
-        .then((resizedImage) => {
-          console.log(resizedImage);
-          this.pic = URL.createObjectURL(resizedImage);
-          this.resize_img = resizedImage;
-        })
-        .catch((err) => {
-          console.error(err);
-        });
-    },
-    saveImage() {
-      const formData = new FormData();
-      formData.append("image", this.resize_img);
-      formData.append("info_id", this.info_id);
-      formData.append("img_name", this.img_name);
-      axios.post("save_image", formData).then((response) => {
-        this.getInfo();
-      });
+    //   resizeImage({ file: file, maxSize: 900 })
+    //     .then((resizedImage) => {
+    //       console.log(resizedImage);
+    //       this.pic = URL.createObjectURL(resizedImage);
+    //       this.resize_img = resizedImage;
+    //     })
+    //     .catch((err) => {
+    //       console.error(err);
+    //     });
+    // },
+    // saveImage() {
+    //   const formData = new FormData();
+    //   formData.append("image", this.resize_img);
+    //   formData.append("info_id", this.info_id);
+    //   formData.append("img_name", this.img_name);
+    //   axios.post("save_image", formData).then((response) => {
+    //     this.getInfo();
+    //   });
 
-      this.image = "";
-      this.resize_img = "";
-      this.pic = "";
-      this.img_name = "";
+    //   this.image = "";
+    //   this.resize_img = "";
+    //   this.pic = "";
+    //   this.img_name = "";
 
-      location.reload();
-    },
+    //   location.reload();
+    // },
   },
   mounted() {},
   created() {
-    this.getInfo();
+    // this.getInfo();
   },
 };
 </script>

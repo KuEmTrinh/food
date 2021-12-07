@@ -13,7 +13,7 @@
       </div>
     </div>
     <div class="register">
-      <h1 class="title txt-center mbt-1">新店舗</h1>
+      <h1 class="title txt-center mbt-1">社員登録</h1>
       <input
         type="text"
         class="input txt-center w-100"
@@ -90,7 +90,7 @@ export default {
       this.message.pop();
     },
     async clear() {
-      setTimeout(() => this.popMess(), 2000);
+      setTimeout(() => this.popMess(), 3000);
     },
     async register() {
       this.check = true;

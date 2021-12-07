@@ -34,6 +34,7 @@ Route::get('delete_info/{info_id}', 'InfomationController@deleteInfo');
 Route::get('get_info', 'InfomationController@getInfo');
 Route::get('get_user_info', 'InfomationController@getUserInfo');
 
+
 //comment
 Route::post('create_comment', 'CommentController@createComment');
 Route::get('get_comments/{id}', 'CommentController@getComments');
@@ -45,3 +46,4 @@ Route::get('find_star/{id}', 'StarController@findStar');
 
 //User
 Route::post('new_user', 'HomeController@newUser');
+Route::post('reset_password', 'HomeController@resetPassword');

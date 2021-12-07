@@ -14,8 +14,9 @@
     }
     &-box {
         padding: 2rem;
-        border: 1px solid $black;
-        border-radius: 0.5rem;
+        // border: 1px solid $black;
+        // border-radius: 0.5rem;
+        background-color: $grey-normal;
         &__down {
             position: absolute;
             left: 50%;
@@ -81,7 +82,11 @@
                 border-radius: 0.3rem;
                 box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
             }
-            &__button:hover {
+            &__button2 {
+                float: bottom;
+            }
+            &__button:hover,
+            &__button2:hover {
                 transition: 0.2s all linear;
                 background-color: $black;
                 color: $white;
