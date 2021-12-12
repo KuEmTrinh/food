@@ -47,3 +47,6 @@ Route::get('find_star/{id}', 'StarController@findStar');
 //User
 Route::post('new_user', 'HomeController@newUser');
 Route::post('reset_password', 'HomeController@resetPassword');
+Route::get('get_all_user', 'HomeController@getAllUser');
+Route::post('reset_user', 'HomeController@resetUser');
+

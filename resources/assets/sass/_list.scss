@@ -1,0 +1,26 @@
+.list {
+    &-table {
+        width: 100%;
+        &__top {
+            background-color: $black;
+            color: white;
+            font-weight: bold;
+        }
+        text-align: left;
+        &__index,
+        &__sex,
+        &__action {
+            width: 10%;
+            padding: 1rem;
+        }
+        &__name,
+        &__number {
+            width: 35%;
+            padding: 1rem;
+        }
+        &__item:hover {
+            background-color: $grey_normal;
+            transition: 0.2s all linear;
+        }
+    }
+}

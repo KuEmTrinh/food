@@ -39,8 +39,9 @@
     right: 2.3rem;
     z-index: 200;
     &-notice {
-        background-color: $black;
-        color: $white;
+        background-color: $white;
+        color: $black;
+        box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
     }
     &__content {
         font-weight: bold;

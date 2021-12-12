@@ -23,6 +23,7 @@ class InfomationController extends Controller
         $info->address = request()->address;
         $info->number = request()->number;
         $info->genre = json_encode(request()->genre);
+        $info->holiday = json_encode(request()->holiday);
         $info->open = request()->open;
         $info->close = request()->close;
         $info->min_money = request()->min_money;
@@ -42,6 +43,7 @@ class InfomationController extends Controller
         $info->address = request()->address;
         $info->number = request()->number;
         $info->genre = json_encode(request()->genre);
+        $info->holiday = json_encode(request()->holiday);
         $info->open = request()->open;
         $info->close = request()->close;
         $info->min_money = request()->min_money;

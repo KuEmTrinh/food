@@ -1215,6 +1215,7 @@ __WEBPACK_IMPORTED_MODULE_1_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_0_vue_
 
 
 
+var bus = new __WEBPACK_IMPORTED_MODULE_1_vue___default.a();
 
 // export const bus = new Vue();
 
@@ -1234,14 +1235,13 @@ __WEBPACK_IMPORTED_MODULE_1_vue___default.a.component("list-component", __webpac
 __WEBPACK_IMPORTED_MODULE_1_vue___default.a.component("res-info-component", __webpack_require__(12));
 //user
 __WEBPACK_IMPORTED_MODULE_1_vue___default.a.component("user-component", __webpack_require__(60));
+__WEBPACK_IMPORTED_MODULE_1_vue___default.a.component("users-component", __webpack_require__(71));
 //image
 __WEBPACK_IMPORTED_MODULE_1_vue___default.a.component("image-component", __webpack_require__(13));
 //star
 __WEBPACK_IMPORTED_MODULE_1_vue___default.a.component("star-rating", __WEBPACK_IMPORTED_MODULE_2_vue_star_rating___default.a);
 //admin
 __WEBPACK_IMPORTED_MODULE_1_vue___default.a.component("admin-component", __webpack_require__(63));
-var bus = new __WEBPACK_IMPORTED_MODULE_1_vue___default.a();
-
 var app = new __WEBPACK_IMPORTED_MODULE_1_vue___default.a({
   el: "#app"
 });
@@ -46678,6 +46678,7 @@ function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, a
 //
 //
 //
+//
 
 
 
@@ -47730,6 +47731,120 @@ function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, a
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 // import { bus } from "../app";
@@ -47755,12 +47870,14 @@ function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, a
       close: "",
       min_money: "",
       max_money: "",
+      holiday: [],
       url: "",
       // pic: "",
       // resize_img: "",
       // image: "",
       // img_name: "",
-      message: []
+      message: [],
+      check: true
     };
   },
 
@@ -47869,23 +47986,27 @@ function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, a
           while (1) {
             switch (_context5.prev = _context5.next) {
               case 0:
-                axios.post("create_info", {
-                  name: this.name,
-                  delivery: this.delivery,
-                  address: this.address,
-                  number: this.number,
-                  genre: this.genre,
-                  open: this.open,
-                  close: this.close,
-                  min_money: this.min_money,
-                  max_money: this.max_money,
-                  url: this.url
-                }).then(function (response) {
-                  _this3.message.push(response.data.message);
-                  _this3.clear();
-                });
+                this.validation();
+                if (this.check == true) {
+                  axios.post("create_info", {
+                    name: this.name,
+                    delivery: this.delivery,
+                    address: this.address,
+                    number: this.number,
+                    genre: this.genre,
+                    holiday: this.holiday,
+                    open: this.open,
+                    close: this.close,
+                    min_money: this.min_money,
+                    max_money: this.max_money,
+                    url: this.url
+                  }).then(function (response) {
+                    _this3.message.push(response.data.message);
+                    _this3.clear();
+                  });
+                }
 
-              case 1:
+              case 2:
               case "end":
                 return _context5.stop();
             }
@@ -47898,12 +48019,62 @@ function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, a
       }
 
       return saveInfo;
+    }(),
+    validation: function () {
+      var _ref6 = _asyncToGenerator( /*#__PURE__*/__WEBPACK_IMPORTED_MODULE_0_babel_runtime_regenerator___default.a.mark(function _callee6() {
+        return __WEBPACK_IMPORTED_MODULE_0_babel_runtime_regenerator___default.a.wrap(function _callee6$(_context6) {
+          while (1) {
+            switch (_context6.prev = _context6.next) {
+              case 0:
+                this.check = true;
+                if (this.name == "") {
+                  this.message.push("店舗名を入力してください！");
+                  this.clear();
+                  this.check = false;
+                }
+                if (this.address == "") {
+                  this.message.push("住所を入力してください！");
+                  this.clear();
+                  this.check = false;
+                }
+                if (this.number == "") {
+                  this.message.push("電話番号を入力してください！");
+                  this.clear();
+                  this.check = false;
+                }
+                if (this.open == "") {
+                  this.message.push("開始営業時間を入力してください！");
+                  this.clear();
+                  this.check = false;
+                }
+                if (this.close == "") {
+                  this.message.push("終了営業時間を入力してください！");
+                  this.clear();
+                  this.check = false;
+                }
+                if (this.url == "") {
+                  this.message.push("URLを入力してください！");
+                  this.clear();
+                  this.check = false;
+                }
+
+              case 7:
+              case "end":
+                return _context6.stop();
+            }
+          }
+        }, _callee6, this);
+      }));
+
+      function validation() {
+        return _ref6.apply(this, arguments);
+      }
+
+      return validation;
     }()
   },
   mounted: function mounted() {},
-  created: function created() {
-    // this.getInfo();
-  }
+  created: function created() {}
 });
 
 /***/ }),
@@ -48187,7 +48358,7 @@ var render = function() {
       ])
     ]),
     _vm._v(" "),
-    _c("div", { staticClass: "info-input flex al-ct mt-1" }, [
+    _c("div", { staticClass: "info-input flex al-ct mt-1 flx-wrap" }, [
       _c("h2", { staticClass: "info-title mid-title mr-1" }, [
         _vm._v("ジャンル")
       ]),
@@ -48299,10 +48470,10 @@ var render = function() {
             }
           ],
           staticClass: "mr-1",
-          attrs: { type: "checkbox", id: "kare", value: "カレー" },
+          attrs: { type: "checkbox", id: "kare", value: "パン" },
           domProps: {
             checked: Array.isArray(_vm.genre)
-              ? _vm._i(_vm.genre, "カレー") > -1
+              ? _vm._i(_vm.genre, "パン") > -1
               : _vm.genre
           },
           on: {
@@ -48311,7 +48482,7 @@ var render = function() {
                 $$el = $event.target,
                 $$c = $$el.checked ? true : false
               if (Array.isArray($$a)) {
-                var $$v = "カレー",
+                var $$v = "パン",
                   $$i = _vm._i($$a, $$v)
                 if ($$el.checked) {
                   $$i < 0 && (_vm.genre = $$a.concat([$$v]))
@@ -48332,7 +48503,637 @@ var render = function() {
             staticClass: "info-genre__content txt-s txt-bold mr-2",
             attrs: { for: "kare" }
           },
-          [_vm._v("\n        カレー\n      ")]
+          [_vm._v("パン")]
+        )
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "info-genre flex al-ct" }, [
+        _c("input", {
+          directives: [
+            {
+              name: "model",
+              rawName: "v-model",
+              value: _vm.genre,
+              expression: "genre"
+            }
+          ],
+          staticClass: "mr-1",
+          attrs: { type: "checkbox", id: "kare", value: "飲料" },
+          domProps: {
+            checked: Array.isArray(_vm.genre)
+              ? _vm._i(_vm.genre, "飲料") > -1
+              : _vm.genre
+          },
+          on: {
+            change: function($event) {
+              var $$a = _vm.genre,
+                $$el = $event.target,
+                $$c = $$el.checked ? true : false
+              if (Array.isArray($$a)) {
+                var $$v = "飲料",
+                  $$i = _vm._i($$a, $$v)
+                if ($$el.checked) {
+                  $$i < 0 && (_vm.genre = $$a.concat([$$v]))
+                } else {
+                  $$i > -1 &&
+                    (_vm.genre = $$a.slice(0, $$i).concat($$a.slice($$i + 1)))
+                }
+              } else {
+                _vm.genre = $$c
+              }
+            }
+          }
+        }),
+        _vm._v(" "),
+        _c(
+          "h2",
+          {
+            staticClass: "info-genre__content txt-s txt-bold mr-2",
+            attrs: { for: "kare" }
+          },
+          [_vm._v("飲料")]
+        )
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "info-genre flex al-ct" }, [
+        _c("input", {
+          directives: [
+            {
+              name: "model",
+              rawName: "v-model",
+              value: _vm.genre,
+              expression: "genre"
+            }
+          ],
+          staticClass: "mr-1",
+          attrs: { type: "checkbox", id: "kare", value: "和食" },
+          domProps: {
+            checked: Array.isArray(_vm.genre)
+              ? _vm._i(_vm.genre, "和食") > -1
+              : _vm.genre
+          },
+          on: {
+            change: function($event) {
+              var $$a = _vm.genre,
+                $$el = $event.target,
+                $$c = $$el.checked ? true : false
+              if (Array.isArray($$a)) {
+                var $$v = "和食",
+                  $$i = _vm._i($$a, $$v)
+                if ($$el.checked) {
+                  $$i < 0 && (_vm.genre = $$a.concat([$$v]))
+                } else {
+                  $$i > -1 &&
+                    (_vm.genre = $$a.slice(0, $$i).concat($$a.slice($$i + 1)))
+                }
+              } else {
+                _vm.genre = $$c
+              }
+            }
+          }
+        }),
+        _vm._v(" "),
+        _c(
+          "h2",
+          {
+            staticClass: "info-genre__content txt-s txt-bold mr-2",
+            attrs: { for: "kare" }
+          },
+          [_vm._v("和食")]
+        )
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "info-genre flex al-ct" }, [
+        _c("input", {
+          directives: [
+            {
+              name: "model",
+              rawName: "v-model",
+              value: _vm.genre,
+              expression: "genre"
+            }
+          ],
+          staticClass: "mr-1",
+          attrs: { type: "checkbox", id: "kare", value: "洋食" },
+          domProps: {
+            checked: Array.isArray(_vm.genre)
+              ? _vm._i(_vm.genre, "洋食") > -1
+              : _vm.genre
+          },
+          on: {
+            change: function($event) {
+              var $$a = _vm.genre,
+                $$el = $event.target,
+                $$c = $$el.checked ? true : false
+              if (Array.isArray($$a)) {
+                var $$v = "洋食",
+                  $$i = _vm._i($$a, $$v)
+                if ($$el.checked) {
+                  $$i < 0 && (_vm.genre = $$a.concat([$$v]))
+                } else {
+                  $$i > -1 &&
+                    (_vm.genre = $$a.slice(0, $$i).concat($$a.slice($$i + 1)))
+                }
+              } else {
+                _vm.genre = $$c
+              }
+            }
+          }
+        }),
+        _vm._v(" "),
+        _c(
+          "h2",
+          {
+            staticClass: "info-genre__content txt-s txt-bold mr-2",
+            attrs: { for: "kare" }
+          },
+          [_vm._v("洋食")]
+        )
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "info-genre flex al-ct" }, [
+        _c("input", {
+          directives: [
+            {
+              name: "model",
+              rawName: "v-model",
+              value: _vm.genre,
+              expression: "genre"
+            }
+          ],
+          staticClass: "mr-1",
+          attrs: { type: "checkbox", id: "kare", value: "中華" },
+          domProps: {
+            checked: Array.isArray(_vm.genre)
+              ? _vm._i(_vm.genre, "中華") > -1
+              : _vm.genre
+          },
+          on: {
+            change: function($event) {
+              var $$a = _vm.genre,
+                $$el = $event.target,
+                $$c = $$el.checked ? true : false
+              if (Array.isArray($$a)) {
+                var $$v = "中華",
+                  $$i = _vm._i($$a, $$v)
+                if ($$el.checked) {
+                  $$i < 0 && (_vm.genre = $$a.concat([$$v]))
+                } else {
+                  $$i > -1 &&
+                    (_vm.genre = $$a.slice(0, $$i).concat($$a.slice($$i + 1)))
+                }
+              } else {
+                _vm.genre = $$c
+              }
+            }
+          }
+        }),
+        _vm._v(" "),
+        _c(
+          "h2",
+          {
+            staticClass: "info-genre__content txt-s txt-bold mr-2",
+            attrs: { for: "kare" }
+          },
+          [_vm._v("中華")]
+        )
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "info-genre flex al-ct" }, [
+        _c("input", {
+          directives: [
+            {
+              name: "model",
+              rawName: "v-model",
+              value: _vm.genre,
+              expression: "genre"
+            }
+          ],
+          staticClass: "mr-1",
+          attrs: { type: "checkbox", id: "kare", value: "スイーツ" },
+          domProps: {
+            checked: Array.isArray(_vm.genre)
+              ? _vm._i(_vm.genre, "スイーツ") > -1
+              : _vm.genre
+          },
+          on: {
+            change: function($event) {
+              var $$a = _vm.genre,
+                $$el = $event.target,
+                $$c = $$el.checked ? true : false
+              if (Array.isArray($$a)) {
+                var $$v = "スイーツ",
+                  $$i = _vm._i($$a, $$v)
+                if ($$el.checked) {
+                  $$i < 0 && (_vm.genre = $$a.concat([$$v]))
+                } else {
+                  $$i > -1 &&
+                    (_vm.genre = $$a.slice(0, $$i).concat($$a.slice($$i + 1)))
+                }
+              } else {
+                _vm.genre = $$c
+              }
+            }
+          }
+        }),
+        _vm._v(" "),
+        _c(
+          "h2",
+          {
+            staticClass: "info-genre__content txt-s txt-bold mr-2",
+            attrs: { for: "kare" }
+          },
+          [_vm._v("\n        スイーツ\n      ")]
+        )
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "info-genre flex al-ct" }, [
+        _c("input", {
+          directives: [
+            {
+              name: "model",
+              rawName: "v-model",
+              value: _vm.genre,
+              expression: "genre"
+            }
+          ],
+          staticClass: "mr-1",
+          attrs: { type: "checkbox", id: "kare", value: "ファストフード" },
+          domProps: {
+            checked: Array.isArray(_vm.genre)
+              ? _vm._i(_vm.genre, "ファストフード") > -1
+              : _vm.genre
+          },
+          on: {
+            change: function($event) {
+              var $$a = _vm.genre,
+                $$el = $event.target,
+                $$c = $$el.checked ? true : false
+              if (Array.isArray($$a)) {
+                var $$v = "ファストフード",
+                  $$i = _vm._i($$a, $$v)
+                if ($$el.checked) {
+                  $$i < 0 && (_vm.genre = $$a.concat([$$v]))
+                } else {
+                  $$i > -1 &&
+                    (_vm.genre = $$a.slice(0, $$i).concat($$a.slice($$i + 1)))
+                }
+              } else {
+                _vm.genre = $$c
+              }
+            }
+          }
+        }),
+        _vm._v(" "),
+        _c(
+          "h2",
+          {
+            staticClass: "info-genre__content txt-s txt-bold mr-2",
+            attrs: { for: "kare" }
+          },
+          [_vm._v("\n        ファストフード\n      ")]
+        )
+      ])
+    ]),
+    _vm._v(" "),
+    _c("div", { staticClass: "info-input flex al-ct mt-1" }, [
+      _c("h2", { staticClass: "info-title mid-title mr-1" }, [
+        _vm._v("定休日")
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "info-genre flex al-ct" }, [
+        _c("input", {
+          directives: [
+            {
+              name: "model",
+              rawName: "v-model",
+              value: _vm.holiday,
+              expression: "holiday"
+            }
+          ],
+          staticClass: "mr-1",
+          attrs: { type: "checkbox", value: "月" },
+          domProps: {
+            checked: Array.isArray(_vm.holiday)
+              ? _vm._i(_vm.holiday, "月") > -1
+              : _vm.holiday
+          },
+          on: {
+            change: function($event) {
+              var $$a = _vm.holiday,
+                $$el = $event.target,
+                $$c = $$el.checked ? true : false
+              if (Array.isArray($$a)) {
+                var $$v = "月",
+                  $$i = _vm._i($$a, $$v)
+                if ($$el.checked) {
+                  $$i < 0 && (_vm.holiday = $$a.concat([$$v]))
+                } else {
+                  $$i > -1 &&
+                    (_vm.holiday = $$a.slice(0, $$i).concat($$a.slice($$i + 1)))
+                }
+              } else {
+                _vm.holiday = $$c
+              }
+            }
+          }
+        }),
+        _vm._v(" "),
+        _c(
+          "h2",
+          {
+            staticClass: "info-genre__content txt-s txt-bold mr-2",
+            attrs: { for: "teisyoku" }
+          },
+          [_vm._v("\n        月\n      ")]
+        )
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "info-genre flex al-ct" }, [
+        _c("input", {
+          directives: [
+            {
+              name: "model",
+              rawName: "v-model",
+              value: _vm.holiday,
+              expression: "holiday"
+            }
+          ],
+          staticClass: "mr-1",
+          attrs: { type: "checkbox", value: "火" },
+          domProps: {
+            checked: Array.isArray(_vm.holiday)
+              ? _vm._i(_vm.holiday, "火") > -1
+              : _vm.holiday
+          },
+          on: {
+            change: function($event) {
+              var $$a = _vm.holiday,
+                $$el = $event.target,
+                $$c = $$el.checked ? true : false
+              if (Array.isArray($$a)) {
+                var $$v = "火",
+                  $$i = _vm._i($$a, $$v)
+                if ($$el.checked) {
+                  $$i < 0 && (_vm.holiday = $$a.concat([$$v]))
+                } else {
+                  $$i > -1 &&
+                    (_vm.holiday = $$a.slice(0, $$i).concat($$a.slice($$i + 1)))
+                }
+              } else {
+                _vm.holiday = $$c
+              }
+            }
+          }
+        }),
+        _vm._v(" "),
+        _c(
+          "h2",
+          {
+            staticClass: "info-genre__content txt-s txt-bold mr-2",
+            attrs: { for: "menrui" }
+          },
+          [_vm._v("火")]
+        )
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "info-genre flex al-ct" }, [
+        _c("input", {
+          directives: [
+            {
+              name: "model",
+              rawName: "v-model",
+              value: _vm.holiday,
+              expression: "holiday"
+            }
+          ],
+          staticClass: "mr-1",
+          attrs: { type: "checkbox", value: "水" },
+          domProps: {
+            checked: Array.isArray(_vm.holiday)
+              ? _vm._i(_vm.holiday, "水") > -1
+              : _vm.holiday
+          },
+          on: {
+            change: function($event) {
+              var $$a = _vm.holiday,
+                $$el = $event.target,
+                $$c = $$el.checked ? true : false
+              if (Array.isArray($$a)) {
+                var $$v = "水",
+                  $$i = _vm._i($$a, $$v)
+                if ($$el.checked) {
+                  $$i < 0 && (_vm.holiday = $$a.concat([$$v]))
+                } else {
+                  $$i > -1 &&
+                    (_vm.holiday = $$a.slice(0, $$i).concat($$a.slice($$i + 1)))
+                }
+              } else {
+                _vm.holiday = $$c
+              }
+            }
+          }
+        }),
+        _vm._v(" "),
+        _c(
+          "h2",
+          {
+            staticClass: "info-genre__content txt-s txt-bold mr-2",
+            attrs: { for: "kare" }
+          },
+          [_vm._v("水")]
+        )
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "info-genre flex al-ct" }, [
+        _c("input", {
+          directives: [
+            {
+              name: "model",
+              rawName: "v-model",
+              value: _vm.holiday,
+              expression: "holiday"
+            }
+          ],
+          staticClass: "mr-1",
+          attrs: { type: "checkbox", value: "木" },
+          domProps: {
+            checked: Array.isArray(_vm.holiday)
+              ? _vm._i(_vm.holiday, "木") > -1
+              : _vm.holiday
+          },
+          on: {
+            change: function($event) {
+              var $$a = _vm.holiday,
+                $$el = $event.target,
+                $$c = $$el.checked ? true : false
+              if (Array.isArray($$a)) {
+                var $$v = "木",
+                  $$i = _vm._i($$a, $$v)
+                if ($$el.checked) {
+                  $$i < 0 && (_vm.holiday = $$a.concat([$$v]))
+                } else {
+                  $$i > -1 &&
+                    (_vm.holiday = $$a.slice(0, $$i).concat($$a.slice($$i + 1)))
+                }
+              } else {
+                _vm.holiday = $$c
+              }
+            }
+          }
+        }),
+        _vm._v(" "),
+        _c(
+          "h2",
+          {
+            staticClass: "info-genre__content txt-s txt-bold mr-2",
+            attrs: { for: "kare" }
+          },
+          [_vm._v("木")]
+        )
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "info-genre flex al-ct" }, [
+        _c("input", {
+          directives: [
+            {
+              name: "model",
+              rawName: "v-model",
+              value: _vm.holiday,
+              expression: "holiday"
+            }
+          ],
+          staticClass: "mr-1",
+          attrs: { type: "checkbox", value: "金" },
+          domProps: {
+            checked: Array.isArray(_vm.holiday)
+              ? _vm._i(_vm.holiday, "金") > -1
+              : _vm.holiday
+          },
+          on: {
+            change: function($event) {
+              var $$a = _vm.holiday,
+                $$el = $event.target,
+                $$c = $$el.checked ? true : false
+              if (Array.isArray($$a)) {
+                var $$v = "金",
+                  $$i = _vm._i($$a, $$v)
+                if ($$el.checked) {
+                  $$i < 0 && (_vm.holiday = $$a.concat([$$v]))
+                } else {
+                  $$i > -1 &&
+                    (_vm.holiday = $$a.slice(0, $$i).concat($$a.slice($$i + 1)))
+                }
+              } else {
+                _vm.holiday = $$c
+              }
+            }
+          }
+        }),
+        _vm._v(" "),
+        _c(
+          "h2",
+          {
+            staticClass: "info-genre__content txt-s txt-bold mr-2",
+            attrs: { for: "kare" }
+          },
+          [_vm._v("金")]
+        )
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "info-genre flex al-ct" }, [
+        _c("input", {
+          directives: [
+            {
+              name: "model",
+              rawName: "v-model",
+              value: _vm.holiday,
+              expression: "holiday"
+            }
+          ],
+          staticClass: "mr-1",
+          attrs: { type: "checkbox", value: "土" },
+          domProps: {
+            checked: Array.isArray(_vm.holiday)
+              ? _vm._i(_vm.holiday, "土") > -1
+              : _vm.holiday
+          },
+          on: {
+            change: function($event) {
+              var $$a = _vm.holiday,
+                $$el = $event.target,
+                $$c = $$el.checked ? true : false
+              if (Array.isArray($$a)) {
+                var $$v = "土",
+                  $$i = _vm._i($$a, $$v)
+                if ($$el.checked) {
+                  $$i < 0 && (_vm.holiday = $$a.concat([$$v]))
+                } else {
+                  $$i > -1 &&
+                    (_vm.holiday = $$a.slice(0, $$i).concat($$a.slice($$i + 1)))
+                }
+              } else {
+                _vm.holiday = $$c
+              }
+            }
+          }
+        }),
+        _vm._v(" "),
+        _c(
+          "h2",
+          {
+            staticClass: "info-genre__content txt-s txt-bold mr-2",
+            attrs: { for: "kare" }
+          },
+          [_vm._v("土")]
+        )
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "info-genre flex al-ct" }, [
+        _c("input", {
+          directives: [
+            {
+              name: "model",
+              rawName: "v-model",
+              value: _vm.holiday,
+              expression: "holiday"
+            }
+          ],
+          staticClass: "mr-1",
+          attrs: { type: "checkbox", value: "日" },
+          domProps: {
+            checked: Array.isArray(_vm.holiday)
+              ? _vm._i(_vm.holiday, "日") > -1
+              : _vm.holiday
+          },
+          on: {
+            change: function($event) {
+              var $$a = _vm.holiday,
+                $$el = $event.target,
+                $$c = $$el.checked ? true : false
+              if (Array.isArray($$a)) {
+                var $$v = "日",
+                  $$i = _vm._i($$a, $$v)
+                if ($$el.checked) {
+                  $$i < 0 && (_vm.holiday = $$a.concat([$$v]))
+                } else {
+                  $$i > -1 &&
+                    (_vm.holiday = $$a.slice(0, $$i).concat($$a.slice($$i + 1)))
+                }
+              } else {
+                _vm.holiday = $$c
+              }
+            }
+          }
+        }),
+        _vm._v(" "),
+        _c(
+          "h2",
+          {
+            staticClass: "info-genre__content txt-s txt-bold mr-2",
+            attrs: { for: "kare" }
+          },
+          [_vm._v("日")]
         )
       ])
     ]),
@@ -48530,6 +49331,8 @@ var render = function() {
           _vm._v(" "),
           _vm.page == "user" ? _c("user-component") : _vm._e(),
           _vm._v(" "),
+          _vm.page == "users" ? _c("users-component") : _vm._e(),
+          _vm._v(" "),
           _vm.page == "admin" ? _c("admin-component") : _vm._e()
         ],
         1
@@ -48611,6 +49414,14 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, arguments); return new Promise(function (resolve, reject) { function step(key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { return Promise.resolve(value).then(function (value) { step("next", value); }, function (err) { step("throw", err); }); } } return step("next"); }); }; }
 
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -48790,6 +49601,22 @@ var render = function() {
                     }
                   }
                 },
+                [_c("a", [_vm._v("社員登録")])]
+              )
+            : _vm._e(),
+          _vm._v(" "),
+          _vm.role == 2
+            ? _c(
+                "li",
+                {
+                  staticClass: "nav-li mt-3",
+                  class: { nav_active: _vm.page === "users" },
+                  on: {
+                    click: function($event) {
+                      return _vm.navigateTo("users")
+                    }
+                  }
+                },
                 [_c("a", [_vm._v("社員管理")])]
               )
             : _vm._e()
@@ -48879,10 +49706,268 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_babel_runtime_regenerator___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_babel_runtime_regenerator__);
 
 
-var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
-
 function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, arguments); return new Promise(function (resolve, reject) { function step(key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { return Promise.resolve(value).then(function (value) { step("next", value); }, function (err) { step("throw", err); }); } } return step("next"); }); }; }
 
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -49430,7 +50515,11 @@ function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, a
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
+      searchQuery: null,
       filter_delivery: [],
+      filter_genre: [],
+      filter_max: "",
+      filter_min: "",
       user_id: "",
       rating: "",
       message: [],
@@ -49451,7 +50540,13 @@ function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, a
       pic: "",
       resize_img: "",
       image: "",
-      img_name: ""
+      img_name: "",
+      new_array: [],
+      curr_list: [],
+      genre_array: [],
+      money_array: [],
+      check_this: false,
+      check: false
     };
   },
 
@@ -49564,8 +50659,10 @@ function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, a
                 axios.get("get_all").then(function (response) {
                   response.data.forEach(function (el) {
                     el.genre = JSON.parse(el.genre);
+                    el.holiday = JSON.parse(el.holiday);
                   });
                   _this3.list = response.data;
+                  _this3.curr_list = response.data;
                 });
 
               case 1:
@@ -49589,8 +50686,9 @@ function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, a
             switch (_context6.prev = _context6.next) {
               case 0:
                 this.show_info = false;
+                this.getAll();
 
-              case 1:
+              case 2:
               case "end":
                 return _context6.stop();
             }
@@ -50027,8 +51125,9 @@ function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, a
             switch (_context21.prev = _context21.next) {
               case 0:
                 this.show_edit = false;
+                this.getAll();
 
-              case 1:
+              case 2:
               case "end":
                 return _context21.stop();
             }
@@ -50158,28 +51257,32 @@ function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, a
           while (1) {
             switch (_context23.prev = _context23.next) {
               case 0:
-                axios.post("change_info", {
-                  id: this.info.id,
-                  name: this.info.name,
-                  delivery: this.info.delivery,
-                  address: this.info.address,
-                  number: this.info.number,
-                  genre: this.info.genre,
-                  open: this.info.open,
-                  close: this.info.close,
-                  min_money: this.info.min_money,
-                  max_money: this.info.max_money,
-                  url: this.info.url
-                }).then(function (response) {
-                  _this11.message.push(response.data.message);
-                  _this11.clear();
-                  _this11.hideEdit();
-                  _this11.getAll();
-                }).catch(function (error) {
-                  return console.log(error);
-                });
+                this.validation();
+                if (this.check == true) {
+                  axios.post("change_info", {
+                    id: this.info.id,
+                    name: this.info.name,
+                    delivery: this.info.delivery,
+                    address: this.info.address,
+                    number: this.info.number,
+                    genre: this.info.genre,
+                    holiday: this.info.holiday,
+                    open: this.info.open,
+                    close: this.info.close,
+                    min_money: this.info.min_money,
+                    max_money: this.info.max_money,
+                    url: this.info.url
+                  }).then(function (response) {
+                    _this11.message.push(response.data.message);
+                    _this11.clear();
+                    _this11.hideEdit();
+                    _this11.getAll();
+                  }).catch(function (error) {
+                    return console.log(error);
+                  });
+                }
 
-              case 1:
+              case 2:
               case "end":
                 return _context23.stop();
             }
@@ -50197,25 +51300,34 @@ function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, a
       var _ref25 = _asyncToGenerator( /*#__PURE__*/__WEBPACK_IMPORTED_MODULE_0_babel_runtime_regenerator___default.a.mark(function _callee24() {
         var _this12 = this;
 
-        var array;
         return __WEBPACK_IMPORTED_MODULE_0_babel_runtime_regenerator___default.a.wrap(function _callee24$(_context24) {
           while (1) {
             switch (_context24.prev = _context24.next) {
               case 0:
-                console.log(_typeof(this.list));
-                array = {};
-
-                console.log(typeof array === "undefined" ? "undefined" : _typeof(array));
-
-                this.filter_delivery.forEach(function (el) {
-                  var filter_list = _this12.list.filter(function (item) {
-                    return item.delivery == el;
+                if (this.new_array.length != 0) {
+                  this.new_array = this.new_array;
+                } else {
+                  this.new_array = this.curr_list;
+                }
+                if (this.filter_delivery.length > 0) {
+                  this.list = this.curr_list;
+                  this.new_array = [], this.filter_delivery.forEach(function (el) {
+                    var filtered_array = _this12.list.filter(function (item) {
+                      return item.delivery == el;
+                    });
+                    filtered_array.forEach(function (el_item) {
+                      _this12.new_array.push(el_item);
+                    });
                   });
-                  Object.assign(array, filter_list);
-                  console.log(array);
-                });
+                  this.list = this.new_array;
+                } else {
+                  this.list = this.curr_list;
+                  if (this.filter_genre.length > 0) {
+                    this.filterGenre();
+                  }
+                }
 
-              case 4:
+              case 2:
               case "end":
                 return _context24.stop();
             }
@@ -50228,9 +51340,179 @@ function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, a
       }
 
       return filterDelivery;
+    }(),
+    filterGenre: function () {
+      var _ref26 = _asyncToGenerator( /*#__PURE__*/__WEBPACK_IMPORTED_MODULE_0_babel_runtime_regenerator___default.a.mark(function _callee25() {
+        var _this13 = this;
+
+        return __WEBPACK_IMPORTED_MODULE_0_babel_runtime_regenerator___default.a.wrap(function _callee25$(_context25) {
+          while (1) {
+            switch (_context25.prev = _context25.next) {
+              case 0:
+                this.genre_array = [];
+                if (this.filter_genre.length > 0) {
+                  if (this.new_array.length == 0) {
+                    this.new_array = this.list;
+                  }
+                  this.new_array.forEach(function (el) {
+                    var genre_list = el.genre;
+                    console.log(genre_list);
+                    _this13.filter_genre.forEach(function (genre) {
+                      genre_list.forEach(function (gen_name) {
+                        if (gen_name == genre) {
+                          _this13.check_this = true;
+                        }
+                      });
+                    });
+                    if (_this13.check_this == true) {
+                      // console.log("have this!");
+                      _this13.genre_array.push(el);
+                      _this13.check_this = false;
+                    } else {
+                      _this13.check_this = false;
+                    }
+                  });
+                  this.list = this.genre_array;
+                } else {
+                  this.list = this.curr_list;
+                }
+
+              case 2:
+              case "end":
+                return _context25.stop();
+            }
+          }
+        }, _callee25, this);
+      }));
+
+      function filterGenre() {
+        return _ref26.apply(this, arguments);
+      }
+
+      return filterGenre;
+    }(),
+    filterMoney: function () {
+      var _ref27 = _asyncToGenerator( /*#__PURE__*/__WEBPACK_IMPORTED_MODULE_0_babel_runtime_regenerator___default.a.mark(function _callee26() {
+        var _this14 = this;
+
+        return __WEBPACK_IMPORTED_MODULE_0_babel_runtime_regenerator___default.a.wrap(function _callee26$(_context26) {
+          while (1) {
+            switch (_context26.prev = _context26.next) {
+              case 0:
+                if (this.new_array.length != 0) {
+                  this.new_array = this.new_array;
+                } else {
+                  this.new_array = this.curr_list;
+                }
+                this.money_array = [];
+                if (this.filter_min == "" && this.filter_max == "") {
+                  this.money_array = this.list;
+                  this.filterDelivery();
+                  this.filterGenre();
+                }
+                if (this.filter_min != "" && this.filter_max != "") {
+                  if (this.filter_min > this.filter_max) {
+                    this.message.push("目安金額正しくない！");
+                    this.clear();
+                  } else {
+                    this.list.forEach(function (el) {
+                      if (_this14.filter_min >= el.min_money && _this14.filter_max <= el.max_money) {
+                        _this14.money_array.push(el);
+                      }
+                    });
+                    this.list = this.money_array;
+                  }
+                }
+
+              case 4:
+              case "end":
+                return _context26.stop();
+            }
+          }
+        }, _callee26, this);
+      }));
+
+      function filterMoney() {
+        return _ref27.apply(this, arguments);
+      }
+
+      return filterMoney;
+    }(),
+    validation: function () {
+      var _ref28 = _asyncToGenerator( /*#__PURE__*/__WEBPACK_IMPORTED_MODULE_0_babel_runtime_regenerator___default.a.mark(function _callee27() {
+        return __WEBPACK_IMPORTED_MODULE_0_babel_runtime_regenerator___default.a.wrap(function _callee27$(_context27) {
+          while (1) {
+            switch (_context27.prev = _context27.next) {
+              case 0:
+                this.check = true;
+                if (this.info.name == "") {
+                  this.message.push("店舗名を入力してください！");
+                  this.clear();
+                  this.check = false;
+                }
+                if (this.info.address == "") {
+                  this.message.push("住所を入力してください！");
+                  this.clear();
+                  this.check = false;
+                }
+                if (this.info.number == "") {
+                  this.message.push("電話番号を入力してください！");
+                  this.clear();
+                  this.check = false;
+                }
+                if (this.info.open == "") {
+                  this.message.push("開始営業時間を入力してください！");
+                  this.clear();
+                  this.check = false;
+                }
+                if (this.info.close == "") {
+                  this.message.push("終了営業時間を入力してください！");
+                  this.clear();
+                  this.check = false;
+                }
+                if (this.info.url == "") {
+                  this.message.push("URLを入力してください！");
+                  this.clear();
+                  this.check = false;
+                }
+
+              case 7:
+              case "end":
+                return _context27.stop();
+            }
+          }
+        }, _callee27, this);
+      }));
+
+      function validation() {
+        return _ref28.apply(this, arguments);
+      }
+
+      return validation;
     }()
   },
   mounted: function mounted() {},
+
+  computed: {
+    resultQuery: function resultQuery() {
+      var _this15 = this;
+
+      if (this.searchQuery) {
+        return this.list.filter(function (item) {
+          return _this15.searchQuery.toLowerCase().split(" ").every(function (v) {
+            return item.name.toLowerCase().includes(v);
+          });
+        });
+      } else {
+        return this.list;
+      }
+    }
+  },
+  watch: {
+    resultQuery: function resultQuery() {
+      console.log("resultQuery changed");
+    }
+  },
   created: function created() {
     this.getAll();
     this.getUserInfo();
@@ -50461,9 +51743,508 @@ var render = function() {
                 ])
               ]),
               _vm._v(" "),
+              _c(
+                "div",
+                { staticClass: "info-input flex al-ct mt-1 flx-wrap" },
+                [
+                  _c("h2", { staticClass: "info-title mid-title mr-1" }, [
+                    _vm._v("ジャンル")
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "info-genre flex al-ct" }, [
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.info.genre,
+                          expression: "info.genre"
+                        }
+                      ],
+                      staticClass: "mr-1",
+                      attrs: {
+                        type: "checkbox",
+                        id: "teisyoku",
+                        value: "定食"
+                      },
+                      domProps: {
+                        checked: Array.isArray(_vm.info.genre)
+                          ? _vm._i(_vm.info.genre, "定食") > -1
+                          : _vm.info.genre
+                      },
+                      on: {
+                        change: function($event) {
+                          var $$a = _vm.info.genre,
+                            $$el = $event.target,
+                            $$c = $$el.checked ? true : false
+                          if (Array.isArray($$a)) {
+                            var $$v = "定食",
+                              $$i = _vm._i($$a, $$v)
+                            if ($$el.checked) {
+                              $$i < 0 &&
+                                _vm.$set(_vm.info, "genre", $$a.concat([$$v]))
+                            } else {
+                              $$i > -1 &&
+                                _vm.$set(
+                                  _vm.info,
+                                  "genre",
+                                  $$a.slice(0, $$i).concat($$a.slice($$i + 1))
+                                )
+                            }
+                          } else {
+                            _vm.$set(_vm.info, "genre", $$c)
+                          }
+                        }
+                      }
+                    }),
+                    _vm._v(" "),
+                    _c(
+                      "h2",
+                      {
+                        staticClass: "info-genre__content txt-s txt-bold mr-2",
+                        attrs: { for: "teisyoku" }
+                      },
+                      [_vm._v("\n              定食\n            ")]
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "info-genre flex al-ct" }, [
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.info.genre,
+                          expression: "info.genre"
+                        }
+                      ],
+                      staticClass: "mr-1",
+                      attrs: { type: "checkbox", id: "menrui", value: "麺類" },
+                      domProps: {
+                        checked: Array.isArray(_vm.info.genre)
+                          ? _vm._i(_vm.info.genre, "麺類") > -1
+                          : _vm.info.genre
+                      },
+                      on: {
+                        change: function($event) {
+                          var $$a = _vm.info.genre,
+                            $$el = $event.target,
+                            $$c = $$el.checked ? true : false
+                          if (Array.isArray($$a)) {
+                            var $$v = "麺類",
+                              $$i = _vm._i($$a, $$v)
+                            if ($$el.checked) {
+                              $$i < 0 &&
+                                _vm.$set(_vm.info, "genre", $$a.concat([$$v]))
+                            } else {
+                              $$i > -1 &&
+                                _vm.$set(
+                                  _vm.info,
+                                  "genre",
+                                  $$a.slice(0, $$i).concat($$a.slice($$i + 1))
+                                )
+                            }
+                          } else {
+                            _vm.$set(_vm.info, "genre", $$c)
+                          }
+                        }
+                      }
+                    }),
+                    _vm._v(" "),
+                    _c(
+                      "h2",
+                      {
+                        staticClass: "info-genre__content txt-s txt-bold mr-2",
+                        attrs: { for: "menrui" }
+                      },
+                      [_vm._v("\n              麺類\n            ")]
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "info-genre flex al-ct" }, [
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.info.genre,
+                          expression: "info.genre"
+                        }
+                      ],
+                      staticClass: "mr-1",
+                      attrs: { type: "checkbox", id: "kare", value: "パン" },
+                      domProps: {
+                        checked: Array.isArray(_vm.info.genre)
+                          ? _vm._i(_vm.info.genre, "パン") > -1
+                          : _vm.info.genre
+                      },
+                      on: {
+                        change: function($event) {
+                          var $$a = _vm.info.genre,
+                            $$el = $event.target,
+                            $$c = $$el.checked ? true : false
+                          if (Array.isArray($$a)) {
+                            var $$v = "パン",
+                              $$i = _vm._i($$a, $$v)
+                            if ($$el.checked) {
+                              $$i < 0 &&
+                                _vm.$set(_vm.info, "genre", $$a.concat([$$v]))
+                            } else {
+                              $$i > -1 &&
+                                _vm.$set(
+                                  _vm.info,
+                                  "genre",
+                                  $$a.slice(0, $$i).concat($$a.slice($$i + 1))
+                                )
+                            }
+                          } else {
+                            _vm.$set(_vm.info, "genre", $$c)
+                          }
+                        }
+                      }
+                    }),
+                    _vm._v(" "),
+                    _c(
+                      "h2",
+                      {
+                        staticClass: "info-genre__content txt-s txt-bold mr-2",
+                        attrs: { for: "kare" }
+                      },
+                      [_vm._v("\n              パン\n            ")]
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "info-genre flex al-ct" }, [
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.info.genre,
+                          expression: "info.genre"
+                        }
+                      ],
+                      staticClass: "mr-1",
+                      attrs: { type: "checkbox", id: "kare", value: "飲料" },
+                      domProps: {
+                        checked: Array.isArray(_vm.info.genre)
+                          ? _vm._i(_vm.info.genre, "飲料") > -1
+                          : _vm.info.genre
+                      },
+                      on: {
+                        change: function($event) {
+                          var $$a = _vm.info.genre,
+                            $$el = $event.target,
+                            $$c = $$el.checked ? true : false
+                          if (Array.isArray($$a)) {
+                            var $$v = "飲料",
+                              $$i = _vm._i($$a, $$v)
+                            if ($$el.checked) {
+                              $$i < 0 &&
+                                _vm.$set(_vm.info, "genre", $$a.concat([$$v]))
+                            } else {
+                              $$i > -1 &&
+                                _vm.$set(
+                                  _vm.info,
+                                  "genre",
+                                  $$a.slice(0, $$i).concat($$a.slice($$i + 1))
+                                )
+                            }
+                          } else {
+                            _vm.$set(_vm.info, "genre", $$c)
+                          }
+                        }
+                      }
+                    }),
+                    _vm._v(" "),
+                    _c(
+                      "h2",
+                      {
+                        staticClass: "info-genre__content txt-s txt-bold mr-2",
+                        attrs: { for: "kare" }
+                      },
+                      [_vm._v("\n              飲料\n            ")]
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "info-genre flex al-ct" }, [
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.info.genre,
+                          expression: "info.genre"
+                        }
+                      ],
+                      staticClass: "mr-1",
+                      attrs: { type: "checkbox", id: "kare", value: "和食" },
+                      domProps: {
+                        checked: Array.isArray(_vm.info.genre)
+                          ? _vm._i(_vm.info.genre, "和食") > -1
+                          : _vm.info.genre
+                      },
+                      on: {
+                        change: function($event) {
+                          var $$a = _vm.info.genre,
+                            $$el = $event.target,
+                            $$c = $$el.checked ? true : false
+                          if (Array.isArray($$a)) {
+                            var $$v = "和食",
+                              $$i = _vm._i($$a, $$v)
+                            if ($$el.checked) {
+                              $$i < 0 &&
+                                _vm.$set(_vm.info, "genre", $$a.concat([$$v]))
+                            } else {
+                              $$i > -1 &&
+                                _vm.$set(
+                                  _vm.info,
+                                  "genre",
+                                  $$a.slice(0, $$i).concat($$a.slice($$i + 1))
+                                )
+                            }
+                          } else {
+                            _vm.$set(_vm.info, "genre", $$c)
+                          }
+                        }
+                      }
+                    }),
+                    _vm._v(" "),
+                    _c(
+                      "h2",
+                      {
+                        staticClass: "info-genre__content txt-s txt-bold mr-2",
+                        attrs: { for: "kare" }
+                      },
+                      [_vm._v("\n              和食\n            ")]
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "info-genre flex al-ct" }, [
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.info.genre,
+                          expression: "info.genre"
+                        }
+                      ],
+                      staticClass: "mr-1",
+                      attrs: { type: "checkbox", id: "kare", value: "洋食" },
+                      domProps: {
+                        checked: Array.isArray(_vm.info.genre)
+                          ? _vm._i(_vm.info.genre, "洋食") > -1
+                          : _vm.info.genre
+                      },
+                      on: {
+                        change: function($event) {
+                          var $$a = _vm.info.genre,
+                            $$el = $event.target,
+                            $$c = $$el.checked ? true : false
+                          if (Array.isArray($$a)) {
+                            var $$v = "洋食",
+                              $$i = _vm._i($$a, $$v)
+                            if ($$el.checked) {
+                              $$i < 0 &&
+                                _vm.$set(_vm.info, "genre", $$a.concat([$$v]))
+                            } else {
+                              $$i > -1 &&
+                                _vm.$set(
+                                  _vm.info,
+                                  "genre",
+                                  $$a.slice(0, $$i).concat($$a.slice($$i + 1))
+                                )
+                            }
+                          } else {
+                            _vm.$set(_vm.info, "genre", $$c)
+                          }
+                        }
+                      }
+                    }),
+                    _vm._v(" "),
+                    _c(
+                      "h2",
+                      {
+                        staticClass: "info-genre__content txt-s txt-bold mr-2",
+                        attrs: { for: "kare" }
+                      },
+                      [_vm._v("\n              洋食\n            ")]
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "info-genre flex al-ct" }, [
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.info.genre,
+                          expression: "info.genre"
+                        }
+                      ],
+                      staticClass: "mr-1",
+                      attrs: { type: "checkbox", id: "kare", value: "中華" },
+                      domProps: {
+                        checked: Array.isArray(_vm.info.genre)
+                          ? _vm._i(_vm.info.genre, "中華") > -1
+                          : _vm.info.genre
+                      },
+                      on: {
+                        change: function($event) {
+                          var $$a = _vm.info.genre,
+                            $$el = $event.target,
+                            $$c = $$el.checked ? true : false
+                          if (Array.isArray($$a)) {
+                            var $$v = "中華",
+                              $$i = _vm._i($$a, $$v)
+                            if ($$el.checked) {
+                              $$i < 0 &&
+                                _vm.$set(_vm.info, "genre", $$a.concat([$$v]))
+                            } else {
+                              $$i > -1 &&
+                                _vm.$set(
+                                  _vm.info,
+                                  "genre",
+                                  $$a.slice(0, $$i).concat($$a.slice($$i + 1))
+                                )
+                            }
+                          } else {
+                            _vm.$set(_vm.info, "genre", $$c)
+                          }
+                        }
+                      }
+                    }),
+                    _vm._v(" "),
+                    _c(
+                      "h2",
+                      {
+                        staticClass: "info-genre__content txt-s txt-bold mr-2",
+                        attrs: { for: "kare" }
+                      },
+                      [_vm._v("\n              中華\n            ")]
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "info-genre flex al-ct" }, [
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.info.genre,
+                          expression: "info.genre"
+                        }
+                      ],
+                      staticClass: "mr-1",
+                      attrs: {
+                        type: "checkbox",
+                        id: "kare",
+                        value: "スイーツ"
+                      },
+                      domProps: {
+                        checked: Array.isArray(_vm.info.genre)
+                          ? _vm._i(_vm.info.genre, "スイーツ") > -1
+                          : _vm.info.genre
+                      },
+                      on: {
+                        change: function($event) {
+                          var $$a = _vm.info.genre,
+                            $$el = $event.target,
+                            $$c = $$el.checked ? true : false
+                          if (Array.isArray($$a)) {
+                            var $$v = "スイーツ",
+                              $$i = _vm._i($$a, $$v)
+                            if ($$el.checked) {
+                              $$i < 0 &&
+                                _vm.$set(_vm.info, "genre", $$a.concat([$$v]))
+                            } else {
+                              $$i > -1 &&
+                                _vm.$set(
+                                  _vm.info,
+                                  "genre",
+                                  $$a.slice(0, $$i).concat($$a.slice($$i + 1))
+                                )
+                            }
+                          } else {
+                            _vm.$set(_vm.info, "genre", $$c)
+                          }
+                        }
+                      }
+                    }),
+                    _vm._v(" "),
+                    _c(
+                      "h2",
+                      {
+                        staticClass: "info-genre__content txt-s txt-bold mr-2",
+                        attrs: { for: "kare" }
+                      },
+                      [_vm._v("\n              スイーツ\n            ")]
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "info-genre flex al-ct" }, [
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.info.genre,
+                          expression: "info.genre"
+                        }
+                      ],
+                      staticClass: "mr-1",
+                      attrs: {
+                        type: "checkbox",
+                        id: "kare",
+                        value: "ファストフード"
+                      },
+                      domProps: {
+                        checked: Array.isArray(_vm.info.genre)
+                          ? _vm._i(_vm.info.genre, "ファストフード") > -1
+                          : _vm.info.genre
+                      },
+                      on: {
+                        change: function($event) {
+                          var $$a = _vm.info.genre,
+                            $$el = $event.target,
+                            $$c = $$el.checked ? true : false
+                          if (Array.isArray($$a)) {
+                            var $$v = "ファストフード",
+                              $$i = _vm._i($$a, $$v)
+                            if ($$el.checked) {
+                              $$i < 0 &&
+                                _vm.$set(_vm.info, "genre", $$a.concat([$$v]))
+                            } else {
+                              $$i > -1 &&
+                                _vm.$set(
+                                  _vm.info,
+                                  "genre",
+                                  $$a.slice(0, $$i).concat($$a.slice($$i + 1))
+                                )
+                            }
+                          } else {
+                            _vm.$set(_vm.info, "genre", $$c)
+                          }
+                        }
+                      }
+                    }),
+                    _vm._v(" "),
+                    _c(
+                      "h2",
+                      {
+                        staticClass: "info-genre__content txt-s txt-bold mr-2",
+                        attrs: { for: "kare" }
+                      },
+                      [_vm._v("\n              ファストフード\n            ")]
+                    )
+                  ])
+                ]
+              ),
+              _vm._v(" "),
               _c("div", { staticClass: "info-input flex al-ct mt-1" }, [
                 _c("h2", { staticClass: "info-title mid-title mr-1" }, [
-                  _vm._v("ジャンル")
+                  _vm._v("定休日")
                 ]),
                 _vm._v(" "),
                 _c("div", { staticClass: "info-genre flex al-ct" }, [
@@ -50472,38 +52253,38 @@ var render = function() {
                       {
                         name: "model",
                         rawName: "v-model",
-                        value: _vm.info.genre,
-                        expression: "info.genre"
+                        value: _vm.info.holiday,
+                        expression: "info.holiday"
                       }
                     ],
                     staticClass: "mr-1",
-                    attrs: { type: "checkbox", id: "teisyoku", value: "定食" },
+                    attrs: { type: "checkbox", value: "月" },
                     domProps: {
-                      checked: Array.isArray(_vm.info.genre)
-                        ? _vm._i(_vm.info.genre, "定食") > -1
-                        : _vm.info.genre
+                      checked: Array.isArray(_vm.info.holiday)
+                        ? _vm._i(_vm.info.holiday, "月") > -1
+                        : _vm.info.holiday
                     },
                     on: {
                       change: function($event) {
-                        var $$a = _vm.info.genre,
+                        var $$a = _vm.info.holiday,
                           $$el = $event.target,
                           $$c = $$el.checked ? true : false
                         if (Array.isArray($$a)) {
-                          var $$v = "定食",
+                          var $$v = "月",
                             $$i = _vm._i($$a, $$v)
                           if ($$el.checked) {
                             $$i < 0 &&
-                              _vm.$set(_vm.info, "genre", $$a.concat([$$v]))
+                              _vm.$set(_vm.info, "holiday", $$a.concat([$$v]))
                           } else {
                             $$i > -1 &&
                               _vm.$set(
                                 _vm.info,
-                                "genre",
+                                "holiday",
                                 $$a.slice(0, $$i).concat($$a.slice($$i + 1))
                               )
                           }
                         } else {
-                          _vm.$set(_vm.info, "genre", $$c)
+                          _vm.$set(_vm.info, "holiday", $$c)
                         }
                       }
                     }
@@ -50515,7 +52296,7 @@ var render = function() {
                       staticClass: "info-genre__content txt-s txt-bold mr-2",
                       attrs: { for: "teisyoku" }
                     },
-                    [_vm._v("\n              定食\n            ")]
+                    [_vm._v("\n              月\n            ")]
                   )
                 ]),
                 _vm._v(" "),
@@ -50525,38 +52306,38 @@ var render = function() {
                       {
                         name: "model",
                         rawName: "v-model",
-                        value: _vm.info.genre,
-                        expression: "info.genre"
+                        value: _vm.info.holiday,
+                        expression: "info.holiday"
                       }
                     ],
                     staticClass: "mr-1",
-                    attrs: { type: "checkbox", id: "menrui", value: "麺類" },
+                    attrs: { type: "checkbox", value: "火" },
                     domProps: {
-                      checked: Array.isArray(_vm.info.genre)
-                        ? _vm._i(_vm.info.genre, "麺類") > -1
-                        : _vm.info.genre
+                      checked: Array.isArray(_vm.info.holiday)
+                        ? _vm._i(_vm.info.holiday, "火") > -1
+                        : _vm.info.holiday
                     },
                     on: {
                       change: function($event) {
-                        var $$a = _vm.info.genre,
+                        var $$a = _vm.info.holiday,
                           $$el = $event.target,
                           $$c = $$el.checked ? true : false
                         if (Array.isArray($$a)) {
-                          var $$v = "麺類",
+                          var $$v = "火",
                             $$i = _vm._i($$a, $$v)
                           if ($$el.checked) {
                             $$i < 0 &&
-                              _vm.$set(_vm.info, "genre", $$a.concat([$$v]))
+                              _vm.$set(_vm.info, "holiday", $$a.concat([$$v]))
                           } else {
                             $$i > -1 &&
                               _vm.$set(
                                 _vm.info,
-                                "genre",
+                                "holiday",
                                 $$a.slice(0, $$i).concat($$a.slice($$i + 1))
                               )
                           }
                         } else {
-                          _vm.$set(_vm.info, "genre", $$c)
+                          _vm.$set(_vm.info, "holiday", $$c)
                         }
                       }
                     }
@@ -50568,7 +52349,7 @@ var render = function() {
                       staticClass: "info-genre__content txt-s txt-bold mr-2",
                       attrs: { for: "menrui" }
                     },
-                    [_vm._v("\n              麺類\n            ")]
+                    [_vm._v("\n              火\n            ")]
                   )
                 ]),
                 _vm._v(" "),
@@ -50578,38 +52359,38 @@ var render = function() {
                       {
                         name: "model",
                         rawName: "v-model",
-                        value: _vm.info.genre,
-                        expression: "info.genre"
+                        value: _vm.info.holiday,
+                        expression: "info.holiday"
                       }
                     ],
                     staticClass: "mr-1",
-                    attrs: { type: "checkbox", id: "kare", value: "カレー" },
+                    attrs: { type: "checkbox", value: "水" },
                     domProps: {
-                      checked: Array.isArray(_vm.info.genre)
-                        ? _vm._i(_vm.info.genre, "カレー") > -1
-                        : _vm.info.genre
+                      checked: Array.isArray(_vm.info.holiday)
+                        ? _vm._i(_vm.info.holiday, "水") > -1
+                        : _vm.info.holiday
                     },
                     on: {
                       change: function($event) {
-                        var $$a = _vm.info.genre,
+                        var $$a = _vm.info.holiday,
                           $$el = $event.target,
                           $$c = $$el.checked ? true : false
                         if (Array.isArray($$a)) {
-                          var $$v = "カレー",
+                          var $$v = "水",
                             $$i = _vm._i($$a, $$v)
                           if ($$el.checked) {
                             $$i < 0 &&
-                              _vm.$set(_vm.info, "genre", $$a.concat([$$v]))
+                              _vm.$set(_vm.info, "holiday", $$a.concat([$$v]))
                           } else {
                             $$i > -1 &&
                               _vm.$set(
                                 _vm.info,
-                                "genre",
+                                "holiday",
                                 $$a.slice(0, $$i).concat($$a.slice($$i + 1))
                               )
                           }
                         } else {
-                          _vm.$set(_vm.info, "genre", $$c)
+                          _vm.$set(_vm.info, "holiday", $$c)
                         }
                       }
                     }
@@ -50621,7 +52402,219 @@ var render = function() {
                       staticClass: "info-genre__content txt-s txt-bold mr-2",
                       attrs: { for: "kare" }
                     },
-                    [_vm._v("\n              カレー\n            ")]
+                    [_vm._v("\n              水\n            ")]
+                  )
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "info-genre flex al-ct" }, [
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.info.holiday,
+                        expression: "info.holiday"
+                      }
+                    ],
+                    staticClass: "mr-1",
+                    attrs: { type: "checkbox", value: "木" },
+                    domProps: {
+                      checked: Array.isArray(_vm.info.holiday)
+                        ? _vm._i(_vm.info.holiday, "木") > -1
+                        : _vm.info.holiday
+                    },
+                    on: {
+                      change: function($event) {
+                        var $$a = _vm.info.holiday,
+                          $$el = $event.target,
+                          $$c = $$el.checked ? true : false
+                        if (Array.isArray($$a)) {
+                          var $$v = "木",
+                            $$i = _vm._i($$a, $$v)
+                          if ($$el.checked) {
+                            $$i < 0 &&
+                              _vm.$set(_vm.info, "holiday", $$a.concat([$$v]))
+                          } else {
+                            $$i > -1 &&
+                              _vm.$set(
+                                _vm.info,
+                                "holiday",
+                                $$a.slice(0, $$i).concat($$a.slice($$i + 1))
+                              )
+                          }
+                        } else {
+                          _vm.$set(_vm.info, "holiday", $$c)
+                        }
+                      }
+                    }
+                  }),
+                  _vm._v(" "),
+                  _c(
+                    "h2",
+                    {
+                      staticClass: "info-genre__content txt-s txt-bold mr-2",
+                      attrs: { for: "kare" }
+                    },
+                    [_vm._v("\n              木\n            ")]
+                  )
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "info-genre flex al-ct" }, [
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.info.holiday,
+                        expression: "info.holiday"
+                      }
+                    ],
+                    staticClass: "mr-1",
+                    attrs: { type: "checkbox", value: "金" },
+                    domProps: {
+                      checked: Array.isArray(_vm.info.holiday)
+                        ? _vm._i(_vm.info.holiday, "金") > -1
+                        : _vm.info.holiday
+                    },
+                    on: {
+                      change: function($event) {
+                        var $$a = _vm.info.holiday,
+                          $$el = $event.target,
+                          $$c = $$el.checked ? true : false
+                        if (Array.isArray($$a)) {
+                          var $$v = "金",
+                            $$i = _vm._i($$a, $$v)
+                          if ($$el.checked) {
+                            $$i < 0 &&
+                              _vm.$set(_vm.info, "holiday", $$a.concat([$$v]))
+                          } else {
+                            $$i > -1 &&
+                              _vm.$set(
+                                _vm.info,
+                                "holiday",
+                                $$a.slice(0, $$i).concat($$a.slice($$i + 1))
+                              )
+                          }
+                        } else {
+                          _vm.$set(_vm.info, "holiday", $$c)
+                        }
+                      }
+                    }
+                  }),
+                  _vm._v(" "),
+                  _c(
+                    "h2",
+                    {
+                      staticClass: "info-genre__content txt-s txt-bold mr-2",
+                      attrs: { for: "kare" }
+                    },
+                    [_vm._v("\n              金\n            ")]
+                  )
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "info-genre flex al-ct" }, [
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.info.holiday,
+                        expression: "info.holiday"
+                      }
+                    ],
+                    staticClass: "mr-1",
+                    attrs: { type: "checkbox", value: "土" },
+                    domProps: {
+                      checked: Array.isArray(_vm.info.holiday)
+                        ? _vm._i(_vm.info.holiday, "土") > -1
+                        : _vm.info.holiday
+                    },
+                    on: {
+                      change: function($event) {
+                        var $$a = _vm.info.holiday,
+                          $$el = $event.target,
+                          $$c = $$el.checked ? true : false
+                        if (Array.isArray($$a)) {
+                          var $$v = "土",
+                            $$i = _vm._i($$a, $$v)
+                          if ($$el.checked) {
+                            $$i < 0 &&
+                              _vm.$set(_vm.info, "holiday", $$a.concat([$$v]))
+                          } else {
+                            $$i > -1 &&
+                              _vm.$set(
+                                _vm.info,
+                                "holiday",
+                                $$a.slice(0, $$i).concat($$a.slice($$i + 1))
+                              )
+                          }
+                        } else {
+                          _vm.$set(_vm.info, "holiday", $$c)
+                        }
+                      }
+                    }
+                  }),
+                  _vm._v(" "),
+                  _c(
+                    "h2",
+                    {
+                      staticClass: "info-genre__content txt-s txt-bold mr-2",
+                      attrs: { for: "kare" }
+                    },
+                    [_vm._v("\n              土\n            ")]
+                  )
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "info-genre flex al-ct" }, [
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.info.holiday,
+                        expression: "info.holiday"
+                      }
+                    ],
+                    staticClass: "mr-1",
+                    attrs: { type: "checkbox", value: "日" },
+                    domProps: {
+                      checked: Array.isArray(_vm.info.holiday)
+                        ? _vm._i(_vm.info.holiday, "日") > -1
+                        : _vm.info.holiday
+                    },
+                    on: {
+                      change: function($event) {
+                        var $$a = _vm.info.holiday,
+                          $$el = $event.target,
+                          $$c = $$el.checked ? true : false
+                        if (Array.isArray($$a)) {
+                          var $$v = "日",
+                            $$i = _vm._i($$a, $$v)
+                          if ($$el.checked) {
+                            $$i < 0 &&
+                              _vm.$set(_vm.info, "holiday", $$a.concat([$$v]))
+                          } else {
+                            $$i > -1 &&
+                              _vm.$set(
+                                _vm.info,
+                                "holiday",
+                                $$a.slice(0, $$i).concat($$a.slice($$i + 1))
+                              )
+                          }
+                        } else {
+                          _vm.$set(_vm.info, "holiday", $$c)
+                        }
+                      }
+                    }
+                  }),
+                  _vm._v(" "),
+                  _c(
+                    "h2",
+                    {
+                      staticClass: "info-genre__content txt-s txt-bold mr-2",
+                      attrs: { for: "kare" }
+                    },
+                    [_vm._v("\n              日\n            ")]
                   )
                 ])
               ]),
@@ -50867,7 +52860,7 @@ var render = function() {
             _c(
               "div",
               {
-                staticClass: "btn btn-m btn-nav flx-1",
+                staticClass: "btn btn-m btn__black txt-bold flx-1",
                 on: {
                   click: function($event) {
                     $event.preventDefault()
@@ -50881,7 +52874,7 @@ var render = function() {
             _c(
               "div",
               {
-                staticClass: "btn btn-m btn-nav flx-1",
+                staticClass: "btn btn-m btn__black txt-bold flx-1",
                 on: {
                   click: function($event) {
                     $event.preventDefault()
@@ -50951,10 +52944,27 @@ var render = function() {
             _vm._v(" "),
             _c(
               "div",
-              { staticClass: "home-list-infomation__taglist flex" },
+              { staticClass: "home-list-infomation__taglist flex flx-wrap" },
               _vm._l(_vm.info.genre, function(gen) {
                 return _c("h2", { key: gen.id, staticClass: "tag-s mr-1" }, [
                   _vm._v("\n          " + _vm._s(gen) + "\n        ")
+                ])
+              }),
+              0
+            )
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "show-info" }, [
+            _c("h2", { staticClass: "show-title txt-s txt-bold" }, [
+              _vm._v("定休日")
+            ]),
+            _vm._v(" "),
+            _c(
+              "div",
+              { staticClass: "home-list-infomation__taglist flex flx-wrap" },
+              _vm._l(_vm.info.holiday, function(day) {
+                return _c("h2", { key: day.id, staticClass: "tag-s mr-1" }, [
+                  _vm._v("\n          " + _vm._s(day) + "\n        ")
                 ])
               }),
               0
@@ -51257,40 +53267,514 @@ var render = function() {
         ])
       ]),
       _vm._v(" "),
-      _c("h2", { staticClass: "mid-title mt-1" }, [_vm._v("評価順")]),
+      _c("h2", { staticClass: "mid-title mt-1" }, [_vm._v("ジャンル")]),
       _vm._v(" "),
-      _vm._m(0),
+      _c("div", { staticClass: "home-box__sex" }, [
+        _c("div", { staticClass: "home-box__item" }, [
+          _c("input", {
+            directives: [
+              {
+                name: "model",
+                rawName: "v-model",
+                value: _vm.filter_genre,
+                expression: "filter_genre"
+              }
+            ],
+            attrs: { type: "checkbox", value: "定食" },
+            domProps: {
+              checked: Array.isArray(_vm.filter_genre)
+                ? _vm._i(_vm.filter_genre, "定食") > -1
+                : _vm.filter_genre
+            },
+            on: {
+              change: [
+                function($event) {
+                  var $$a = _vm.filter_genre,
+                    $$el = $event.target,
+                    $$c = $$el.checked ? true : false
+                  if (Array.isArray($$a)) {
+                    var $$v = "定食",
+                      $$i = _vm._i($$a, $$v)
+                    if ($$el.checked) {
+                      $$i < 0 && (_vm.filter_genre = $$a.concat([$$v]))
+                    } else {
+                      $$i > -1 &&
+                        (_vm.filter_genre = $$a
+                          .slice(0, $$i)
+                          .concat($$a.slice($$i + 1)))
+                    }
+                  } else {
+                    _vm.filter_genre = $$c
+                  }
+                },
+                function($event) {
+                  return _vm.filterGenre()
+                }
+              ]
+            }
+          }),
+          _vm._v(" "),
+          _c("h2", [_vm._v("定食")])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "home-box__item" }, [
+          _c("input", {
+            directives: [
+              {
+                name: "model",
+                rawName: "v-model",
+                value: _vm.filter_genre,
+                expression: "filter_genre"
+              }
+            ],
+            attrs: { type: "checkbox", value: "麺類" },
+            domProps: {
+              checked: Array.isArray(_vm.filter_genre)
+                ? _vm._i(_vm.filter_genre, "麺類") > -1
+                : _vm.filter_genre
+            },
+            on: {
+              change: [
+                function($event) {
+                  var $$a = _vm.filter_genre,
+                    $$el = $event.target,
+                    $$c = $$el.checked ? true : false
+                  if (Array.isArray($$a)) {
+                    var $$v = "麺類",
+                      $$i = _vm._i($$a, $$v)
+                    if ($$el.checked) {
+                      $$i < 0 && (_vm.filter_genre = $$a.concat([$$v]))
+                    } else {
+                      $$i > -1 &&
+                        (_vm.filter_genre = $$a
+                          .slice(0, $$i)
+                          .concat($$a.slice($$i + 1)))
+                    }
+                  } else {
+                    _vm.filter_genre = $$c
+                  }
+                },
+                function($event) {
+                  return _vm.filterGenre()
+                }
+              ]
+            }
+          }),
+          _vm._v(" "),
+          _c("h2", [_vm._v("麺類")])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "home-box__item" }, [
+          _c("input", {
+            directives: [
+              {
+                name: "model",
+                rawName: "v-model",
+                value: _vm.filter_genre,
+                expression: "filter_genre"
+              }
+            ],
+            attrs: { type: "checkbox", value: "パン" },
+            domProps: {
+              checked: Array.isArray(_vm.filter_genre)
+                ? _vm._i(_vm.filter_genre, "パン") > -1
+                : _vm.filter_genre
+            },
+            on: {
+              change: [
+                function($event) {
+                  var $$a = _vm.filter_genre,
+                    $$el = $event.target,
+                    $$c = $$el.checked ? true : false
+                  if (Array.isArray($$a)) {
+                    var $$v = "パン",
+                      $$i = _vm._i($$a, $$v)
+                    if ($$el.checked) {
+                      $$i < 0 && (_vm.filter_genre = $$a.concat([$$v]))
+                    } else {
+                      $$i > -1 &&
+                        (_vm.filter_genre = $$a
+                          .slice(0, $$i)
+                          .concat($$a.slice($$i + 1)))
+                    }
+                  } else {
+                    _vm.filter_genre = $$c
+                  }
+                },
+                function($event) {
+                  return _vm.filterGenre()
+                }
+              ]
+            }
+          }),
+          _vm._v(" "),
+          _c("h2", [_vm._v("パン")])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "home-box__item" }, [
+          _c("input", {
+            directives: [
+              {
+                name: "model",
+                rawName: "v-model",
+                value: _vm.filter_genre,
+                expression: "filter_genre"
+              }
+            ],
+            attrs: { type: "checkbox", value: "飲料" },
+            domProps: {
+              checked: Array.isArray(_vm.filter_genre)
+                ? _vm._i(_vm.filter_genre, "飲料") > -1
+                : _vm.filter_genre
+            },
+            on: {
+              change: [
+                function($event) {
+                  var $$a = _vm.filter_genre,
+                    $$el = $event.target,
+                    $$c = $$el.checked ? true : false
+                  if (Array.isArray($$a)) {
+                    var $$v = "飲料",
+                      $$i = _vm._i($$a, $$v)
+                    if ($$el.checked) {
+                      $$i < 0 && (_vm.filter_genre = $$a.concat([$$v]))
+                    } else {
+                      $$i > -1 &&
+                        (_vm.filter_genre = $$a
+                          .slice(0, $$i)
+                          .concat($$a.slice($$i + 1)))
+                    }
+                  } else {
+                    _vm.filter_genre = $$c
+                  }
+                },
+                function($event) {
+                  return _vm.filterGenre()
+                }
+              ]
+            }
+          }),
+          _vm._v(" "),
+          _c("h2", [_vm._v("飲料")])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "home-box__item" }, [
+          _c("input", {
+            directives: [
+              {
+                name: "model",
+                rawName: "v-model",
+                value: _vm.filter_genre,
+                expression: "filter_genre"
+              }
+            ],
+            attrs: { type: "checkbox", value: "和食" },
+            domProps: {
+              checked: Array.isArray(_vm.filter_genre)
+                ? _vm._i(_vm.filter_genre, "和食") > -1
+                : _vm.filter_genre
+            },
+            on: {
+              change: [
+                function($event) {
+                  var $$a = _vm.filter_genre,
+                    $$el = $event.target,
+                    $$c = $$el.checked ? true : false
+                  if (Array.isArray($$a)) {
+                    var $$v = "和食",
+                      $$i = _vm._i($$a, $$v)
+                    if ($$el.checked) {
+                      $$i < 0 && (_vm.filter_genre = $$a.concat([$$v]))
+                    } else {
+                      $$i > -1 &&
+                        (_vm.filter_genre = $$a
+                          .slice(0, $$i)
+                          .concat($$a.slice($$i + 1)))
+                    }
+                  } else {
+                    _vm.filter_genre = $$c
+                  }
+                },
+                function($event) {
+                  return _vm.filterGenre()
+                }
+              ]
+            }
+          }),
+          _vm._v(" "),
+          _c("h2", [_vm._v("和食")])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "home-box__item" }, [
+          _c("input", {
+            directives: [
+              {
+                name: "model",
+                rawName: "v-model",
+                value: _vm.filter_genre,
+                expression: "filter_genre"
+              }
+            ],
+            attrs: { type: "checkbox", value: "洋食" },
+            domProps: {
+              checked: Array.isArray(_vm.filter_genre)
+                ? _vm._i(_vm.filter_genre, "洋食") > -1
+                : _vm.filter_genre
+            },
+            on: {
+              change: [
+                function($event) {
+                  var $$a = _vm.filter_genre,
+                    $$el = $event.target,
+                    $$c = $$el.checked ? true : false
+                  if (Array.isArray($$a)) {
+                    var $$v = "洋食",
+                      $$i = _vm._i($$a, $$v)
+                    if ($$el.checked) {
+                      $$i < 0 && (_vm.filter_genre = $$a.concat([$$v]))
+                    } else {
+                      $$i > -1 &&
+                        (_vm.filter_genre = $$a
+                          .slice(0, $$i)
+                          .concat($$a.slice($$i + 1)))
+                    }
+                  } else {
+                    _vm.filter_genre = $$c
+                  }
+                },
+                function($event) {
+                  return _vm.filterGenre()
+                }
+              ]
+            }
+          }),
+          _vm._v(" "),
+          _c("h2", [_vm._v("洋食")])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "home-box__item" }, [
+          _c("input", {
+            directives: [
+              {
+                name: "model",
+                rawName: "v-model",
+                value: _vm.filter_genre,
+                expression: "filter_genre"
+              }
+            ],
+            attrs: { type: "checkbox", value: "中華" },
+            domProps: {
+              checked: Array.isArray(_vm.filter_genre)
+                ? _vm._i(_vm.filter_genre, "中華") > -1
+                : _vm.filter_genre
+            },
+            on: {
+              change: [
+                function($event) {
+                  var $$a = _vm.filter_genre,
+                    $$el = $event.target,
+                    $$c = $$el.checked ? true : false
+                  if (Array.isArray($$a)) {
+                    var $$v = "中華",
+                      $$i = _vm._i($$a, $$v)
+                    if ($$el.checked) {
+                      $$i < 0 && (_vm.filter_genre = $$a.concat([$$v]))
+                    } else {
+                      $$i > -1 &&
+                        (_vm.filter_genre = $$a
+                          .slice(0, $$i)
+                          .concat($$a.slice($$i + 1)))
+                    }
+                  } else {
+                    _vm.filter_genre = $$c
+                  }
+                },
+                function($event) {
+                  return _vm.filterGenre()
+                }
+              ]
+            }
+          }),
+          _vm._v(" "),
+          _c("h2", [_vm._v("中華")])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "home-box__item" }, [
+          _c("input", {
+            directives: [
+              {
+                name: "model",
+                rawName: "v-model",
+                value: _vm.filter_genre,
+                expression: "filter_genre"
+              }
+            ],
+            attrs: { type: "checkbox", value: "スイーツ" },
+            domProps: {
+              checked: Array.isArray(_vm.filter_genre)
+                ? _vm._i(_vm.filter_genre, "スイーツ") > -1
+                : _vm.filter_genre
+            },
+            on: {
+              change: [
+                function($event) {
+                  var $$a = _vm.filter_genre,
+                    $$el = $event.target,
+                    $$c = $$el.checked ? true : false
+                  if (Array.isArray($$a)) {
+                    var $$v = "スイーツ",
+                      $$i = _vm._i($$a, $$v)
+                    if ($$el.checked) {
+                      $$i < 0 && (_vm.filter_genre = $$a.concat([$$v]))
+                    } else {
+                      $$i > -1 &&
+                        (_vm.filter_genre = $$a
+                          .slice(0, $$i)
+                          .concat($$a.slice($$i + 1)))
+                    }
+                  } else {
+                    _vm.filter_genre = $$c
+                  }
+                },
+                function($event) {
+                  return _vm.filterGenre()
+                }
+              ]
+            }
+          }),
+          _vm._v(" "),
+          _c("h2", [_vm._v("スイーツ")])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "home-box__item" }, [
+          _c("input", {
+            directives: [
+              {
+                name: "model",
+                rawName: "v-model",
+                value: _vm.filter_genre,
+                expression: "filter_genre"
+              }
+            ],
+            attrs: { type: "checkbox", value: "ファストフード" },
+            domProps: {
+              checked: Array.isArray(_vm.filter_genre)
+                ? _vm._i(_vm.filter_genre, "ファストフード") > -1
+                : _vm.filter_genre
+            },
+            on: {
+              change: [
+                function($event) {
+                  var $$a = _vm.filter_genre,
+                    $$el = $event.target,
+                    $$c = $$el.checked ? true : false
+                  if (Array.isArray($$a)) {
+                    var $$v = "ファストフード",
+                      $$i = _vm._i($$a, $$v)
+                    if ($$el.checked) {
+                      $$i < 0 && (_vm.filter_genre = $$a.concat([$$v]))
+                    } else {
+                      $$i > -1 &&
+                        (_vm.filter_genre = $$a
+                          .slice(0, $$i)
+                          .concat($$a.slice($$i + 1)))
+                    }
+                  } else {
+                    _vm.filter_genre = $$c
+                  }
+                },
+                function($event) {
+                  return _vm.filterGenre()
+                }
+              ]
+            }
+          }),
+          _vm._v(" "),
+          _c("h2", [_vm._v("ファストフード")])
+        ])
+      ]),
       _vm._v(" "),
       _c("h2", { staticClass: "mid-title mt-1" }, [_vm._v("目安金額")]),
       _vm._v(" "),
       _c("div", { staticClass: "home-box__money" }, [
         _c("div", { staticClass: "mt-06 flex jc-sb al-ct" }, [
-          _vm._m(1),
-          _vm._v(" "),
-          _c(
-            "div",
-            { staticClass: "wrap flex al-ct" },
-            [
-              _c("h2", { staticClass: "txt-s txt-bold" }, [_vm._v("検索")]),
-              _vm._v(" "),
-              _c("box-icon", {
-                attrs: { type: "solid", name: "right-arrow-alt" }
-              }),
-              _vm._v(" "),
-              _c("box-icon", {
-                staticClass: "home-box__search",
-                attrs: { name: "search-alt-2", animation: "tada", size: "lg" }
-              })
-            ],
-            1
-          )
+          _c("div", { staticClass: "wrap" }, [
+            _c("input", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.filter_min,
+                  expression: "filter_min"
+                }
+              ],
+              staticClass: "home-money__input",
+              attrs: { type: "text", placeholder: "から" },
+              domProps: { value: _vm.filter_min },
+              on: {
+                change: function($event) {
+                  return _vm.filterMoney()
+                },
+                input: function($event) {
+                  if ($event.target.composing) {
+                    return
+                  }
+                  _vm.filter_min = $event.target.value
+                }
+              }
+            }),
+            _vm._v(" "),
+            _c("span", [_vm._v("~")]),
+            _vm._v(" "),
+            _c("input", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.filter_max,
+                  expression: "filter_max"
+                }
+              ],
+              staticClass: "home-money__input",
+              attrs: { type: "text", placeholder: "まで" },
+              domProps: { value: _vm.filter_max },
+              on: {
+                change: function($event) {
+                  return _vm.filterMoney()
+                },
+                input: function($event) {
+                  if ($event.target.composing) {
+                    return
+                  }
+                  _vm.filter_max = $event.target.value
+                }
+              }
+            })
+          ])
         ])
       ])
     ]),
     _vm._v(" "),
     _c("input", {
+      directives: [
+        {
+          name: "model",
+          rawName: "v-model",
+          value: _vm.searchQuery,
+          expression: "searchQuery"
+        }
+      ],
       staticClass: "home-box__input mt-2",
-      attrs: { type: "text", placeholder: "検索..." }
+      attrs: { type: "text", placeholder: "店舗名..." },
+      domProps: { value: _vm.searchQuery },
+      on: {
+        input: function($event) {
+          if ($event.target.composing) {
+            return
+          }
+          _vm.searchQuery = $event.target.value
+        }
+      }
     }),
     _vm._v(" "),
     _c("h1", { staticClass: "title mt-2" }, [_vm._v("東京の店")]),
@@ -51351,7 +53835,7 @@ var render = function() {
     _c(
       "div",
       { staticClass: "home-list-infomations" },
-      _vm._l(_vm.list, function(item, index) {
+      _vm._l(_vm.resultQuery, function(item, index) {
         return _c(
           "div",
           { key: item.id, staticClass: "home-list-infomation flex mt-1 jc-sb" },
@@ -51390,15 +53874,47 @@ var render = function() {
                   "home-list-infomation__info flex-3 ml-1 flex flx-d-c jc-sb"
               },
               [
-                _c("div", { staticClass: "home-list-infomation__name" }, [
-                  _c("h2", { staticClass: "mid-title" }, [
-                    _vm._v(_vm._s(item.name))
-                  ])
-                ]),
+                _c(
+                  "div",
+                  { staticClass: "home-list-infomation__name flex al-ct" },
+                  [
+                    _c("h2", { staticClass: "mid-title" }, [
+                      _vm._v(_vm._s(item.name))
+                    ]),
+                    _vm._v(" "),
+                    item.delivery == 1
+                      ? _c(
+                          "h2",
+                          { staticClass: "ml-1 txt-ss txt-bold label" },
+                          [
+                            _vm._v("\n            デリバリー"),
+                            _c("i", {
+                              staticClass: "bx bx-check delivery__true ml-1"
+                            })
+                          ]
+                        )
+                      : _vm._e(),
+                    _vm._v(" "),
+                    item.delivery == 2
+                      ? _c(
+                          "h2",
+                          { staticClass: "ml-1 txt-ss txt-bold label" },
+                          [
+                            _vm._v("\n            デリバリー"),
+                            _c("i", {
+                              staticClass: "bx bx-x delivery__false ml-1"
+                            })
+                          ]
+                        )
+                      : _vm._e()
+                  ]
+                ),
                 _vm._v(" "),
                 _c(
                   "div",
-                  { staticClass: "home-list-infomation__taglist flex" },
+                  {
+                    staticClass: "home-list-infomation__taglist flex flx-wrap"
+                  },
                   _vm._l(item.genre, function(gen) {
                     return _c(
                       "h2",
@@ -51522,62 +54038,7 @@ var render = function() {
     )
   ])
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "home-box__sex" }, [
-      _c("div", { staticClass: "home-box__item" }, [
-        _c("input", { attrs: { type: "radio" } }),
-        _vm._v(" "),
-        _c("h2", [_vm._v("指定なし")])
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "home-box__item" }, [
-        _c("input", { attrs: { type: "radio" } }),
-        _vm._v(" "),
-        _c("h2", [_vm._v("女性")])
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "home-box__item" }, [
-        _c("input", { attrs: { type: "radio" } }),
-        _vm._v(" "),
-        _c("h2", [_vm._v("男性")])
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "home-box__item" }, [
-        _c("input", { attrs: { type: "radio" } }),
-        _vm._v(" "),
-        _c("h2", [_vm._v("男性")])
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "home-box__item" }, [
-        _c("input", { attrs: { type: "radio" } }),
-        _vm._v(" "),
-        _c("h2", [_vm._v("男性")])
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "wrap" }, [
-      _c("input", {
-        staticClass: "home-money__input",
-        attrs: { type: "text", placeholder: "から" }
-      }),
-      _vm._v(" "),
-      _c("span", [_vm._v("~")]),
-      _vm._v(" "),
-      _c("input", {
-        staticClass: "home-money__input",
-        attrs: { type: "text", placeholder: "まで" }
-      })
-    ])
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
@@ -51826,16 +54287,21 @@ function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, a
             switch (_context4.prev = _context4.next) {
               case 0:
                 // alert("check");
-                axios.post("reset_password", {
-                  current_password: this.current_password,
-                  new_password: this.new_password,
-                  email: this.info.email,
-                  name: this.info.name
-                }).then(function (response) {
-                  _this3.message.push(response.data.message);
-                  _this3.clear();
-                  console.log(response.data);
-                });
+                if (this.new_repassword == this.new_password) {
+                  axios.post("reset_password", {
+                    current_password: this.current_password,
+                    new_password: this.new_password,
+                    email: this.info.email,
+                    name: this.info.name
+                  }).then(function (response) {
+                    _this3.message.push(response.data.message);
+                    _this3.clear();
+                    console.log(response.data);
+                  });
+                } else {
+                  this.message.push("パスワード再入力問題があります！");
+                  this.clear();
+                }
 
               case 1:
               case "end":
@@ -52048,7 +54514,7 @@ var render = function() {
               }
             }
           },
-          [_vm._v("\n        リセット\n      ")]
+          [_vm._v("\n        登録\n      ")]
         )
       ])
     ])
@@ -52123,6 +54589,21 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, arguments); return new Promise(function (resolve, reject) { function step(key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { return Promise.resolve(value).then(function (value) { step("next", value); }, function (err) { step("throw", err); }); } } return step("next"); }); }; }
 
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -52414,118 +54895,148 @@ var render = function() {
       )
     ]),
     _vm._v(" "),
-    _c("div", { staticClass: "register" }, [
+    _c("div", { staticClass: "register w-100" }, [
       _c("h1", { staticClass: "title txt-center mbt-1" }, [_vm._v("社員登録")]),
       _vm._v(" "),
-      _c("input", {
-        directives: [
-          {
-            name: "model",
-            rawName: "v-model",
-            value: _vm.name,
-            expression: "name"
-          }
-        ],
-        staticClass: "input txt-center w-100",
-        attrs: { type: "text", placeholder: "名前" },
-        domProps: { value: _vm.name },
-        on: {
-          input: function($event) {
-            if ($event.target.composing) {
-              return
+      _c("div", { staticClass: "info-input flex al-ct mt-1" }, [
+        _c("h2", { staticClass: "info-title mid-title mr-1" }, [
+          _vm._v("名前")
+        ]),
+        _vm._v(" "),
+        _c("input", {
+          directives: [
+            {
+              name: "model",
+              rawName: "v-model",
+              value: _vm.name,
+              expression: "name"
             }
-            _vm.name = $event.target.value
+          ],
+          staticClass: "input txt-center w-100",
+          attrs: { type: "text", placeholder: "名前" },
+          domProps: { value: _vm.name },
+          on: {
+            input: function($event) {
+              if ($event.target.composing) {
+                return
+              }
+              _vm.name = $event.target.value
+            }
           }
-        }
-      }),
+        })
+      ]),
       _vm._v(" "),
-      _c("input", {
-        directives: [
-          {
-            name: "model",
-            rawName: "v-model",
-            value: _vm.email,
-            expression: "email"
-          }
-        ],
-        staticClass: "input txt-center w-100",
-        attrs: { type: "email", placeholder: "メール" },
-        domProps: { value: _vm.email },
-        on: {
-          input: function($event) {
-            if ($event.target.composing) {
-              return
+      _c("div", { staticClass: "info-input flex al-ct mt-1" }, [
+        _c("h2", { staticClass: "info-title mid-title mr-1" }, [
+          _vm._v("メール")
+        ]),
+        _vm._v(" "),
+        _c("input", {
+          directives: [
+            {
+              name: "model",
+              rawName: "v-model",
+              value: _vm.email,
+              expression: "email"
             }
-            _vm.email = $event.target.value
+          ],
+          staticClass: "input txt-center w-100",
+          attrs: { type: "email", placeholder: "メール" },
+          domProps: { value: _vm.email },
+          on: {
+            input: function($event) {
+              if ($event.target.composing) {
+                return
+              }
+              _vm.email = $event.target.value
+            }
           }
-        }
-      }),
+        })
+      ]),
       _vm._v(" "),
-      _c("input", {
-        directives: [
-          {
-            name: "model",
-            rawName: "v-model",
-            value: _vm.number,
-            expression: "number"
-          }
-        ],
-        staticClass: "input txt-center w-100",
-        attrs: { type: "text", placeholder: "会員番号" },
-        domProps: { value: _vm.number },
-        on: {
-          input: function($event) {
-            if ($event.target.composing) {
-              return
+      _c("div", { staticClass: "info-input flex al-ct mt-1" }, [
+        _c("h2", { staticClass: "info-title mid-title mr-1" }, [
+          _vm._v("社員番号")
+        ]),
+        _vm._v(" "),
+        _c("input", {
+          directives: [
+            {
+              name: "model",
+              rawName: "v-model",
+              value: _vm.number,
+              expression: "number"
             }
-            _vm.number = $event.target.value
+          ],
+          staticClass: "input txt-center w-100",
+          attrs: { type: "text", placeholder: "社員番号" },
+          domProps: { value: _vm.number },
+          on: {
+            input: function($event) {
+              if ($event.target.composing) {
+                return
+              }
+              _vm.number = $event.target.value
+            }
           }
-        }
-      }),
+        })
+      ]),
       _vm._v(" "),
-      _c("input", {
-        directives: [
-          {
-            name: "model",
-            rawName: "v-model",
-            value: _vm.password,
-            expression: "password"
-          }
-        ],
-        staticClass: "input txt-center w-100",
-        attrs: { type: "password", placeholder: "パスワード" },
-        domProps: { value: _vm.password },
-        on: {
-          input: function($event) {
-            if ($event.target.composing) {
-              return
+      _c("div", { staticClass: "info-input flex al-ct mt-1" }, [
+        _c("h2", { staticClass: "info-title mid-title mr-1" }, [
+          _vm._v("パスワード")
+        ]),
+        _vm._v(" "),
+        _c("input", {
+          directives: [
+            {
+              name: "model",
+              rawName: "v-model",
+              value: _vm.password,
+              expression: "password"
             }
-            _vm.password = $event.target.value
+          ],
+          staticClass: "input txt-center w-100",
+          attrs: { type: "password", placeholder: "パスワード" },
+          domProps: { value: _vm.password },
+          on: {
+            input: function($event) {
+              if ($event.target.composing) {
+                return
+              }
+              _vm.password = $event.target.value
+            }
           }
-        }
-      }),
+        })
+      ]),
       _vm._v(" "),
-      _c("input", {
-        directives: [
-          {
-            name: "model",
-            rawName: "v-model",
-            value: _vm.repassword,
-            expression: "repassword"
-          }
-        ],
-        staticClass: "input txt-center w-100",
-        attrs: { type: "password", placeholder: "パスワード再入力" },
-        domProps: { value: _vm.repassword },
-        on: {
-          input: function($event) {
-            if ($event.target.composing) {
-              return
+      _c("div", { staticClass: "info-input flex al-ct mt-1" }, [
+        _c("h2", { staticClass: "info-title mid-title mr-1" }, [
+          _vm._v("パスワード再入力")
+        ]),
+        _vm._v(" "),
+        _c("input", {
+          directives: [
+            {
+              name: "model",
+              rawName: "v-model",
+              value: _vm.repassword,
+              expression: "repassword"
             }
-            _vm.repassword = $event.target.value
+          ],
+          staticClass: "input txt-center w-100",
+          attrs: { type: "password", placeholder: "パスワード再入力" },
+          domProps: { value: _vm.repassword },
+          on: {
+            input: function($event) {
+              if ($event.target.composing) {
+                return
+              }
+              _vm.repassword = $event.target.value
+            }
           }
-        }
-      }),
+        })
+      ]),
       _vm._v(" "),
       _c("div", { staticClass: "wrap flex jc-sb" }, [
         _c(
@@ -52591,6 +55102,594 @@ if (false) {
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
+
+/***/ }),
+/* 67 */,
+/* 68 */,
+/* 69 */,
+/* 70 */,
+/* 71 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(1)
+/* script */
+var __vue_script__ = __webpack_require__(72)
+/* template */
+var __vue_template__ = __webpack_require__(73)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources/assets/js/components/Admin/User.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-17ed66a2", Component.options)
+  } else {
+    hotAPI.reload("data-v-17ed66a2", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 72 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_babel_runtime_regenerator__ = __webpack_require__(2);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_babel_runtime_regenerator___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_babel_runtime_regenerator__);
+
+
+function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, arguments); return new Promise(function (resolve, reject) { function step(key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { return Promise.resolve(value).then(function (value) { step("next", value); }, function (err) { step("throw", err); }); } } return step("next"); }); }; }
+
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  data: function data() {
+    return {
+      users: [],
+      user: "",
+      message: [],
+      show_user: false,
+      new_password: "",
+      new_repassword: ""
+    };
+  },
+
+  methods: {
+    popMess: function () {
+      var _ref = _asyncToGenerator( /*#__PURE__*/__WEBPACK_IMPORTED_MODULE_0_babel_runtime_regenerator___default.a.mark(function _callee() {
+        return __WEBPACK_IMPORTED_MODULE_0_babel_runtime_regenerator___default.a.wrap(function _callee$(_context) {
+          while (1) {
+            switch (_context.prev = _context.next) {
+              case 0:
+                this.message.pop();
+
+              case 1:
+              case "end":
+                return _context.stop();
+            }
+          }
+        }, _callee, this);
+      }));
+
+      function popMess() {
+        return _ref.apply(this, arguments);
+      }
+
+      return popMess;
+    }(),
+    clear: function () {
+      var _ref2 = _asyncToGenerator( /*#__PURE__*/__WEBPACK_IMPORTED_MODULE_0_babel_runtime_regenerator___default.a.mark(function _callee2() {
+        var _this = this;
+
+        return __WEBPACK_IMPORTED_MODULE_0_babel_runtime_regenerator___default.a.wrap(function _callee2$(_context2) {
+          while (1) {
+            switch (_context2.prev = _context2.next) {
+              case 0:
+                setTimeout(function () {
+                  return _this.popMess();
+                }, 3000);
+
+              case 1:
+              case "end":
+                return _context2.stop();
+            }
+          }
+        }, _callee2, this);
+      }));
+
+      function clear() {
+        return _ref2.apply(this, arguments);
+      }
+
+      return clear;
+    }(),
+    getAllUser: function () {
+      var _ref3 = _asyncToGenerator( /*#__PURE__*/__WEBPACK_IMPORTED_MODULE_0_babel_runtime_regenerator___default.a.mark(function _callee3() {
+        var _this2 = this;
+
+        return __WEBPACK_IMPORTED_MODULE_0_babel_runtime_regenerator___default.a.wrap(function _callee3$(_context3) {
+          while (1) {
+            switch (_context3.prev = _context3.next) {
+              case 0:
+                axios.get("get_all_user").then(function (response) {
+                  return _this2.users = response.data;
+                });
+
+              case 1:
+              case "end":
+                return _context3.stop();
+            }
+          }
+        }, _callee3, this);
+      }));
+
+      function getAllUser() {
+        return _ref3.apply(this, arguments);
+      }
+
+      return getAllUser;
+    }(),
+    show: function () {
+      var _ref4 = _asyncToGenerator( /*#__PURE__*/__WEBPACK_IMPORTED_MODULE_0_babel_runtime_regenerator___default.a.mark(function _callee4(index) {
+        return __WEBPACK_IMPORTED_MODULE_0_babel_runtime_regenerator___default.a.wrap(function _callee4$(_context4) {
+          while (1) {
+            switch (_context4.prev = _context4.next) {
+              case 0:
+                this.user = this.users[index];
+                this.show_user = true;
+
+              case 2:
+              case "end":
+                return _context4.stop();
+            }
+          }
+        }, _callee4, this);
+      }));
+
+      function show(_x) {
+        return _ref4.apply(this, arguments);
+      }
+
+      return show;
+    }(),
+    hidden: function () {
+      var _ref5 = _asyncToGenerator( /*#__PURE__*/__WEBPACK_IMPORTED_MODULE_0_babel_runtime_regenerator___default.a.mark(function _callee5() {
+        return __WEBPACK_IMPORTED_MODULE_0_babel_runtime_regenerator___default.a.wrap(function _callee5$(_context5) {
+          while (1) {
+            switch (_context5.prev = _context5.next) {
+              case 0:
+                this.show_user = false;
+
+              case 1:
+              case "end":
+                return _context5.stop();
+            }
+          }
+        }, _callee5, this);
+      }));
+
+      function hidden() {
+        return _ref5.apply(this, arguments);
+      }
+
+      return hidden;
+    }(),
+    reset: function () {
+      var _ref6 = _asyncToGenerator( /*#__PURE__*/__WEBPACK_IMPORTED_MODULE_0_babel_runtime_regenerator___default.a.mark(function _callee6() {
+        var _this3 = this;
+
+        return __WEBPACK_IMPORTED_MODULE_0_babel_runtime_regenerator___default.a.wrap(function _callee6$(_context6) {
+          while (1) {
+            switch (_context6.prev = _context6.next) {
+              case 0:
+                axios.post("reset_user", {
+                  id: this.user.id,
+                  new_password: this.new_password,
+                  name: this.user.name,
+                  email: this.user.email
+                }).then(function (response) {
+                  _this3.message.push(response.data.message);
+                  _this3.clear();
+                  _this3.hidden();
+                });
+
+              case 1:
+              case "end":
+                return _context6.stop();
+            }
+          }
+        }, _callee6, this);
+      }));
+
+      function reset() {
+        return _ref6.apply(this, arguments);
+      }
+
+      return reset;
+    }()
+  },
+  mounted: function mounted() {},
+  created: function created() {
+    this.getAllUser();
+  }
+});
+
+/***/ }),
+/* 73 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", [
+    _c("div", { staticClass: "message txt-center mt-1 mbt-1 flex jc-c" }, [
+      _c(
+        "div",
+        { staticClass: "wrap flex flx-d-c" },
+        _vm._l(_vm.message, function(mess) {
+          return _c("div", { key: mess.id, staticClass: "mt-1" }, [
+            _c(
+              "h3",
+              _vm._b(
+                { staticClass: "message-notice message__content" },
+                "h3",
+                { message_error: mess.type == 1 },
+                false
+              ),
+              [_vm._v("\n          " + _vm._s(mess) + "\n        ")]
+            )
+          ])
+        }),
+        0
+      )
+    ]),
+    _vm._v(" "),
+    _vm.show_user == true
+      ? _c("div", { staticClass: "show mbt-2" }, [
+          _c(
+            "div",
+            {
+              staticClass: "show-close",
+              on: {
+                click: function($event) {
+                  $event.preventDefault()
+                  return _vm.hidden()
+                }
+              }
+            },
+            [_c("box-icon", { attrs: { name: "x-circle", size: "md" } })],
+            1
+          ),
+          _vm._v(" "),
+          _c("div", { staticClass: "show-info" }, [
+            _c("div", { staticClass: "wrap flex jc-sb" }, [
+              _c("div", { staticClass: "show-info flex-1" }, [
+                _c("h2", { staticClass: "show-title txt-s txt-bold" }, [
+                  _vm._v("ニックネーム")
+                ]),
+                _vm._v(" "),
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.user.name,
+                      expression: "user.name"
+                    }
+                  ],
+                  staticClass: "input info-input__input w-50",
+                  attrs: { type: "text", placeholder: "新パスワード" },
+                  domProps: { value: _vm.user.name },
+                  on: {
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.$set(_vm.user, "name", $event.target.value)
+                    }
+                  }
+                })
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "show-info flex-1" }, [
+                _c("h2", { staticClass: "show-title txt-s txt-bold" }, [
+                  _vm._v("社員番号")
+                ]),
+                _vm._v(" "),
+                _c("h3", { staticClass: "show-content w-inherit txt-center" }, [
+                  _vm._v(
+                    "\n            " +
+                      _vm._s(_vm.user.username) +
+                      "\n          "
+                  )
+                ])
+              ])
+            ]),
+            _vm._v(" "),
+            _c("h2", { staticClass: "show-title txt-s txt-bold" }, [
+              _vm._v("メール")
+            ]),
+            _vm._v(" "),
+            _c("input", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.user.email,
+                  expression: "user.email"
+                }
+              ],
+              staticClass: "input info-input__input w-50",
+              attrs: { type: "text", placeholder: "新パスワード" },
+              domProps: { value: _vm.user.email },
+              on: {
+                input: function($event) {
+                  if ($event.target.composing) {
+                    return
+                  }
+                  _vm.$set(_vm.user, "email", $event.target.value)
+                }
+              }
+            }),
+            _vm._v(" "),
+            _c("h2", { staticClass: "show-title txt-s txt-bold" }, [
+              _vm._v("新パスワード")
+            ]),
+            _vm._v(" "),
+            _c("input", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.new_password,
+                  expression: "new_password"
+                }
+              ],
+              staticClass: "input info-input__input w-50",
+              attrs: { type: "password", placeholder: "新パスワード" },
+              domProps: { value: _vm.new_password },
+              on: {
+                input: function($event) {
+                  if ($event.target.composing) {
+                    return
+                  }
+                  _vm.new_password = $event.target.value
+                }
+              }
+            }),
+            _vm._v(" "),
+            _c("h2", { staticClass: "show-title txt-s txt-bold" }, [
+              _vm._v("新パスワード再入力")
+            ]),
+            _vm._v(" "),
+            _c("input", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.new_repassword,
+                  expression: "new_repassword"
+                }
+              ],
+              staticClass: "input info-input__input w-50",
+              attrs: { type: "password", placeholder: "新パスワード" },
+              domProps: { value: _vm.new_repassword },
+              on: {
+                input: function($event) {
+                  if ($event.target.composing) {
+                    return
+                  }
+                  _vm.new_repassword = $event.target.value
+                }
+              }
+            }),
+            _vm._v(" "),
+            _c(
+              "div",
+              {
+                staticClass: "btn btn-m btn__black txt-center",
+                on: {
+                  click: function($event) {
+                    $event.preventDefault()
+                    return _vm.reset()
+                  }
+                }
+              },
+              [_vm._v("\n        登録\n      ")]
+            )
+          ])
+        ])
+      : _vm._e(),
+    _vm._v(" "),
+    _c("div", { staticClass: "list" }, [
+      _c("h1", { staticClass: "title" }, [_vm._v("社員情報管理")]),
+      _vm._v(" "),
+      _c(
+        "table",
+        { staticClass: "list-table mt-2" },
+        [
+          _vm._m(0),
+          _vm._v(" "),
+          _vm._l(_vm.users, function(user, index) {
+            return _c("tr", { key: user.id, staticClass: "list-table__item" }, [
+              _c("th", { staticClass: "list-table__index" }, [
+                _vm._v(_vm._s(index))
+              ]),
+              _vm._v(" "),
+              _c("th", { staticClass: "list-table__name" }, [
+                _vm._v(_vm._s(user.name))
+              ]),
+              _vm._v(" "),
+              _c("th", { staticClass: "list-table__number" }, [
+                _vm._v(_vm._s(user.username))
+              ]),
+              _vm._v(" "),
+              user.sex == 1
+                ? _c("th", { staticClass: "list-table__sex" }, [_vm._v("男性")])
+                : _vm._e(),
+              _vm._v(" "),
+              user.sex == 2
+                ? _c("th", { staticClass: "list-table__sex" }, [_vm._v("女性")])
+                : _vm._e(),
+              _vm._v(" "),
+              _c("th", { staticClass: "list-table__action" }, [
+                _c("i", {
+                  staticClass: "bx bx-edit",
+                  on: {
+                    click: function($event) {
+                      $event.preventDefault()
+                      return _vm.show(index)
+                    }
+                  }
+                })
+              ])
+            ])
+          })
+        ],
+        2
+      )
+    ])
+  ])
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("tr", { staticClass: "list-table__top" }, [
+      _c("th", { staticClass: "list-table__index" }, [_vm._v("#")]),
+      _vm._v(" "),
+      _c("th", { staticClass: "list-table__name" }, [_vm._v("名前")]),
+      _vm._v(" "),
+      _c("th", { staticClass: "list-table__number" }, [_vm._v("社員番号")]),
+      _vm._v(" "),
+      _c("th", { staticClass: "list-table__sex" }, [_vm._v("性別")]),
+      _vm._v(" "),
+      _c("th", { staticClass: "list-table__action" }, [_vm._v("行動")])
+    ])
+  }
+]
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-17ed66a2", module.exports)
+  }
+}
 
 /***/ })
 /******/ ]);

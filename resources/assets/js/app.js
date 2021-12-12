@@ -13,6 +13,7 @@ Vue.use(VModal);
 
 import Vue from "vue";
 import StarRating from "vue-star-rating";
+export const bus = new Vue();
 
 // export const bus = new Vue();
 
@@ -32,14 +33,13 @@ Vue.component("list-component", require("./components/List.vue"));
 Vue.component("res-info-component", require("./components/Res/Infomation.vue"));
 //user
 Vue.component("user-component", require("./components/User/User.vue"));
+Vue.component("users-component", require("./components/Admin/User.vue"));
 //image
 Vue.component("image-component", require("./components/Res/Image.vue"));
 //star
 Vue.component("star-rating", StarRating);
 //admin
 Vue.component("admin-component", require("./components/Admin/Admin.vue"));
-export const bus = new Vue();
-
 const app = new Vue({
   el: "#app",
 });

@@ -8,6 +8,7 @@
       />
       <res-info-component v-if="page == 'info'" :info_id="info_id" />
       <user-component v-if="page == 'user'" />
+      <users-component v-if="page == 'users'" />
       <admin-component v-if="page == 'admin'" />
     </div>
   </div>

@@ -161,6 +161,9 @@ w-inherit {
 .txt-s {
     font-size: 0.8rem;
 }
+.txt-ss {
+    font-size: 0.6rem;
+}
 
 //color
 .color-grey {
@@ -250,4 +253,27 @@ w-inherit {
 
 .border {
     border: 1px sold $black;
+}
+//label
+.label{
+    padding: 0.3rem 0.7rem;
+    background-color: $grey_normal;
+    border-radius: 0.3rem;
+}
+//delivery
+.delivery__true {
+    color: white;
+    background-color: #16A009;
+    font-size: 0.9rem;
+    font-weight: bold;
+    padding: 0.2rem;
+    border-radius: 1rem;
+}
+.delivery__false {
+    color: white;
+    background-color: #E40713;
+    font-size: 0.9rem;
+    font-weight: bold;
+    padding: 0.2rem;
+    border-radius: 1rem;
 }

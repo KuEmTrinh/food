@@ -59,7 +59,9 @@ class HomeController extends Controller
         $user_id = Auth::user()->id;
         $user = User::find($user_id);
         if (Hash::check(request()->current_password, $user->password)) {
-            $user->password = Hash::make(request()->new_password);
+            if (request()->new_password != null) {
+                $user->password = Hash::make(request()->new_password);
+            }
             $user->email = request()->email;
             $user->name = request()->name;
             $message = "登録できました！";
@@ -70,6 +72,27 @@ class HomeController extends Controller
         }
         $user->save();
         $user->message = $message;
+        return $user;
+    }
+
+    public function getAllUser()
+    {
+        $users = User::get()->all();
+        return $users;
+    }
+
+    public function resetUser()
+    {
+        $user_id = request()->id;
+        $user = User::find($user_id);
+        $new_password = request()->new_password;
+        if ($new_password != "") {
+            $user->password = Hash::make($new_password);
+        }
+        $user->email = request()->email;
+        $user->name = request()->name;
+        $user->save();
+        $user->message = "登録できました！";
         return $user;
     }
 }

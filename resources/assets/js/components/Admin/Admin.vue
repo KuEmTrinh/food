@@ -12,38 +12,53 @@
         </div>
       </div>
     </div>
-    <div class="register">
+    <div class="register w-100">
       <h1 class="title txt-center mbt-1">社員登録</h1>
-      <input
-        type="text"
-        class="input txt-center w-100"
-        v-model="name"
-        placeholder="名前"
-      />
-      <input
-        type="email"
-        class="input txt-center w-100"
-        v-model="email"
-        placeholder="メール"
-      />
-      <input
-        type="text"
-        class="input txt-center w-100"
-        v-model="number"
-        placeholder="会員番号"
-      />
-      <input
-        type="password"
-        class="input txt-center w-100"
-        v-model="password"
-        placeholder="パスワード"
-      />
-      <input
-        type="password"
-        class="input txt-center w-100"
-        v-model="repassword"
-        placeholder="パスワード再入力"
-      />
+      <div class="info-input flex al-ct mt-1">
+        <h2 class="info-title mid-title mr-1">名前</h2>
+        <input
+          type="text"
+          class="input txt-center w-100"
+          v-model="name"
+          placeholder="名前"
+        />
+      </div>
+      <div class="info-input flex al-ct mt-1">
+        <h2 class="info-title mid-title mr-1">メール</h2>
+        <input
+          type="email"
+          class="input txt-center w-100"
+          v-model="email"
+          placeholder="メール"
+        />
+      </div>
+      <div class="info-input flex al-ct mt-1">
+        <h2 class="info-title mid-title mr-1">社員番号</h2>
+        <input
+          type="text"
+          class="input txt-center w-100"
+          v-model="number"
+          placeholder="社員番号"
+        />
+      </div>
+      <div class="info-input flex al-ct mt-1">
+        <h2 class="info-title mid-title mr-1">パスワード</h2>
+        <input
+          type="password"
+          class="input txt-center w-100"
+          v-model="password"
+          placeholder="パスワード"
+        />
+      </div>
+      <div class="info-input flex al-ct mt-1">
+        <h2 class="info-title mid-title mr-1">パスワード再入力</h2>
+        <input
+          type="password"
+          class="input txt-center w-100"
+          v-model="repassword"
+          placeholder="パスワード再入力"
+        />
+      </div>
       <div class="wrap flex jc-sb">
         <div
           class="btn btn-m btn-nav w-48 txt-center"

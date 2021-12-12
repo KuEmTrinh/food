@@ -23,6 +23,7 @@ class CreateInfomationsTable extends Migration
             $table->integer('open');
             $table->integer('close');
             $table->string('number');
+            $table->json('holiday');
             $table->integer('min_money');
             $table->integer('max_money');
             $table->integer('delivery');

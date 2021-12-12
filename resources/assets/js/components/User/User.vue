@@ -63,7 +63,7 @@
           class="btn btn-m btn__black txt-center"
           　@click.prevent="resetPassword()"
         >
-          リセット
+          登録
         </div>
       </div>
     </div>
@@ -107,18 +107,23 @@ export default {
     },
     async resetPassword() {
       // alert("check");
-      axios
-        .post("reset_password", {
-          current_password: this.current_password,
-          new_password: this.new_password,
-          email: this.info.email,
-          name: this.info.name,
-        })
-        .then((response) => {
-          this.message.push(response.data.message);
-          this.clear();
-          console.log(response.data);
-        });
+      if (this.new_repassword == this.new_password) {
+        axios
+          .post("reset_password", {
+            current_password: this.current_password,
+            new_password: this.new_password,
+            email: this.info.email,
+            name: this.info.name,
+          })
+          .then((response) => {
+            this.message.push(response.data.message);
+            this.clear();
+            console.log(response.data);
+          });
+      } else {
+        this.message.push("パスワード再入力問題があります！");
+        this.clear();
+      }
     },
   },
   mounted() {},

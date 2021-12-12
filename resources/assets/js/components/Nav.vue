@@ -33,6 +33,14 @@
             @click="navigateTo('admin')"
             v-if="role == 2"
           >
+            <a>社員登録</a>
+          </li>
+          <li
+            class="nav-li mt-3"
+            :class="{ nav_active: page === 'users' }"
+            @click="navigateTo('users')"
+            v-if="role == 2"
+          >
             <a>社員管理</a>
           </li>
         </ul>

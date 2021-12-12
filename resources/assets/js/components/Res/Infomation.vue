@@ -60,7 +60,7 @@
         </div>
       </div>
     </div>
-    <div class="info-input flex al-ct mt-1">
+    <div class="info-input flex al-ct mt-1 flx-wrap">
       <h2 class="info-title mid-title mr-1">ジャンル</h2>
       <div class="info-genre flex al-ct">
         <!-- <input type="checkbox" class="mr-1" v-on:click="pushGenre('定食')" /> -->
@@ -95,13 +95,127 @@
           type="checkbox"
           class="mr-1"
           id="kare"
-          value="カレー"
+          value="パン"
+          v-model="genre"
+        />
+
+        <h2 for="kare" class="info-genre__content txt-s txt-bold mr-2">パン</h2>
+      </div>
+      <div class="info-genre flex al-ct">
+        <!-- <input type="checkbox" class="mr-1" v-on:click="pushGenre('カレー')" /> -->
+        <input
+          type="checkbox"
+          class="mr-1"
+          id="kare"
+          value="飲料"
+          v-model="genre"
+        />
+
+        <h2 for="kare" class="info-genre__content txt-s txt-bold mr-2">飲料</h2>
+      </div>
+      <div class="info-genre flex al-ct">
+        <!-- <input type="checkbox" class="mr-1" v-on:click="pushGenre('カレー')" /> -->
+        <input
+          type="checkbox"
+          class="mr-1"
+          id="kare"
+          value="和食"
+          v-model="genre"
+        />
+
+        <h2 for="kare" class="info-genre__content txt-s txt-bold mr-2">和食</h2>
+      </div>
+      <div class="info-genre flex al-ct">
+        <!-- <input type="checkbox" class="mr-1" v-on:click="pushGenre('カレー')" /> -->
+        <input
+          type="checkbox"
+          class="mr-1"
+          id="kare"
+          value="洋食"
+          v-model="genre"
+        />
+
+        <h2 for="kare" class="info-genre__content txt-s txt-bold mr-2">洋食</h2>
+      </div>
+      <div class="info-genre flex al-ct">
+        <!-- <input type="checkbox" class="mr-1" v-on:click="pushGenre('カレー')" /> -->
+        <input
+          type="checkbox"
+          class="mr-1"
+          id="kare"
+          value="中華"
+          v-model="genre"
+        />
+
+        <h2 for="kare" class="info-genre__content txt-s txt-bold mr-2">中華</h2>
+      </div>
+      <div class="info-genre flex al-ct">
+        <!-- <input type="checkbox" class="mr-1" v-on:click="pushGenre('カレー')" /> -->
+        <input
+          type="checkbox"
+          class="mr-1"
+          id="kare"
+          value="スイーツ"
           v-model="genre"
         />
 
         <h2 for="kare" class="info-genre__content txt-s txt-bold mr-2">
-          カレー
+          スイーツ
         </h2>
+      </div>
+      <div class="info-genre flex al-ct">
+        <!-- <input type="checkbox" class="mr-1" v-on:click="pushGenre('カレー')" /> -->
+        <input
+          type="checkbox"
+          class="mr-1"
+          id="kare"
+          value="ファストフード"
+          v-model="genre"
+        />
+
+        <h2 for="kare" class="info-genre__content txt-s txt-bold mr-2">
+          ファストフード
+        </h2>
+      </div>
+    </div>
+    <div class="info-input flex al-ct mt-1">
+      <h2 class="info-title mid-title mr-1">定休日</h2>
+      <div class="info-genre flex al-ct">
+        <!-- <input type="checkbox" class="mr-1" v-on:click="pushGenre('定食')" /> -->
+        <input type="checkbox" class="mr-1" value="月" v-model="holiday" />
+        <h2 for="teisyoku" class="info-genre__content txt-s txt-bold mr-2">
+          月
+        </h2>
+      </div>
+      <div class="info-genre flex al-ct">
+        <!-- <input type="checkbox" class="mr-1" v-on:click="pushGenre('麺類')" /> -->
+        <input type="checkbox" class="mr-1" value="火" v-model="holiday" />
+        <h2 for="menrui" class="info-genre__content txt-s txt-bold mr-2">火</h2>
+      </div>
+      <div class="info-genre flex al-ct">
+        <!-- <input type="checkbox" class="mr-1" v-on:click="pushGenre('カレー')" /> -->
+        <input type="checkbox" class="mr-1" value="水" v-model="holiday" />
+        <h2 for="kare" class="info-genre__content txt-s txt-bold mr-2">水</h2>
+      </div>
+      <div class="info-genre flex al-ct">
+        <!-- <input type="checkbox" class="mr-1" v-on:click="pushGenre('カレー')" /> -->
+        <input type="checkbox" class="mr-1" value="木" v-model="holiday" />
+        <h2 for="kare" class="info-genre__content txt-s txt-bold mr-2">木</h2>
+      </div>
+      <div class="info-genre flex al-ct">
+        <!-- <input type="checkbox" class="mr-1" v-on:click="pushGenre('カレー')" /> -->
+        <input type="checkbox" class="mr-1" value="金" v-model="holiday" />
+        <h2 for="kare" class="info-genre__content txt-s txt-bold mr-2">金</h2>
+      </div>
+      <div class="info-genre flex al-ct">
+        <!-- <input type="checkbox" class="mr-1" v-on:click="pushGenre('カレー')" /> -->
+        <input type="checkbox" class="mr-1" value="土" v-model="holiday" />
+        <h2 for="kare" class="info-genre__content txt-s txt-bold mr-2">土</h2>
+      </div>
+      <div class="info-genre flex al-ct">
+        <!-- <input type="checkbox" class="mr-1" v-on:click="pushGenre('カレー')" /> -->
+        <input type="checkbox" class="mr-1" value="日" v-model="holiday" />
+        <h2 for="kare" class="info-genre__content txt-s txt-bold mr-2">日</h2>
       </div>
     </div>
     <div class="info-input flex al-ct mt-1">
@@ -192,12 +306,14 @@ export default {
       close: "",
       min_money: "",
       max_money: "",
+      holiday: [],
       url: "",
       // pic: "",
       // resize_img: "",
       // image: "",
       // img_name: "",
       message: [],
+      check: true,
     };
   },
   methods: {
@@ -216,111 +332,63 @@ export default {
       });
     },
     async saveInfo() {
-      axios
-        .post("create_info", {
-          name: this.name,
-          delivery: this.delivery,
-          address: this.address,
-          number: this.number,
-          genre: this.genre,
-          open: this.open,
-          close: this.close,
-          min_money: this.min_money,
-          max_money: this.max_money,
-          url: this.url,
-        })
-        .then((response) => {
-          this.message.push(response.data.message);
-          this.clear();
-        });
+      this.validation();
+      if (this.check == true) {
+        axios
+          .post("create_info", {
+            name: this.name,
+            delivery: this.delivery,
+            address: this.address,
+            number: this.number,
+            genre: this.genre,
+            holiday: this.holiday,
+            open: this.open,
+            close: this.close,
+            min_money: this.min_money,
+            max_money: this.max_money,
+            url: this.url,
+          })
+          .then((response) => {
+            this.message.push(response.data.message);
+            this.clear();
+          });
+      }
     },
-    // async imageLoad(e) {
-    //   this.image = e.target.files[0];
-    //   const file = e.target.files[0];
-    //   // this.pic = URL.createObjectURL(file);
-
-    //   const dataURItoBlob = (dataURI) => {
-    //     const bytes =
-    //       dataURI.split(",")[0].indexOf("base64") >= 0
-    //         ? atob(dataURI.split(",")[1])
-    //         : unescape(dataURI.split(",")[1]);
-    //     const mime = dataURI.split(",")[0].split(":")[1].split(";")[0];
-    //     const max = bytes.length;
-    //     const ia = new Uint8Array(max);
-    //     for (let i = 0; i < max; i += 1) ia[i] = bytes.charCodeAt(i);
-    //     return new Blob([ia], { type: mime });
-    //   };
-
-    //   const resizeImage = ({ file, maxSize }) => {
-    //     const reader = new FileReader();
-    //     const image = new Image();
-    //     const canvas = document.createElement("canvas");
-
-    //     const resize = () => {
-    //       let { width, height } = image;
-
-    //       if (width > height) {
-    //         if (width > maxSize) {
-    //           height *= maxSize / width;
-    //           width = maxSize;
-    //         }
-    //       } else if (height > maxSize) {
-    //         width *= maxSize / height;
-    //         height = maxSize;
-    //       }
-
-    //       canvas.width = width;
-    //       canvas.height = height;
-    //       canvas.getContext("2d").drawImage(image, 0, 0, width, height);
-    //       const dataUrl = canvas.toDataURL("image/jpeg");
-
-    //       return dataURItoBlob(dataUrl);
-    //     };
-
-    //     return new Promise((ok, no) => {
-    //       if (!file.type.match(/image.*/)) {
-    //         no(new Error("Not an image"));
-    //         return;
-    //       }
-
-    //       reader.onload = (readerEvent) => {
-    //         image.onload = () => ok(resize());
-    //         image.src = readerEvent.target.result;
-    //       };
-    //       reader.readAsDataURL(file);
-    //     });
-    //   };
-
-    //   resizeImage({ file: file, maxSize: 900 })
-    //     .then((resizedImage) => {
-    //       console.log(resizedImage);
-    //       this.pic = URL.createObjectURL(resizedImage);
-    //       this.resize_img = resizedImage;
-    //     })
-    //     .catch((err) => {
-    //       console.error(err);
-    //     });
-    // },
-    // saveImage() {
-    //   const formData = new FormData();
-    //   formData.append("image", this.resize_img);
-    //   formData.append("info_id", this.info_id);
-    //   formData.append("img_name", this.img_name);
-    //   axios.post("save_image", formData).then((response) => {
-    //     this.getInfo();
-    //   });
-
-    //   this.image = "";
-    //   this.resize_img = "";
-    //   this.pic = "";
-    //   this.img_name = "";
-
-    //   location.reload();
-    // },
+    async validation() {
+      this.check = true;
+      if (this.name == "") {
+        this.message.push("店舗名を入力してください！");
+        this.clear();
+        this.check = false;
+      }
+      if (this.address == "") {
+        this.message.push("住所を入力してください！");
+        this.clear();
+        this.check = false;
+      }
+      if (this.number == "") {
+        this.message.push("電話番号を入力してください！");
+        this.clear();
+        this.check = false;
+      }
+      if (this.open == "") {
+        this.message.push("開始営業時間を入力してください！");
+        this.clear();
+        this.check = false;
+      }
+      if (this.close == "") {
+        this.message.push("終了営業時間を入力してください！");
+        this.clear();
+        this.check = false;
+      }
+      if (this.url == "") {
+        this.message.push("URLを入力してください！");
+        this.clear();
+        this.check = false;
+      }
+    },
   },
   mounted() {},
-  created() {
-    // this.getInfo();
-  },
+  created() {},
 };
 </script>

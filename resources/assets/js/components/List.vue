@@ -78,7 +78,7 @@
               </div>
             </div>
           </div>
-          <div class="info-input flex al-ct mt-1">
+          <div class="info-input flex al-ct mt-1 flx-wrap">
             <h2 class="info-title mid-title mr-1">ジャンル</h2>
             <div class="info-genre flex al-ct">
               <!-- <input type="checkbox" class="mr-1" v-on:click="pushGenre('定食')" /> -->
@@ -116,12 +116,186 @@
                 type="checkbox"
                 class="mr-1"
                 id="kare"
-                value="カレー"
+                value="パン"
                 v-model="info.genre"
               />
 
               <h2 for="kare" class="info-genre__content txt-s txt-bold mr-2">
-                カレー
+                パン
+              </h2>
+            </div>
+            <div class="info-genre flex al-ct">
+              <!-- <input type="checkbox" class="mr-1" v-on:click="pushGenre('カレー')" /> -->
+              <input
+                type="checkbox"
+                class="mr-1"
+                id="kare"
+                value="飲料"
+                v-model="info.genre"
+              />
+
+              <h2 for="kare" class="info-genre__content txt-s txt-bold mr-2">
+                飲料
+              </h2>
+            </div>
+            <div class="info-genre flex al-ct">
+              <!-- <input type="checkbox" class="mr-1" v-on:click="pushGenre('カレー')" /> -->
+              <input
+                type="checkbox"
+                class="mr-1"
+                id="kare"
+                value="和食"
+                v-model="info.genre"
+              />
+
+              <h2 for="kare" class="info-genre__content txt-s txt-bold mr-2">
+                和食
+              </h2>
+            </div>
+            <div class="info-genre flex al-ct">
+              <!-- <input type="checkbox" class="mr-1" v-on:click="pushGenre('カレー')" /> -->
+              <input
+                type="checkbox"
+                class="mr-1"
+                id="kare"
+                value="洋食"
+                v-model="info.genre"
+              />
+
+              <h2 for="kare" class="info-genre__content txt-s txt-bold mr-2">
+                洋食
+              </h2>
+            </div>
+            <div class="info-genre flex al-ct">
+              <!-- <input type="checkbox" class="mr-1" v-on:click="pushGenre('カレー')" /> -->
+              <input
+                type="checkbox"
+                class="mr-1"
+                id="kare"
+                value="中華"
+                v-model="info.genre"
+              />
+
+              <h2 for="kare" class="info-genre__content txt-s txt-bold mr-2">
+                中華
+              </h2>
+            </div>
+            <div class="info-genre flex al-ct">
+              <!-- <input type="checkbox" class="mr-1" v-on:click="pushGenre('カレー')" /> -->
+              <input
+                type="checkbox"
+                class="mr-1"
+                id="kare"
+                value="スイーツ"
+                v-model="info.genre"
+              />
+
+              <h2 for="kare" class="info-genre__content txt-s txt-bold mr-2">
+                スイーツ
+              </h2>
+            </div>
+            <div class="info-genre flex al-ct">
+              <!-- <input type="checkbox" class="mr-1" v-on:click="pushGenre('カレー')" /> -->
+              <input
+                type="checkbox"
+                class="mr-1"
+                id="kare"
+                value="ファストフード"
+                v-model="info.genre"
+              />
+
+              <h2 for="kare" class="info-genre__content txt-s txt-bold mr-2">
+                ファストフード
+              </h2>
+            </div>
+          </div>
+          <div class="info-input flex al-ct mt-1">
+            <h2 class="info-title mid-title mr-1">定休日</h2>
+            <div class="info-genre flex al-ct">
+              <!-- <input type="checkbox" class="mr-1" v-on:click="pushGenre('定食')" /> -->
+              <input
+                type="checkbox"
+                class="mr-1"
+                value="月"
+                v-model="info.holiday"
+              />
+              <h2
+                for="teisyoku"
+                class="info-genre__content txt-s txt-bold mr-2"
+              >
+                月
+              </h2>
+            </div>
+            <div class="info-genre flex al-ct">
+              <!-- <input type="checkbox" class="mr-1" v-on:click="pushGenre('麺類')" /> -->
+              <input
+                type="checkbox"
+                class="mr-1"
+                value="火"
+                v-model="info.holiday"
+              />
+              <h2 for="menrui" class="info-genre__content txt-s txt-bold mr-2">
+                火
+              </h2>
+            </div>
+            <div class="info-genre flex al-ct">
+              <!-- <input type="checkbox" class="mr-1" v-on:click="pushGenre('カレー')" /> -->
+              <input
+                type="checkbox"
+                class="mr-1"
+                value="水"
+                v-model="info.holiday"
+              />
+              <h2 for="kare" class="info-genre__content txt-s txt-bold mr-2">
+                水
+              </h2>
+            </div>
+            <div class="info-genre flex al-ct">
+              <!-- <input type="checkbox" class="mr-1" v-on:click="pushGenre('カレー')" /> -->
+              <input
+                type="checkbox"
+                class="mr-1"
+                value="木"
+                v-model="info.holiday"
+              />
+              <h2 for="kare" class="info-genre__content txt-s txt-bold mr-2">
+                木
+              </h2>
+            </div>
+            <div class="info-genre flex al-ct">
+              <!-- <input type="checkbox" class="mr-1" v-on:click="pushGenre('カレー')" /> -->
+              <input
+                type="checkbox"
+                class="mr-1"
+                value="金"
+                v-model="info.holiday"
+              />
+              <h2 for="kare" class="info-genre__content txt-s txt-bold mr-2">
+                金
+              </h2>
+            </div>
+            <div class="info-genre flex al-ct">
+              <!-- <input type="checkbox" class="mr-1" v-on:click="pushGenre('カレー')" /> -->
+              <input
+                type="checkbox"
+                class="mr-1"
+                value="土"
+                v-model="info.holiday"
+              />
+              <h2 for="kare" class="info-genre__content txt-s txt-bold mr-2">
+                土
+              </h2>
+            </div>
+            <div class="info-genre flex al-ct">
+              <!-- <input type="checkbox" class="mr-1" v-on:click="pushGenre('カレー')" /> -->
+              <input
+                type="checkbox"
+                class="mr-1"
+                value="日"
+                v-model="info.holiday"
+              />
+              <h2 for="kare" class="info-genre__content txt-s txt-bold mr-2">
+                日
               </h2>
             </div>
           </div>
@@ -216,11 +390,14 @@
     </div>
     <div class="toggle" v-if="toggle == true">
       <div class="wrap flex jc-sb center w-80">
-        <div class="btn btn-m btn-nav flx-1" @click.prevent="hideToggle()">
+        <div
+          class="btn btn-m btn__black txt-bold flx-1"
+          @click.prevent="hideToggle()"
+        >
           キャンセル
         </div>
         <div
-          class="btn btn-m btn-nav flx-1"
+          class="btn btn-m btn__black txt-bold flx-1"
           @click.prevent="deleteThisUser(delete_id)"
         >
           削除
@@ -251,9 +428,18 @@
 
       <div class="show-info">
         <h2 class="show-title txt-s txt-bold">ジャンル</h2>
-        <div class="home-list-infomation__taglist flex">
+        <div class="home-list-infomation__taglist flex flx-wrap">
           <h2 class="tag-s mr-1" v-for="gen in info.genre" :key="gen.id">
             {{ gen }}
+          </h2>
+        </div>
+      </div>
+
+      <div class="show-info">
+        <h2 class="show-title txt-s txt-bold">定休日</h2>
+        <div class="home-list-infomation__taglist flex flx-wrap">
+          <h2 class="tag-s mr-1" v-for="day in info.holiday" :key="day.id">
+            {{ day }}
           </h2>
         </div>
       </div>
@@ -367,51 +553,119 @@
           <h2>なし</h2>
         </div>
       </div>
-      <h2 class="mid-title mt-1">評価順</h2>
+      <h2 class="mid-title mt-1">ジャンル</h2>
       <div class="home-box__sex">
         <div class="home-box__item">
-          <input type="radio" />
-          <h2>指定なし</h2>
+          <input
+            type="checkbox"
+            value="定食"
+            v-model="filter_genre"
+            @change="filterGenre()"
+          />
+          <h2>定食</h2>
         </div>
         <div class="home-box__item">
-          <input type="radio" />
-          <h2>女性</h2>
+          <input
+            type="checkbox"
+            value="麺類"
+            v-model="filter_genre"
+            @change="filterGenre()"
+          />
+          <h2>麺類</h2>
         </div>
         <div class="home-box__item">
-          <input type="radio" />
-          <h2>男性</h2>
+          <input
+            type="checkbox"
+            value="パン"
+            v-model="filter_genre"
+            @change="filterGenre()"
+          />
+          <h2>パン</h2>
         </div>
         <div class="home-box__item">
-          <input type="radio" />
-          <h2>男性</h2>
+          <input
+            type="checkbox"
+            value="飲料"
+            v-model="filter_genre"
+            @change="filterGenre()"
+          />
+          <h2>飲料</h2>
         </div>
         <div class="home-box__item">
-          <input type="radio" />
-          <h2>男性</h2>
+          <input
+            type="checkbox"
+            value="和食"
+            v-model="filter_genre"
+            @change="filterGenre()"
+          />
+          <h2>和食</h2>
+        </div>
+        <div class="home-box__item">
+          <input
+            type="checkbox"
+            value="洋食"
+            v-model="filter_genre"
+            @change="filterGenre()"
+          />
+          <h2>洋食</h2>
+        </div>
+        <div class="home-box__item">
+          <input
+            type="checkbox"
+            value="中華"
+            v-model="filter_genre"
+            @change="filterGenre()"
+          />
+          <h2>中華</h2>
+        </div>
+        <div class="home-box__item">
+          <input
+            type="checkbox"
+            value="スイーツ"
+            v-model="filter_genre"
+            @change="filterGenre()"
+          />
+          <h2>スイーツ</h2>
+        </div>
+        <div class="home-box__item">
+          <input
+            type="checkbox"
+            value="ファストフード"
+            v-model="filter_genre"
+            @change="filterGenre()"
+          />
+          <h2>ファストフード</h2>
         </div>
       </div>
       <h2 class="mid-title mt-1">目安金額</h2>
       <div class="home-box__money">
         <div class="mt-06 flex jc-sb al-ct">
           <div class="wrap">
-            <input type="text" class="home-money__input" placeholder="から" />
+            <input
+              type="text"
+              class="home-money__input"
+              placeholder="から"
+              v-model="filter_min"
+              @change="filterMoney()"
+            />
             <span>~</span>
-            <input type="text" class="home-money__input" placeholder="まで" />
-          </div>
-          <div class="wrap flex al-ct">
-            <h2 class="txt-s txt-bold">検索</h2>
-            <box-icon type="solid" name="right-arrow-alt"></box-icon>
-            <box-icon
-              name="search-alt-2"
-              animation="tada"
-              class="home-box__search"
-              size="lg"
-            ></box-icon>
+            <input
+              type="text"
+              class="home-money__input"
+              placeholder="まで"
+              v-model="filter_max"
+              @change="filterMoney()"
+            />
           </div>
         </div>
       </div>
     </div>
-    <input type="text" class="home-box__input mt-2" placeholder="検索..." />
+    <input
+      type="text"
+      class="home-box__input mt-2"
+      v-model="searchQuery"
+      placeholder="店舗名..."
+    />
     <h1 class="title mt-2">東京の店</h1>
     <div class="home-list__categories flex mt-2 jc-sb">
       <div class="home-list__category w-32">
@@ -445,7 +699,7 @@
     <div class="home-list-infomations">
       <div
         class="home-list-infomation flex mt-1 jc-sb"
-        v-for="(item, index) in list"
+        v-for="(item, index) in resultQuery"
         :key="item.id"
       >
         <div class="home-list-infomation__remove" v-if="role == 2">
@@ -461,10 +715,16 @@
           />
         </div>
         <div class="home-list-infomation__info flex-3 ml-1 flex flx-d-c jc-sb">
-          <div class="home-list-infomation__name">
+          <div class="home-list-infomation__name flex al-ct">
             <h2 class="mid-title">{{ item.name }}</h2>
+            <h2 class="ml-1 txt-ss txt-bold label" v-if="item.delivery == 1">
+              デリバリー<i class="bx bx-check delivery__true ml-1"></i>
+            </h2>
+            <h2 class="ml-1 txt-ss txt-bold label" v-if="item.delivery == 2">
+              デリバリー<i class="bx bx-x delivery__false ml-1"></i>
+            </h2>
           </div>
-          <div class="home-list-infomation__taglist flex">
+          <div class="home-list-infomation__taglist flex flx-wrap">
             <h2 class="tag-s mr-1" v-for="gen in item.genre" :key="gen.id">
               {{ gen }}
             </h2>
@@ -545,7 +805,11 @@
 export default {
   data() {
     return {
+      searchQuery: null,
       filter_delivery: [],
+      filter_genre: [],
+      filter_max: "",
+      filter_min: "",
       user_id: "",
       rating: "",
       message: [],
@@ -567,6 +831,12 @@ export default {
       resize_img: "",
       image: "",
       img_name: "",
+      new_array: [],
+      curr_list: [],
+      genre_array: [],
+      money_array: [],
+      check_this: false,
+      check: false,
     };
   },
   methods: {
@@ -590,12 +860,15 @@ export default {
       axios.get("get_all").then((response) => {
         response.data.forEach((el) => {
           el.genre = JSON.parse(el.genre);
+          el.holiday = JSON.parse(el.holiday);
         });
         this.list = response.data;
+        this.curr_list = response.data;
       });
     },
     async hidden() {
       this.show_info = false;
+      this.getAll();
     },
     async pushGenre(genre) {
       genre.forEach((el) => {
@@ -746,6 +1019,7 @@ export default {
     },
     async hideEdit() {
       this.show_edit = false;
+      this.getAll();
     },
     async imageLoad(e) {
       this.image = e.target.files[0];
@@ -831,42 +1105,173 @@ export default {
       location.reload();
     },
     async changeInfo() {
-      axios
-        .post("change_info", {
-          id: this.info.id,
-          name: this.info.name,
-          delivery: this.info.delivery,
-          address: this.info.address,
-          number: this.info.number,
-          genre: this.info.genre,
-          open: this.info.open,
-          close: this.info.close,
-          min_money: this.info.min_money,
-          max_money: this.info.max_money,
-          url: this.info.url,
-        })
-        .then((response) => {
-          this.message.push(response.data.message);
-          this.clear();
-          this.hideEdit();
-          this.getAll();
-        })
-        .catch((error) => console.log(error));
+      this.validation();
+      if (this.check == true) {
+        axios
+          .post("change_info", {
+            id: this.info.id,
+            name: this.info.name,
+            delivery: this.info.delivery,
+            address: this.info.address,
+            number: this.info.number,
+            genre: this.info.genre,
+            holiday: this.info.holiday,
+            open: this.info.open,
+            close: this.info.close,
+            min_money: this.info.min_money,
+            max_money: this.info.max_money,
+            url: this.info.url,
+          })
+          .then((response) => {
+            this.message.push(response.data.message);
+            this.clear();
+            this.hideEdit();
+            this.getAll();
+          })
+          .catch((error) => console.log(error));
+      }
     },
 
     async filterDelivery() {
-      console.log(typeof this.list);
-      const array = {};
-      console.log(typeof array);
+      if (this.new_array.length != 0) {
+        this.new_array = this.new_array;
+      } else {
+        this.new_array = this.curr_list;
+      }
+      if (this.filter_delivery.length > 0) {
+        this.list = this.curr_list;
+        (this.new_array = []),
+          this.filter_delivery.forEach((el) => {
+            const filtered_array = this.list.filter(
+              (item) => item.delivery == el
+            );
+            filtered_array.forEach((el_item) => {
+              this.new_array.push(el_item);
+            });
+          });
+        this.list = this.new_array;
+      } else {
+        this.list = this.curr_list;
+        if (this.filter_genre.length > 0) {
+          this.filterGenre();
+        }
+      }
+    },
 
-      this.filter_delivery.forEach((el) => {
-        const filter_list = this.list.filter((item) => item.delivery == el);
-        Object.assign(array, filter_list);
-        console.log(array);
-      });
+    async filterGenre() {
+      this.genre_array = [];
+      if (this.filter_genre.length > 0) {
+        if (this.new_array.length == 0) {
+          this.new_array = this.list;
+        }
+        this.new_array.forEach((el) => {
+          const genre_list = el.genre;
+          console.log(genre_list);
+          this.filter_genre.forEach((genre) => {
+            genre_list.forEach((gen_name) => {
+              if (gen_name == genre) {
+                this.check_this = true;
+              }
+            });
+          });
+          if (this.check_this == true) {
+            // console.log("have this!");
+            this.genre_array.push(el);
+            this.check_this = false;
+          } else {
+            this.check_this = false;
+          }
+        });
+        this.list = this.genre_array;
+      } else {
+        this.list = this.curr_list;
+      }
+    },
+
+    async filterMoney() {
+      if (this.new_array.length != 0) {
+        this.new_array = this.new_array;
+      } else {
+        this.new_array = this.curr_list;
+      }
+      this.money_array = [];
+      if (this.filter_min == "" && this.filter_max == "") {
+        this.money_array = this.list;
+        this.filterDelivery();
+        this.filterGenre();
+      }
+      if (this.filter_min != "" && this.filter_max != "") {
+        if (this.filter_min > this.filter_max) {
+          this.message.push("目安金額正しくない！");
+          this.clear();
+        } else {
+          this.list.forEach((el) => {
+            if (
+              this.filter_min >= el.min_money &&
+              this.filter_max <= el.max_money
+            ) {
+              this.money_array.push(el);
+            }
+          });
+          this.list = this.money_array;
+        }
+      }
+    },
+
+    async validation() {
+      this.check = true;
+      if (this.info.name == "") {
+        this.message.push("店舗名を入力してください！");
+        this.clear();
+        this.check = false;
+      }
+      if (this.info.address == "") {
+        this.message.push("住所を入力してください！");
+        this.clear();
+        this.check = false;
+      }
+      if (this.info.number == "") {
+        this.message.push("電話番号を入力してください！");
+        this.clear();
+        this.check = false;
+      }
+      if (this.info.open == "") {
+        this.message.push("開始営業時間を入力してください！");
+        this.clear();
+        this.check = false;
+      }
+      if (this.info.close == "") {
+        this.message.push("終了営業時間を入力してください！");
+        this.clear();
+        this.check = false;
+      }
+      if (this.info.url == "") {
+        this.message.push("URLを入力してください！");
+        this.clear();
+        this.check = false;
+      }
     },
   },
   mounted() {},
+  computed: {
+    resultQuery() {
+      if (this.searchQuery) {
+        return this.list.filter((item) => {
+          return this.searchQuery
+            .toLowerCase()
+            .split(" ")
+            .every((v) => item.name.toLowerCase().includes(v));
+        });
+      } else {
+        return this.list;
+      }
+    },
+  },
+  watch: {
+    resultQuery() {
+      console.log("resultQuery changed");
+    },
+  },
   created() {
     this.getAll();
     this.getUserInfo();

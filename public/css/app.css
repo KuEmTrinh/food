@@ -50,6 +50,36 @@
           transform: translateX(-50%);
 }
 
+.list-table {
+  width: 100%;
+  text-align: left;
+}
+
+.list-table__top {
+  background-color: #333333;
+  color: white;
+  font-weight: bold;
+}
+
+.list-table__index,
+.list-table__sex,
+.list-table__action {
+  width: 10%;
+  padding: 1rem;
+}
+
+.list-table__name,
+.list-table__number {
+  width: 35%;
+  padding: 1rem;
+}
+
+.list-table__item:hover {
+  background-color: #f2f2f2;
+  -webkit-transition: 0.2s all linear;
+  transition: 0.2s all linear;
+}
+
 .toggle {
   position: fixed;
   z-index: 300;
@@ -59,8 +89,10 @@
           transform: translate(-50%, -50%);
   width: 20rem;
   height: 10rem;
-  background-color: #333333;
+  background-color: #ffffff;
   border-radius: 0.5rem;
+  -webkit-box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+          box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
 
 .login {
@@ -333,6 +365,10 @@ w-inherit {
   font-size: 0.8rem;
 }
 
+.txt-ss {
+  font-size: 0.6rem;
+}
+
 .color-grey {
   color: #727272;
 }
@@ -421,6 +457,30 @@ w-inherit {
 
 .border {
   border: 1px sold #333333;
+}
+
+.label {
+  padding: 0.3rem 0.7rem;
+  background-color: #f2f2f2;
+  border-radius: 0.3rem;
+}
+
+.delivery__true {
+  color: white;
+  background-color: #16A009;
+  font-size: 0.9rem;
+  font-weight: bold;
+  padding: 0.2rem;
+  border-radius: 1rem;
+}
+
+.delivery__false {
+  color: white;
+  background-color: #E40713;
+  font-size: 0.9rem;
+  font-weight: bold;
+  padding: 0.2rem;
+  border-radius: 1rem;
 }
 
 .home {
@@ -620,8 +680,10 @@ w-inherit {
 }
 
 .message-notice {
-  background-color: #333333;
-  color: #ffffff;
+  background-color: #ffffff;
+  color: #333333;
+  -webkit-box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+          box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
 
 .message__content {
