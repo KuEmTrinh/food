@@ -486,7 +486,7 @@
         <h2 class="show-title txt-s txt-bold">URL</h2>
         <h3 class="show-content w-100 txt-center">{{ info.url }}</h3>
       </div>
-      <div class="wrap flex jc-sb" v-if="info.user_id != user_id">
+      <div class="wrap flex jc-sb">
         <div class="show-info flex-1">
           <h2 class="show-title txt-s txt-bold">評価店</h2>
           <div class="star flex al-ct">
@@ -666,7 +666,7 @@
       v-model="searchQuery"
       placeholder="店舗名..."
     />
-    <h1 class="title mt-2">Food Share Service</h1>
+    <h1 class="title mt-2">FOOD SHARE SERIVCE</h1>
     <div class="home-list__categories flex mt-2 jc-sb">
       <div class="home-list__category w-32">
         <h2

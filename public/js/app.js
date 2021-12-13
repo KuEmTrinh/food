@@ -53067,75 +53067,73 @@ var render = function() {
             ])
           ]),
           _vm._v(" "),
-          _vm.info.user_id != _vm.user_id
-            ? _c("div", { staticClass: "wrap flex jc-sb" }, [
-                _c("div", { staticClass: "show-info flex-1" }, [
-                  _c("h2", { staticClass: "show-title txt-s txt-bold" }, [
-                    _vm._v("評価店")
-                  ]),
+          _c("div", { staticClass: "wrap flex jc-sb" }, [
+            _c("div", { staticClass: "show-info flex-1" }, [
+              _c("h2", { staticClass: "show-title txt-s txt-bold" }, [
+                _vm._v("評価店")
+              ]),
+              _vm._v(" "),
+              _c(
+                "div",
+                { staticClass: "star flex al-ct" },
+                [
+                  _c("star-rating", {
+                    attrs: { "star-size": 25, "show-rating": false },
+                    on: { "rating-selected": _vm.setRating }
+                  }),
                   _vm._v(" "),
-                  _c(
-                    "div",
-                    { staticClass: "star flex al-ct" },
-                    [
-                      _c("star-rating", {
-                        attrs: { "star-size": 25, "show-rating": false },
-                        on: { "rating-selected": _vm.setRating }
-                      }),
-                      _vm._v(" "),
-                      _c("h2", { staticClass: "show-title txt-bold ml-1" }, [
-                        _vm._v(_vm._s(_vm.rating) + "点")
-                      ])
-                    ],
-                    1
-                  )
+                  _c("h2", { staticClass: "show-title txt-bold ml-1" }, [
+                    _vm._v(_vm._s(_vm.rating) + "点")
+                  ])
+                ],
+                1
+              )
+            ]),
+            _vm._v(" "),
+            _c(
+              "div",
+              { staticClass: "show-info show-relative flex-3" },
+              [
+                _c("h2", { staticClass: "show-title txt-s txt-bold" }, [
+                  _vm._v("コメント入力")
                 ]),
                 _vm._v(" "),
-                _c(
-                  "div",
-                  { staticClass: "show-info show-relative flex-3" },
-                  [
-                    _c("h2", { staticClass: "show-title txt-s txt-bold" }, [
-                      _vm._v("コメント入力")
-                    ]),
-                    _vm._v(" "),
-                    _c("box-icon", {
-                      staticClass: "show-comment",
-                      attrs: { name: "comment-add", size: "md" },
-                      on: {
-                        click: function($event) {
-                          $event.preventDefault()
-                          _vm.comment(_vm.info.id), _vm.saveStar(_vm.info.id)
-                        }
-                      }
-                    }),
-                    _vm._v(" "),
-                    _c("input", {
-                      directives: [
-                        {
-                          name: "model",
-                          rawName: "v-model",
-                          value: _vm.desc,
-                          expression: "desc"
-                        }
-                      ],
-                      staticClass: "input info-input__input",
-                      attrs: { type: "text", placeholder: "店舗名" },
-                      domProps: { value: _vm.desc },
-                      on: {
-                        input: function($event) {
-                          if ($event.target.composing) {
-                            return
-                          }
-                          _vm.desc = $event.target.value
-                        }
-                      }
-                    })
+                _c("box-icon", {
+                  staticClass: "show-comment",
+                  attrs: { name: "comment-add", size: "md" },
+                  on: {
+                    click: function($event) {
+                      $event.preventDefault()
+                      _vm.comment(_vm.info.id), _vm.saveStar(_vm.info.id)
+                    }
+                  }
+                }),
+                _vm._v(" "),
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.desc,
+                      expression: "desc"
+                    }
                   ],
-                  1
-                )
-              ])
-            : _vm._e(),
+                  staticClass: "input info-input__input",
+                  attrs: { type: "text", placeholder: "店舗名" },
+                  domProps: { value: _vm.desc },
+                  on: {
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.desc = $event.target.value
+                    }
+                  }
+                })
+              ],
+              1
+            )
+          ]),
           _vm._v(" "),
           _c(
             "div",
