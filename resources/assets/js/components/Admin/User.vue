@@ -68,7 +68,7 @@
           <th class="list-table__name">名前</th>
           <th class="list-table__number">社員番号</th>
           <th class="list-table__sex">性別</th>
-          <th class="list-table__action">行動</th>
+          <th class="list-table__action">選択</th>
         </tr>
         <tr v-for="(user, index) in users" :key="user.id" class="list-table__item">
           <th class="list-table__index">{{ index }}</th>

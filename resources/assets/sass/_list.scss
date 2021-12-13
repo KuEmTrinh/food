@@ -22,5 +22,16 @@
             background-color: $grey_normal;
             transition: 0.2s all linear;
         }
+        &__action {
+            & i{
+                font-size: 1.5em;
+            }
+            & i:hover{
+                padding: 0.3rem;
+                background-color: $black;
+                color: white;
+                border-radius: 0.2rem;
+            }
+        }
     }
 }

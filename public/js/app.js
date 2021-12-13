@@ -53777,7 +53777,7 @@ var render = function() {
       }
     }),
     _vm._v(" "),
-    _c("h1", { staticClass: "title mt-2" }, [_vm._v("東京の店")]),
+    _c("h1", { staticClass: "title mt-2" }, [_vm._v("Food Share Service")]),
     _vm._v(" "),
     _c("div", { staticClass: "home-list__categories flex mt-2 jc-sb" }, [
       _c("div", { staticClass: "home-list__category w-32" }, [
@@ -55678,7 +55678,7 @@ var staticRenderFns = [
       _vm._v(" "),
       _c("th", { staticClass: "list-table__sex" }, [_vm._v("性別")]),
       _vm._v(" "),
-      _c("th", { staticClass: "list-table__action" }, [_vm._v("行動")])
+      _c("th", { staticClass: "list-table__action" }, [_vm._v("選択")])
     ])
   }
 ]

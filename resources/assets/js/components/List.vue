@@ -666,7 +666,7 @@
       v-model="searchQuery"
       placeholder="店舗名..."
     />
-    <h1 class="title mt-2">東京の店</h1>
+    <h1 class="title mt-2">Food Share Service</h1>
     <div class="home-list__categories flex mt-2 jc-sb">
       <div class="home-list__category w-32">
         <h2
